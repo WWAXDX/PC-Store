@@ -1,0 +1,23 @@
+<div class="details-page">
+
+    <!-- Left Img -->
+     <div class="img-box"></div>
+
+     <!-- Right info -->
+      <div class="info-box">
+        <h1>{{ product.name }}</h1>
+
+        <p class="price">{{ product.price }} <img src="/riyals.png" alt="ريال" class="currency-icon"></p>
+
+
+        <p class="desc">{{ product.description }}</p>
+
+        <ul class="features">
+            @for (f of product.features; track f) {
+              <li>{{ f }}</li>
+            }
+        </ul>
+
+        <button class="add-btn">Add to Cart</button>
+      </div>
+</div>

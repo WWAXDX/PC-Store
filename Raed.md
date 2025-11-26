@@ -1,9 +1,13 @@
-.footer {
-  margin-top: 50px;
-  padding: 20px;
-  background: #f3f3f3;
-  text-align: center;
-  color: #444;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
-}
+<h2>Your Cart</h2>
+
+<div *ngFor="let item of cart.getCartItems(); let i = index" class="cart-item">
+  <h3>{{ item.name }}</h3>
+  <p>{{ item.price }} <img src="assets/riyals.svg" class="currency-icon"></p>
+
+  <button (click)="remove(i)">Remove</button>
+</div>
+
+<hr>
+
+<h3>Total:</h3>
+<p>{{ cart.getTotal() }} <img src="assets/riyals.svg" class="currency-icon"></p>
