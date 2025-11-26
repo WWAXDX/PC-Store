@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -9,27 +10,33 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart.html',
   styleUrls: ['./cart.scss']
 })
-export class Cart {
-
+export class Cart implements OnDestroy {
   items: any[] = [];
+  private sub: Subscription | null = null;
 
   constructor(private cart: CartService) {}
 
   ngOnInit() {
-    this.items = this.cart.getCartItems();
+    // Subscribe to the cart observable so updates are reactive
+    this.sub = this.cart.items$.subscribe(arr => {
+      this.items = arr;
+      console.log('CartComponent: items updated', this.items);
+    });
   }
 
   remove(index: number) {
     this.cart.removeItem(index);
-    this.items = this.cart.getCartItems();
   }
 
   clear() {
     this.cart.clearCart();
-    this.items = [];
   }
 
   getTotal() {
     return this.cart.getTotal();
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 }

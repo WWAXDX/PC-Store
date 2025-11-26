@@ -1,11 +1,34 @@
-<h2>السلة</h2>
+<div class="cart-page">
 
-<div *ngFor="let item of items; let i = index" class="cart-item">
-  <p>{{ item.name }} - {{ item.price }} RS</p>
-  <button (click)="remove(i)">Remove</button>
+  <h1>Your Cart</h1>
+
+  <!-- إذا السلة فاضية -->
+  <div *ngIf="items.length === 0" class="cart-empty">
+    Your cart is empty.
+  </div>
+
+  <!-- قائمة المنتجات -->
+  <div *ngIf="items.length > 0" class="cart-list">
+    
+    <div class="cart-item" *ngFor="let item of items; let i = index">
+      <div class="info">
+        <div class="name">{{ item.name }}</div>
+        <div class="price">
+          {{ item.price }}
+          <img src="/riyals.png" alt="SAR">
+        </div>
+      </div>
+
+      <button class="remove" (click)="remove(i)">Remove</button>
+    </div>
+
+    <div class="total">
+      Total: {{ getTotal() }} 
+      <img src="/riyals.png" alt="SAR">
+    </div>
+
+    <button class="checkout-btn">Checkout</button>
+
+  </div>
+
 </div>
-
-<hr>
-
-<h3>Total: {{ getTotal() }} RS</h3>
-<button (click)="clear()">clear Cart</button>

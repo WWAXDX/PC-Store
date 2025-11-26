@@ -1,20 +1,13 @@
 <div class="products-page">
+  <h1 class="title">All Products</h1>
 
-    <h1 class="title">All Products</h1>
+  <div class="products-grid">
+    <div *ngFor="let p of fakeProducts; let i = index" class="products-card">
+      <h3>{{ p.name }}</h3>
+      <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
 
-    <!-- Grid -->
-    <div class="products-grid">
-
-        <!-- Placeholder API Soon -->
-        <div *ngFor="let p of fakeProducts; let i = index" class="products-card">
-        <h3>{{ p.name }}</h3>
-        <p class="price">{{ p.price }} <img src="/riyals.png" alt="ريال" class="currency-icon"></p>
-        
-          <button (click)="add(p)">Add to Cart</button>
-
-        <button [routerLink]="['/product', i]">View Details</button>
+      <button (click)="add(p)" class="addCart">Add to Cart</button>
+      <button [routerLink]="['/product', i]">View Details</button>
     </div>
-
-    </div>
-
+  </div>
 </div>

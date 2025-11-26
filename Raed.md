@@ -1,13 +1,23 @@
-<h2>Your Cart</h2>
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 
-<div *ngFor="let item of cart.getCartItems(); let i = index" class="cart-item">
-  <h3>{{ item.name }}</h3>
-  <p>{{ item.price }} <img src="assets/riyals.svg" class="currency-icon"></p>
+  a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
 
-  <button (click)="remove(i)">Remove</button>
-</div>
-
-<hr>
-
-<h3>Total:</h3>
-<p>{{ cart.getTotal() }} <img src="assets/riyals.svg" class="currency-icon"></p>
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+    }
+  }
+}
