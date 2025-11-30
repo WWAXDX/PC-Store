@@ -1,14 +1,126 @@
-<nav class="navbar">
-    <div class="logo">PC Store</div>
+<nav class="navbar" [class.scrolled]="isScrolled">
 
-    <ul class="nav-links">
-        <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/products">Products</a></li>
-        <li><a routerLink="/categories">Categories</a></li>
-        <li><a routerLink="/cart">Cart</a> <span class="cart-badge"> {{ cartCount }}</span></li>
-    </ul>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">PC Parts</a></div>
 
-    <div class="actions">
-        <button class="login-btn">login</button>
+    <div class="top-actions">
+      <!-- Language Toggle -->
+      <button class="language-btn" (click)="toggleLanguage()" title="تغيير اللغة">
+        <i class="bi bi-translate"></i>
+        <span>{{ currentLanguage === 'ar' ? 'EN' : 'ع' }}</span>
+      </button>
+
+      <a routerLink="/cart" class="icon-btn cart-btn" title="Cart">
+        <i class="bi bi-cart3"></i>
+        <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+
+      <a routerLink="/login" class="icon-btn" title="Login">
+        <i class="bi bi-person-circle"></i>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()" title="Menu">
+        <i class="bi bi-list"></i>
+      </button>
     </div>
+  </div>
+
+  <!-- Second Bar - Categories & Search -->
+  <div class="second-bar">
+    <div class="categories-nav">
+      <div class="category-item" 
+           *ngFor="let category of categories" 
+           (mouseenter)="showDropdown(category.key)"
+           (mouseleave)="hideDropdown()">
+        <span class="category-name">{{ category.name }}</span>
+        <i class="bi bi-chevron-down"></i>
+        
+        <!-- Dropdown -->
+        <div class="category-dropdown" *ngIf="activeDropdown === category.key">
+          <a *ngFor="let item of category.items" 
+             routerLink="/products" 
+             [queryParams]="{category: item}" 
+             class="dropdown-item">
+            {{ item }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search in Second Bar -->
+    <div class="search-container-second">
+      <div class="search-box-second">
+        <input 
+          type="text" 
+          placeholder="Search for parts..."
+          [(ngModel)]="searchText"
+          (keyup.enter)="onSearch()"
+        />
+        <button (click)="onSearch()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" [class.active]="showMobileSidebar" (click)="closeMobileMenu()">
+    <div class="sidebar-content" (click)="$event.stopPropagation()">
+      <div class="sidebar-header">
+        <h3>Menu</h3>
+        <button class="close-sidebar" (click)="closeMobileMenu()">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+      
+      <div class="sidebar-search">
+        <input 
+          type="text" 
+          placeholder="Search for parts..."
+          [(ngModel)]="searchText"
+          (keyup.enter)="onSearchMobile()"
+        />
+        <button (click)="onSearchMobile()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-categories">
+        <div class="sidebar-category" *ngFor="let category of categories">
+          <div class="sidebar-category-title" (click)="toggleSidebarCategory(category.key)">
+            <span>{{ category.name }}</span>
+            <i class="bi" [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
+                            [class.bi-chevron-up]="expandedSidebarCategory === category.key"></i>
+          </div>
+          <div class="sidebar-category-items" *ngIf="expandedSidebarCategory === category.key">
+            <a *ngFor="let item of category.items" 
+               routerLink="/products" 
+               [queryParams]="{category: item}" 
+               class="sidebar-item"
+               (click)="closeMobileMenu()">
+              {{ item }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <a routerLink="/cart" class="sidebar-action" (click)="closeMobileMenu()">
+          <i class="bi bi-cart3"></i>
+          <span>Cart ({{ cartCount }})</span>
+        </a>
+        <a routerLink="/login" class="sidebar-action" (click)="closeMobileMenu()">
+          <i class="bi bi-person-circle"></i>
+          <span>Login</span>
+        </a>
+        <button class="sidebar-action" (click)="toggleLanguage()">
+          <i class="bi bi-translate"></i>
+          <span>{{ currentLanguage === 'ar' ? 'English' : 'العربية' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
 </nav>

@@ -3,11 +3,15 @@
 
   <div class="products-grid">
     <div *ngFor="let p of fakeProducts; let i = index" class="products-card">
-      <h3>{{ p.name }}</h3>
-      <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
-
-      <button (click)="add(p)" class="addCart">Add to Cart</button>
-      <button [routerLink]="['/product', i]">View Details</button>
+      <div class="product-content" [routerLink]="['/product', i]">
+        <div class="img"></div>
+        <h3>{{ p.name }}</h3>
+        <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
+      </div>
+      
+      <button class="add-btn" (click)="add(p)" title="إضافة للسلة">
+        <i class="bi bi-plus"></i>
+      </button>
     </div>
   </div>
 </div>

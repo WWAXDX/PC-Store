@@ -1,23 +1,22 @@
-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+<nav class="navbar-top">
+  <div class="left">
+    <h2 class="logo">PCParts</h2>
+  </div>
 
-  a {
-    position: relative;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+  <div class="right">
+    <!-- Login Icon -->
+    <i class="bi bi-person-circle nav-icon"></i>
 
-    .cart-badge {
-      position: absolute;
-      top: -8px;
-      right: -12px;
-      background: red;
-      color: white;
-      border-radius: 50%;
-      padding: 2px 6px;
-      font-size: 12px;
-    }
-  }
-}
+    <!-- Cart Icon with badge -->
+    <div class="cart-wrapper" routerLink="/cart">
+      <i class="bi bi-cart3 nav-icon"></i>
+      <span class="badge">{{ cartCount }}</span>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar-bottom">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a routerLink="/products" routerLinkActive="active">Products</a>
+  <a routerLink="/cart" routerLinkActive="active">Cart</a>
+</nav>
