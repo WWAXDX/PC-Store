@@ -33,16 +33,21 @@
       <div class="category-item" 
            *ngFor="let category of categories" 
            (mouseenter)="showDropdown(category.key)"
-           (mouseleave)="hideDropdown()">
-        <span class="category-name">{{ category.name }}</span>
-        <i class="bi bi-chevron-down"></i>
+           (mouseleave)="startHideTimer()">
+        <span class="category-name" (click)="navigateToCategory(category, $event)">{{ category.name }}</span>
+        <i class="bi bi-chevron-down" 
+           (click)="showDropdown(category.key); $event.stopPropagation()"></i>
         
         <!-- Dropdown -->
-        <div class="category-dropdown" *ngIf="activeDropdown === category.key">
+        <div class="category-dropdown" 
+             *ngIf="activeDropdown === category.key"
+             (mouseenter)="cancelHideTimer()"
+             (mouseleave)="hideDropdownNow()">
           <a *ngFor="let item of category.items" 
              routerLink="/products" 
              [queryParams]="{category: item}" 
-             class="dropdown-item">
+             class="dropdown-item"
+             (click)="hideDropdownNow()">
             {{ item }}
           </a>
         </div>
@@ -89,10 +94,12 @@
 
       <div class="sidebar-categories">
         <div class="sidebar-category" *ngFor="let category of categories">
-          <div class="sidebar-category-title" (click)="toggleSidebarCategory(category.key)">
-            <span>{{ category.name }}</span>
-            <i class="bi" [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
-                            [class.bi-chevron-up]="expandedSidebarCategory === category.key"></i>
+          <div class="sidebar-category-title">
+            <span (click)="navigateToCategory(category); closeMobileMenu()">{{ category.name }}</span>
+            <i class="bi" 
+               [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
+               [class.bi-chevron-up]="expandedSidebarCategory === category.key"
+               (click)="toggleSidebarCategory(category.key); $event.stopPropagation()"></i>
           </div>
           <div class="sidebar-category-items" *ngIf="expandedSidebarCategory === category.key">
             <a *ngFor="let item of category.items" 

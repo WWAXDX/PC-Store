@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:pc-parts-store": "node dist/pc-parts-store/server/server.mjs",
-    "deploy": "ng build --configuration production --base-href /portfolio/ && npx angular-cli-ghpages --dir=dist/my-portfolio/browser"
+    "deploy": "ng build --configuration production --base-href /PC-Store/ && npx angular-cli-ghpages --dir=dist/pc-parts-store/browser"
   },
   "prettier": {
     "printWidth": 100,

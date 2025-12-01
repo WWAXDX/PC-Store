@@ -152,16 +152,33 @@
         position: relative;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 4px;
         padding: 12px 0;
-        cursor: pointer;
         color: #1e2a5a;
         font-weight: 600;
         font-size: 14px;
         transition: all 0.3s ease;
 
-        &:hover {
-          color: #009ffd;
+        .category-name {
+          cursor: pointer;
+          transition: color 0.3s ease;
+          
+          &:hover {
+            color: #009ffd;
+          }
+        }
+
+        i.bi-chevron-down {
+          cursor: pointer;
+          font-size: 12px;
+          padding: 4px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: rgba(0, 159, 253, 0.1);
+            color: #009ffd;
+          }
         }
 
         .category-dropdown {
@@ -347,14 +364,29 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 20px;
-            cursor: pointer;
             color: #1e2a5a;
             font-weight: 600;
             transition: 0.2s;
 
-            &:hover {
-              background: #f8f9fa;
-              color: #009ffd;
+            span {
+              cursor: pointer;
+              flex: 1;
+              
+              &:hover {
+                color: #009ffd;
+              }
+            }
+
+            i {
+              cursor: pointer;
+              padding: 4px 8px;
+              border-radius: 4px;
+              transition: 0.2s;
+              
+              &:hover {
+                background: #e2e8f0;
+                color: #009ffd;
+              }
             }
           }
 

@@ -1,17 +1,37 @@
 <div class="products-page">
-  <h1 class="title">All Products</h1>
+  <h1 class="title">
+    {{ selectedCategory ? (selectedCategory | titlecase) : 'All Products' }}
+  </h1>
 
-  <div class="products-grid">
-    <div *ngFor="let p of fakeProducts; let i = index" class="products-card">
-      <div class="product-content" [routerLink]="['/product', i]">
-        <div class="img"></div>
-        <h3>{{ p.name }}</h3>
-        <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
+  @if (displayedProducts.length > 0) {
+    @for (subCategory of getSubCategories(); track subCategory) {
+      <div class="subcategory-section">
+        <h2 class="subcategory-title">{{ subCategory }}</h2>
+        
+        <div class="products-scroll-container">
+          <div class="products-scroll">
+            @for (p of groupedProducts[subCategory]; track p.id) {
+              <div class="products-card">
+                <div class="product-content" [routerLink]="['/product', p.id]">
+                  <div class="img"></div>
+                  <h3>{{ p.name }}</h3>
+                  <p class="desc">{{ p.desc }}</p>
+                  <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
+                </div>
+                
+                <button class="add-btn" (click)="add(p)" title="Add to Cart">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
       </div>
-      
-      <button class="add-btn" (click)="add(p)" title="إضافة للسلة">
-        <i class="bi bi-plus"></i>
-      </button>
+    }
+  } @else {
+    <div class="no-products">
+      <i class="bi bi-inbox"></i>
+      <p>No products found in this category</p>
     </div>
-  </div>
+  }
 </div>

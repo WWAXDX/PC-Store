@@ -2,12 +2,10 @@
 
   <h1>Your Cart</h1>
 
-  <!-- إذا السلة فاضية -->
   <div *ngIf="items.length === 0" class="cart-empty">
     Your cart is empty.
   </div>
 
-  <!-- قائمة المنتجات -->
   <div *ngIf="items.length > 0" class="cart-list">
     
     <div class="cart-item" *ngFor="let item of items; let i = index">

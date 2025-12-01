@@ -1,23 +1,62 @@
-<div class="details-page">
+@if (product) {
+  <div class="details-page">
+    <div class="main-section">
+      <!-- Left Img -->
+      <div class="img-box">
+        <div class="placeholder-icon">
+          <i class="bi bi-box-seam"></i>
+        </div>
+      </div>
 
-    <!-- Left Img -->
-     <div class="img-box"></div>
-
-     <!-- Right info -->
+      <!-- Right info -->
       <div class="info-box">
+        <div class="breadcrumb">
+          <a routerLink="/products">Products</a>
+          <i class="bi bi-chevron-right"></i>
+          <span>{{ product.name }}</span>
+        </div>
+
         <h1>{{ product.name }}</h1>
 
-        <p class="price">{{ product.price }} <img src="/riyals.png" alt="ريال" class="currency-icon"></p>
-
+        <div class="category-badge">{{ product.subCategory }}</div>
 
         <p class="desc">{{ product.description }}</p>
 
-        <ul class="features">
-            @for (f of product.features; track f) {
-              <li>{{ f }}</li>
-            }
-        </ul>
+        <div class="price-section">
+          <span class="price">{{ product.price }}</span>
+          <img src="/riyals.png" alt="ريال" class="currency-icon">
+        </div>
 
-        <button class="add-btn" (click)="addToCart(product)">Add to Cart</button>
+        <div class="action-buttons">
+          <button class="add-btn" (click)="addToCart(product)">
+            <i class="bi bi-cart-plus"></i>
+            Add to Cart
+          </button>
+          <button class="back-btn" routerLink="/products">
+            <i class="bi bi-arrow-left"></i>
+            Back to Products
+          </button>
+        </div>
       </div>
-</div>
+    </div>
+
+    <!-- Features Section Below -->
+    <div class="features-section">
+      <h3>Key Features</h3>
+      <ul class="features">
+        @for (f of product.features; track f) {
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ f }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+} @else {
+  <div class="loading">
+    <i class="bi bi-box-seam"></i>
+    <p>Product not found</p>
+    <button class="back-btn" routerLink="/products">Back to Products</button>
+  </div>
+}

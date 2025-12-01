@@ -20,28 +20,37 @@ export class Navbar implements OnInit, OnDestroy {
   expandedSidebarCategory: string | null = null;
   currentLanguage: string = 'en';
   isScrolled: boolean = false;
+  private hideTimer: any = null;
   private sub: Subscription | null = null;
 
   categories = [
     {
-      key: 'pc parts',
+      key: 'pc-parts',
       name: 'PC Parts',
+      route: '/products',
+      queryParam: 'pc-parts',
       items: ['Graphics Cards (GPU)', 'Processors (CPU)', 'Memory (RAM)', 'Storage (SSD/HDD)', 'Motherboards', 'Power Supplies', 'Cases', 'CPU Coolers']
     },
     {
-      key: 'peripherals',
-      name: 'Peripherals',
-      items: ['Monitors', 'Keyboards', 'Mice', 'Headsets', 'Speakers', 'Webcams']
+      key: 'monitors',
+      name: 'Monitors',
+      route: '/products',
+      queryParam: 'monitors',
+      items: ['Gaming Monitors', '4K Monitors', 'Ultrawide Monitors', 'Professional Monitors']
+    },
+    {
+      key: 'chairs',
+      name: 'Chairs',
+      route: '/products',
+      queryParam: 'chairs',
+      items: ['Gaming Chairs', 'Office Chairs', 'Ergonomic Chairs']
     },
     {
       key: 'accessories',
       name: 'Accessories',
-      items: ['Cables', 'Adapters', 'USB Hubs', 'Cleaning Kits', 'Thermal Paste']
-    },
-    {
-      key: 'furniture',
-      name: 'Furniture',
-      items: ['Gaming Chairs', 'Desks', 'Monitor Arms', 'Lighting']
+      route: '/products',
+      queryParam: 'accessories',
+      items: ['Keyboards', 'Mice', 'Headsets', 'Speakers', 'Webcams', 'Cables', 'Adapters', 'USB Hubs', 'Cleaning Kits', 'Thermal Paste']
     }
   ];
 
@@ -59,6 +68,7 @@ export class Navbar implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub?.unsubscribe();
+    this.cancelHideTimer();
   }
 
   @HostListener('window:scroll', [])
@@ -92,13 +102,34 @@ export class Navbar implements OnInit, OnDestroy {
   }
 
   showDropdown(categoryKey: string) {
+    this.cancelHideTimer();
     this.activeDropdown = categoryKey;
   }
 
-  hideDropdown() {
-    setTimeout(() => {
+  navigateToCategory(category: any, event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.hideDropdownNow();
+    this.router.navigate([category.route], { queryParams: { category: category.queryParam } });
+  }
+
+  startHideTimer() {
+    this.hideTimer = setTimeout(() => {
       this.activeDropdown = null;
     }, 300);
+  }
+
+  cancelHideTimer() {
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+  }
+
+  hideDropdownNow() {
+    this.cancelHideTimer();
+    this.activeDropdown = null;
   }
 
   toggleSidebarCategory(categoryKey: string) {
