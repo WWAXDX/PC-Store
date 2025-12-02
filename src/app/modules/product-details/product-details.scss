@@ -297,21 +297,45 @@
 // Responsive
 @media (max-width: 968px) {
     .details-page {
-        flex-direction: column;
         padding: 20px;
         margin-top: 100px;
 
+        .main-section {
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
         .img-box {
-            height: 300px;
+            width: 100%;
+            height: 280px;
         }
 
         .info-box {
             h1 {
-                font-size: 28px;
+                font-size: 26px;
             }
 
-            .price-section .price {
-                font-size: 26px;
+            .category-badge {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+
+            .desc {
+                font-size: 15px;
+            }
+
+            .price-section {
+                padding: 16px;
+                
+                .price {
+                    font-size: 26px;
+                }
+
+                .currency-icon {
+                    width: 24px;
+                    height: 24px;
+                }
             }
 
             .action-buttons {
@@ -321,6 +345,86 @@
                     width: 100%;
                     justify-content: center;
                 }
+            }
+        }
+
+        .features-section {
+            padding: 25px 20px;
+
+            h3 {
+                font-size: 20px;
+                
+                &::before,
+                &::after {
+                    max-width: 80px;
+                }
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 12px;
+
+                li {
+                    padding: 12px 16px;
+
+                    i {
+                        font-size: 18px;
+                    }
+
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .details-page {
+        padding: 15px;
+        margin-top: 90px;
+
+        .img-box {
+            height: 220px;
+
+            .placeholder-icon {
+                font-size: 80px;
+            }
+        }
+
+        .info-box {
+            h1 {
+                font-size: 22px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+            }
+
+            .price-section {
+                .price {
+                    font-size: 22px;
+                }
+            }
+
+            .action-buttons {
+                button {
+                    padding: 12px 20px;
+                    font-size: 15px;
+
+                    i {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .features-section {
+            padding: 20px 15px;
+
+            h3 {
+                font-size: 18px;
             }
         }
     }
