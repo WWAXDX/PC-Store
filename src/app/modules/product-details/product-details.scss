@@ -13,30 +13,25 @@
     .img-box {
         flex: 1;
         height: 500px;
-        background: linear-gradient(135deg, #1e2a5a 0%, #009ffd 100%);
+        background: #f8fafc;
         border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 159, 253, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        padding: 30px;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
-        }
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
 
-        .placeholder-icon {
-            font-size: 120px;
-            color: rgba(255, 255, 255, 0.3);
-            z-index: 1;
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 
@@ -91,19 +86,25 @@
             font-weight: 600;
             width: fit-content;
             box-shadow: 0 4px 12px rgba(0, 159, 253, 0.3);
-        }
+            }
 
-        .price-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4ff 100%);
-            border-radius: 15px;
-            border: 2px solid #009ffd;
-            width: fit-content;
+            .short-desc {
+                font-size: 16px;
+                line-height: 1.6;
+                color: #666;
+                padding: 10px 0;
+                font-weight: 500;
+            }
 
-            .price {
+            .price-section {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 20px;
+                background: linear-gradient(135deg, #f8f9ff 0%, #e8f4ff 100%);
+                border-radius: 15px;
+                border: 2px solid #009ffd;
+                width: fit-content;            .price {
                 font-size: 32px;
                 font-weight: 700;
                 color: #1e2a5a;
@@ -115,11 +116,12 @@
             }
         }
 
-        .desc {
-            font-size: 17px;
-            line-height: 1.7;
-            color: #555;
-            padding: 15px 0;
+        .short-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            padding: 10px 0;
+            font-weight: 500;
         }
 
         .action-buttons {
@@ -176,6 +178,40 @@
                     transform: translateY(0);
                 }
             }
+        }
+    }
+
+    .description-section {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid #e8f4ff;
+        box-shadow: 0 4px 20px rgba(0, 159, 253, 0.1);
+        margin-bottom: 30px;
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e2a5a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &::before {
+                content: '';
+                width: 5px;
+                height: 30px;
+                background: linear-gradient(135deg, #009ffd 0%, #00d4ff 100%);
+                border-radius: 3px;
+            }
+        }
+
+        .full-description {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
         }
     }
 
@@ -321,8 +357,8 @@
                 padding: 6px 14px;
             }
 
-            .desc {
-                font-size: 15px;
+            .short-desc {
+                font-size: 14px;
             }
 
             .price-section {
@@ -345,6 +381,19 @@
                     width: 100%;
                     justify-content: center;
                 }
+            }
+        }
+
+        .description-section {
+            padding: 25px 20px;
+            margin-bottom: 25px;
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .full-description {
+                font-size: 15px;
             }
         }
 

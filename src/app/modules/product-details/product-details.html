@@ -3,9 +3,7 @@
     <div class="main-section">
       <!-- Left Img -->
       <div class="img-box">
-        <div class="placeholder-icon">
-          <i class="bi bi-box-seam"></i>
-        </div>
+        <img [src]="product.image" [alt]="product.name" class="product-image">
       </div>
 
       <!-- Right info -->
@@ -20,11 +18,11 @@
 
         <div class="category-badge">{{ product.subCategory }}</div>
 
-        <p class="desc">{{ product.description }}</p>
+        <p class="short-desc">{{ product.desc }}</p>
 
         <div class="price-section">
           <span class="price">{{ product.price }}</span>
-          <img src="/riyals.png" alt="ريال" class="currency-icon">
+          <img src="/riyals.png" alt="Riyal" class="currency-icon">
         </div>
 
         <div class="action-buttons">
@@ -38,6 +36,12 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- Comprehensive Description Section -->
+    <div class="description-section">
+      <h3>Product Description</h3>
+      <p class="full-description">{{ product.description }}</p>
     </div>
 
     <!-- Features Section Below -->

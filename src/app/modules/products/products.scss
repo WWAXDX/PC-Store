@@ -4,10 +4,77 @@
     .title {
         font-size: 32px;
         font-weight: 700;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         margin-top: 120px;
         color: #1e2a5a;
         text-align: center;
+    }
+
+    .filter-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 12px 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        gap: 15px;
+        flex-wrap: wrap;
+
+        .product-count {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-size: 13px;
+            color: #64748b;
+
+            .count-number {
+                font-size: 18px;
+                font-weight: 700;
+                color: #009ffd;
+            }
+
+            .count-text {
+                font-weight: 500;
+            }
+        }
+
+        .sort-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            label {
+                font-size: 13px;
+                font-weight: 500;
+                color: #64748b;
+                margin: 0;
+            }
+
+            select {
+                padding: 8px 12px;
+                border: 1.5px solid #e2e8f0;
+                border-radius: 8px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #1e2a5a;
+                background: white;
+                cursor: pointer;
+                transition: all 0.2s;
+                outline: none;
+                min-width: 160px;
+
+                &:hover {
+                    border-color: #009ffd;
+                }
+
+                &:focus {
+                    border-color: #009ffd;
+                    box-shadow: 0 0 0 2px rgba(0, 159, 253, 0.1);
+                }
+            }
+        }
     }
 
     .subcategory-section {
@@ -64,6 +131,17 @@
                 }
             }
         }
+
+        .products-grid-container {
+            position: relative;
+
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+                padding: 10px 15px 20px;
+            }
+        }
     }
 
     .products-card {
@@ -90,24 +168,15 @@
             color: inherit;
             display: block;
             
-            .img {
-                background: linear-gradient(135deg, #1e2a5a 0%, #009ffd 100%);
-                border-radius: 12px;
+            .product-image {
+                width: 100%;
                 height: 180px;
+                object-fit: contain;
+                border-radius: 12px;
                 margin-bottom: 15px;
                 transition: 0.3s;
-                position: relative;
-                overflow: hidden;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: -50%;
-                    left: -50%;
-                    width: 200%;
-                    height: 200%;
-                    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-                }
+                background: #f8fafc;
+                padding: 10px;
                 
                 &:hover {
                     transform: scale(1.03);
@@ -210,9 +279,32 @@
 // Responsive
 @media (max-width: 768px) {
     .products-page {
+        .filter-bar {
+            padding: 12px 15px;
+            gap: 10px;
+
+            .product-count {
+                justify-content: center;
+            }
+
+            .sort-container {
+                gap: 8px;
+
+                select {
+                    min-width: 140px;
+                    font-size: 12px;
+                }
+            }
+        }
+
         .subcategory-section {
             .subcategory-title {
                 font-size: 20px;
+            }
+
+            .products-grid-container .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
             }
         }
 
