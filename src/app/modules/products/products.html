@@ -36,11 +36,23 @@
           <div [class.products-scroll]="!(selectedCategory || searchTerm)" [class.products-grid]="(selectedCategory || searchTerm)">
             @for (p of groupedProducts[subCategory]; track p.id) {
               <div class="products-card">
+                @if (p.onSale) {
+                  <div class="sale-badge">-{{ p.discount }}%</div>
+                }
                 <div class="product-content" [routerLink]="['/product', p.id]">
-                  <img [src]="p.image" [alt]="p.name" class="product-image">
+                  <div class="product-image-container">
+                    <img [src]="p.image" [alt]="p.name" class="product-image">
+                  </div>
                   <h3>{{ p.name }}</h3>
                   <p class="desc">{{ p.desc }}</p>
-                  <p class="price">{{ p.price }} <img src="/riyals.png" alt="SAR" class="currency-icon"></p>
+                  @if (p.onSale && p.salePrice) {
+                    <div class="price-group">
+                      <p class="old-price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                      <p class="price">{{ p.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                    </div>
+                  } @else {
+                    <p class="price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                  }
                 </div>
                 
                 <button class="add-btn" (click)="add(p)" title="Add to Cart">

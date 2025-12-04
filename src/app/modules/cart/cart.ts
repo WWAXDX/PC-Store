@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cart.html',
   styleUrls: ['./cart.scss']
 })
@@ -30,6 +30,19 @@ export class Cart implements OnDestroy {
 
   clear() {
     this.cart.clearCart();
+  }
+
+  getSubtotal() {
+    return this.items.reduce((sum, item) => sum + item.price, 0);
+  }
+
+  getDiscount() {
+    return this.items.reduce((sum, item) => {
+      if (item.onSale && item.salePrice) {
+        return sum + (item.price - item.salePrice);
+      }
+      return sum;
+    }, 0);
   }
 
   getTotal() {

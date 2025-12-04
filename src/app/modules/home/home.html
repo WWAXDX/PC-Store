@@ -7,18 +7,73 @@
     <a routerLink="/products" routerLinkActive="active"><button>Shop Now</button></a>
    </section>
 
+   <!-- Categories -->
+   <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      @for (category of categories; track category.name) {
+        <a [routerLink]="['/products']" [queryParams]="{category: category.subCategory}" class="category-card">
+          <div class="category-icon">{{ category.icon }}</div>
+          <h3>{{ category.name }}</h3>
+        </a>
+      }
+    </div>
+   </section>
 
-
-   <!-- featured products -->
+   <!-- Featured Products -->
    <section class="featured">
     <h2>Featured Products</h2>
-    <p>BackEnd Soon</p>
-
-    <div class="placeholder">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+    <div class="products-grid">
+      @for (product of featuredProducts(); track product.id) {
+        <div class="product-card">
+          @if (product.onSale) {
+            <div class="sale-badge">-{{ product.discount }}%</div>
+          }
+          <div class="product-image">
+            <img [src]="product.image" [alt]="product.name">
+          </div>
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p class="category">{{ product.subCategory }}</p>
+            <p class="description">{{ product.desc }}</p>
+            <div class="product-footer">
+              <div class="price-section">
+                @if (product.onSale && product.salePrice) {
+                  <div class="price-group">
+                    <span class="old-price">{{ product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
+                    <span class="price">{{ product.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
+                  </div>
+                } @else {
+                  <span class="price">{{ product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
+                }
+              </div>
+              <a [routerLink]="['/product', product.id]" class="view-btn">View Details</a>
+            </div>
+          </div>
+        </div>
+      }
     </div>
+   </section>
+
+   <!-- Why Choose Us -->
+   <section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon">{{ feature.icon }}</div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+   </section>
+
+   <!-- Call to Action -->
+   <section class="cta">
+    <h2>Ready to Build Your Dream PC?</h2>
+    <p>Explore our wide selection of premium PC parts</p>
+    <a routerLink="/products"><button>Browse All Products</button></a>
    </section>
    
 </div>

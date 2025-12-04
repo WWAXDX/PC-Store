@@ -13,7 +13,7 @@
     .img-box {
         flex: 1;
         height: 500px;
-        background: #f8fafc;
+        background: #ffffff;
         border-radius: 20px;
         display: flex;
         align-items: center;
@@ -21,7 +21,31 @@
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        padding: 30px;
+        padding: 40px;
+
+        .sale-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 18px;
+            z-index: 10;
+            box-shadow: 0 6px 20px rgba(255, 65, 108, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
 
         .product-image {
             max-width: 100%;
@@ -30,7 +54,7 @@
             transition: transform 0.3s;
 
             &:hover {
-                transform: scale(1.05);
+                transform: scale(1.08);
             }
         }
     }
@@ -98,23 +122,65 @@
 
             .price-section {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 gap: 10px;
-                padding: 20px;
+                padding: 25px;
                 background: linear-gradient(135deg, #f8f9ff 0%, #e8f4ff 100%);
                 border-radius: 15px;
                 border: 2px solid #009ffd;
-                width: fit-content;            .price {
-                font-size: 32px;
-                font-weight: 700;
-                color: #1e2a5a;
-            }
+                width: fit-content;
 
-            .currency-icon {
-                width: 28px;
-                height: 28px;
+                .price-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .old-price-row {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+
+                        .old-price {
+                            font-size: 20px;
+                            font-weight: 500;
+                            color: #94a3b8;
+                            text-decoration: line-through;
+                        }
+
+                        .currency-icon.small {
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+
+                    .current-price-row {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        .save-badge {
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            color: white;
+                            padding: 4px 12px;
+                            border-radius: 20px;
+                            font-size: 13px;
+                            font-weight: 600;
+                            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+                        }
+                    }
+                }
+
+                .price {
+                    font-size: 36px;
+                    font-weight: 700;
+                    color: #1e2a5a;
+                }
+
+                .currency-icon {
+                    width: 32px;
+                    height: 32px;
+                }
             }
-        }
 
         .short-desc {
             font-size: 16px;

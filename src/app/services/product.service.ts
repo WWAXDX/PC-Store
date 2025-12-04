@@ -27,7 +27,10 @@ export class ProductService {
         'Core Clock 2160 MHz',
         'Boost Clock 2542 MHz'
       ],
-      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/763a47f348ec493a6f53fffe82daca09.1600.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/763a47f348ec493a6f53fffe82daca09.1600.jpg',
+      onSale: true,
+      salePrice: 1749,
+      discount: 15
     },
     { 
       id: 2, 
@@ -47,7 +50,10 @@ export class ProductService {
         'Boost Clock 3290 MHz'
 
       ],
-      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/814dd4fff0d20c7503e54641a2c02947.1600.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/814dd4fff0d20c7503e54641a2c02947.1600.jpg',
+      onSale: true,
+      salePrice: 1249,
+      discount: 14
     },
     {
         id: 3,
@@ -66,7 +72,10 @@ export class ProductService {
             'Core Clock 1320 MHz',
             'Boost Clock 1777 MHz'
         ],
-        image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c740684e2cd2339bf845f7493711bcb7.1600.jpg'
+        image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c740684e2cd2339bf845f7493711bcb7.1600.jpg',
+        onSale: true,
+        salePrice: 899,
+        discount: 18
     },
     {
         id: 4,
@@ -85,7 +94,10 @@ export class ProductService {
             'Core Clock 2535 MHz',
             'Boost Clock 2610 MHz'
         ],
-        image: 'https://cdna.pcpartpicker.com/static/forever/images/product/43191ac360269737064e20b57d60c9b6.1600.jpg'
+        image: 'https://cdna.pcpartpicker.com/static/forever/images/product/43191ac360269737064e20b57d60c9b6.1600.jpg',
+        onSale: true,
+        salePrice: 2499,
+        discount: 12
     },
     {
         id: 5,

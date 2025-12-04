@@ -1,31 +1,89 @@
 <div class="cart-page">
 
-  <h1>Your Cart</h1>
-
   <div *ngIf="items.length === 0" class="cart-empty">
-    Your cart is empty.
+    <div class="empty-icon">
+      <i class="bi bi-cart-x"></i>
+    </div>
+    <h2>Your cart is empty</h2>
+    <p>Add some products to get started!</p>
+    <a routerLink="/products" class="continue-shopping">
+      <i class="bi bi-arrow-left"></i> Continue Shopping
+    </a>
   </div>
 
-  <div *ngIf="items.length > 0" class="cart-list">
+  <div *ngIf="items.length > 0" class="cart-container">
     
-    <div class="cart-item" *ngFor="let item of items; let i = index">
-      <div class="info">
-        <div class="name">{{ item.name }}</div>
-        <div class="price">
-          {{ item.price }}
-          <img src="/riyals.png" alt="SAR">
-        </div>
+    <div class="cart-items">
+      <div class="cart-header">
+        <h2>Cart Items ({{ items.length }})</h2>
+        <button class="clear-btn" (click)="clear()">
+          <i class="bi bi-trash"></i> Clear Cart
+        </button>
       </div>
 
-      <button class="remove" (click)="remove(i)">Remove</button>
+      <div class="cart-item" *ngFor="let item of items; let i = index">
+        <div class="item-image">
+          <img [src]="item.image" [alt]="item.name">
+          <div *ngIf="item.onSale" class="sale-tag">-{{ item.discount }}%</div>
+        </div>
+        
+        <div class="item-details">
+          <h3>{{ item.name }}</h3>
+          <p class="category">{{ item.subCategory }}</p>
+          <p class="description">{{ item.desc }}</p>
+        </div>
+
+        <div class="item-actions">
+          <div class="price-section">
+            <div *ngIf="item.onSale && item.salePrice" class="price-group">
+              <span class="old-price">{{ item.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-small"></span>
+              <span class="current-price">{{ item.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+            </div>
+            <div *ngIf="!item.onSale" class="price-group">
+              <span class="current-price">{{ item.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+            </div>
+          </div>
+          
+          <button class="remove-btn" (click)="remove(i)">
+            <i class="bi bi-trash3"></i> Remove
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="total">
-      Total: {{ getTotal() }} 
-      <img src="/riyals.png" alt="SAR">
-    </div>
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      
+      <div class="summary-row">
+        <span>Subtotal ({{ items.length }} items)</span>
+        <span class="amount">{{ getSubtotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+      </div>
+      
+      <div class="summary-row">
+        <span>Discount</span>
+        <span class="amount discount">-{{ getDiscount() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+      </div>
+      
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span class="amount free">Free</span>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="summary-row total">
+        <span>Total</span>
+        <span class="amount">{{ getTotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+      </div>
 
-    <button class="checkout-btn">Checkout</button>
+      <button class="checkout-btn">
+        <i class="bi bi-credit-card"></i> Proceed to Checkout
+      </button>
+      
+      <a routerLink="/products" class="continue-shopping">
+        <i class="bi bi-arrow-left"></i> Continue Shopping
+      </a>
+    </div>
 
   </div>
 

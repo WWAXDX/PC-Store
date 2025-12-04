@@ -3,6 +3,9 @@
     <div class="main-section">
       <!-- Left Img -->
       <div class="img-box">
+        @if (product.onSale) {
+          <div class="sale-badge">-{{ product.discount }}% OFF</div>
+        }
         <img [src]="product.image" [alt]="product.name" class="product-image">
       </div>
 
@@ -21,8 +24,22 @@
         <p class="short-desc">{{ product.desc }}</p>
 
         <div class="price-section">
-          <span class="price">{{ product.price }}</span>
-          <img src="/riyals.png" alt="Riyal" class="currency-icon">
+          @if (product.onSale && product.salePrice) {
+            <div class="price-group">
+              <div class="old-price-row">
+                <span class="old-price">{{ product.price }}</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon small">
+              </div>
+              <div class="current-price-row">
+                <span class="price">{{ product.salePrice }}</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon">
+                <span class="save-badge">Save {{ product.price - product.salePrice }} SAR</span>
+              </div>
+            </div>
+          } @else {
+            <span class="price">{{ product.price }}</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon">
+          }
         </div>
 
         <div class="action-buttons">

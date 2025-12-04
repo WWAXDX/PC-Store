@@ -8,4 +8,7 @@ export interface Product {
   description?: string;
   features?: string[];
   image?: string;
+  onSale?: boolean;
+  salePrice?: number;
+  discount?: number;
 }
