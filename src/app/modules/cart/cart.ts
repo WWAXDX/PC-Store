@@ -28,25 +28,32 @@ export class Cart implements OnDestroy {
     this.cart.removeItem(index);
   }
 
+  increaseQuantity(index: number) {
+    this.cart.increaseQuantity(index);
+  }
+
+  decreaseQuantity(index: number) {
+    this.cart.decreaseQuantity(index);
+  }
+
   clear() {
     this.cart.clearCart();
   }
 
   getSubtotal() {
-    return this.items.reduce((sum, item) => sum + item.price, 0);
+    return this.cart.getSubtotal();
   }
 
   getDiscount() {
-    return this.items.reduce((sum, item) => {
-      if (item.onSale && item.salePrice) {
-        return sum + (item.price - item.salePrice);
-      }
-      return sum;
-    }, 0);
+    return this.cart.getDiscount();
   }
 
   getTotal() {
     return this.cart.getTotal();
+  }
+
+  getTotalItems() {
+    return this.cart.getTotalItems();
   }
 
   ngOnDestroy() {

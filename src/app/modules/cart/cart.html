@@ -23,25 +23,35 @@
 
       <div class="cart-item" *ngFor="let item of items; let i = index">
         <div class="item-image">
-          <img [src]="item.image" [alt]="item.name">
-          <div *ngIf="item.onSale" class="sale-tag">-{{ item.discount }}%</div>
+          <img [src]="item.product.image" [alt]="item.product.name">
+          <div *ngIf="item.product.onSale" class="sale-tag">-{{ item.product.discount }}%</div>
         </div>
         
         <div class="item-details">
-          <h3>{{ item.name }}</h3>
-          <p class="category">{{ item.subCategory }}</p>
-          <p class="description">{{ item.desc }}</p>
+          <h3>{{ item.product.name }}</h3>
+          <p class="category">{{ item.product.subCategory }}</p>
+          <p class="description">{{ item.product.desc }}</p>
         </div>
 
         <div class="item-actions">
           <div class="price-section">
-            <div *ngIf="item.onSale && item.salePrice" class="price-group">
-              <span class="old-price">{{ item.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-small"></span>
-              <span class="current-price">{{ item.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+            <div *ngIf="item.product.onSale && item.product.salePrice" class="price-group">
+              <span class="old-price">{{ item.product.price }} <img src="/riyals.png" alt="SAR" class="currency-small"></span>
+              <span class="current-price">{{ item.product.salePrice }} <img src="/riyals.png" alt="SAR"></span>
             </div>
-            <div *ngIf="!item.onSale" class="price-group">
-              <span class="current-price">{{ item.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+            <div *ngIf="!item.product.onSale" class="price-group">
+              <span class="current-price">{{ item.product.price }} <img src="/riyals.png" alt="SAR"></span>
             </div>
+          </div>
+
+          <div class="quantity-control">
+            <button class="qty-btn" (click)="decreaseQuantity(i)">
+              <i class="bi bi-dash"></i>
+            </button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button class="qty-btn" (click)="increaseQuantity(i)">
+              <i class="bi bi-plus"></i>
+            </button>
           </div>
           
           <button class="remove-btn" (click)="remove(i)">
@@ -55,13 +65,13 @@
       <h2>Order Summary</h2>
       
       <div class="summary-row">
-        <span>Subtotal ({{ items.length }} items)</span>
-        <span class="amount">{{ getSubtotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        <span>Subtotal ({{ getTotalItems() }} items)</span>
+        <span class="amount">{{ getSubtotal() }} <img src="/riyals.png" alt="SAR"></span>
       </div>
       
       <div class="summary-row">
         <span>Discount</span>
-        <span class="amount discount">-{{ getDiscount() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        <span class="amount discount">-{{ getDiscount() }} <img src="/riyals.png" alt="SAR"></span>
       </div>
       
       <div class="summary-row">
@@ -73,7 +83,7 @@
       
       <div class="summary-row total">
         <span>Total</span>
-        <span class="amount">{{ getTotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        <span class="amount">{{ getTotal() }} <img src="/riyals.png" alt="SAR"></span>
       </div>
 
       <button class="checkout-btn">
