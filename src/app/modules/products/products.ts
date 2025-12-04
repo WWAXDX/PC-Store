@@ -17,6 +17,7 @@ export class Products implements OnInit {
   displayedProducts: Product[] = [];
   selectedCategory: string | null = null;
   selectedSubCategory: string | null = null;
+  searchTerm: string | null = null;
   groupedProducts: { [key: string]: Product[] } = {};
   sortBy: string = 'default';
 
@@ -30,12 +31,28 @@ export class Products implements OnInit {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.route.queryParams.subscribe(params => {
       this.selectedCategory = params['category'] || null;
+      this.searchTerm = params['search'] ? (params['search'] as string).trim() : null;
       this.filterProducts();
     });
   }
 
   filterProducts() {
-    this.displayedProducts = this.productService.filterProducts(this.selectedCategory);
+    // start from category-filtered list
+    let list = this.productService.filterProducts(this.selectedCategory);
+
+    // apply search term filtering (if present)
+    if (this.searchTerm) {
+      const term = this.searchTerm.toLowerCase();
+      list = list.filter(p => {
+        const inName = p.name?.toLowerCase().includes(term);
+        const inDesc = p.desc?.toLowerCase().includes(term);
+        const inLong = p.description?.toLowerCase().includes(term);
+        const inFeatures = (p.features || []).join(' ').toLowerCase().includes(term);
+        return !!(inName || inDesc || inLong || inFeatures);
+      });
+    }
+
+    this.displayedProducts = list;
     this.applySorting();
     this.groupBySubCategory();
   }

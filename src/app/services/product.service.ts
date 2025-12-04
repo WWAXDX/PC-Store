@@ -51,7 +51,7 @@ export class ProductService {
     },
     {
         id: 3,
-        name: 'MSI GeForce RTX 3060 VENTUS 2X 12G',
+        name: 'MSI GeForce RTX 3060 VENTUS 2X 12GB',
         price: 1100,
         category: 'pc-parts',
         subCategory: 'Graphics Cards (GPU)',
@@ -182,7 +182,7 @@ export class ProductService {
         'AM5 Socket',
         'TDP 120W'
       ],
-      image: 'https://m.media-amazon.com/images/I/61I3PqGTbCL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/f0e0e59d75066ec825667b71c31e3c83.1600.jpg'
     },
     { 
       id: 10, 
@@ -200,7 +200,7 @@ export class ProductService {
         'LGA 1700 Socket',
         'Unlocked for overclocking'
       ],
-      image: 'https://m.media-amazon.com/images/I/51Q-s93U5EL._AC_SL1024_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c3e5d01cec2fa20b6f47fe8a400c08d6.1600.jpg'
     },
     { 
       id: 11, 
@@ -219,7 +219,7 @@ export class ProductService {
         'TDP 120W',
         'Integrated RDNA 2 Graphics'
       ],
-      image: 'https://m.media-amazon.com/images/I/51REPoZGURL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/4f8b13807b9b9e2ab921ddb6e6e81afb.1600.jpg'
     },
     { 
       id: 12, 
@@ -239,7 +239,7 @@ export class ProductService {
         'Unlocked for overclocking',
         'DDR5 & DDR4 support'
       ],
-      image: 'https://m.media-amazon.com/images/I/51xZ7bK9ELL._AC_SL1080_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c9117c605854e9387e57cd69ebca2415.1600.jpg'
     },
     { 
       id: 13, 
@@ -259,7 +259,7 @@ export class ProductService {
         'Integrated RDNA 2 Graphics',
         'PCIe 5.0 support'
       ],
-      image: 'https://m.media-amazon.com/images/I/61d35FMgorL._AC_SL1280_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/fd6305088c9d16d59017b380fb9c408a.1600.jpg'
     },
     { 
       id: 14, 
@@ -279,7 +279,7 @@ export class ProductService {
         'DDR5 & DDR4 support',
         'Intel UHD Graphics 770'
       ],
-      image: 'https://m.media-amazon.com/images/I/61nC17r8QkL._AC_SL1280_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c8f65245aff45313f03aaad255078883.1600.jpg'
     },
 
     /* Memory (RAM) */
@@ -301,7 +301,7 @@ export class ProductService {
         'Aluminum heatspreader',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61N071G+sPL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/5cdd0dfcd25374317a12808fa7f63c19.1600.jpg'
     },
     { 
       id: 16, 
@@ -321,7 +321,7 @@ export class ProductService {
         'Intel XMP 3.0 ready',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61g0E9griYL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/abe765a4f68cc2629cc07af11ba793d1.1600.jpg'
     },
     { 
       id: 17, 
@@ -341,7 +341,7 @@ export class ProductService {
         'Plug N Play at 5600MHz',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51aRQjIOAJL._AC_SL1280_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/de06e47f30113be2454ca5f59385695d.1600.jpg'
     },
     { 
       id: 18, 
@@ -362,7 +362,7 @@ export class ProductService {
         'Intel XMP 3.0 & AMD EXPO',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51A+coZLYOL._AC_SL1280_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/2d5f8a5348178d69f75557c090aed328.1600.jpg'
     },
     { 
       id: 19, 
@@ -382,7 +382,7 @@ export class ProductService {
         'Curved aluminum heatspreader',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61cXzKLmhNL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/09e373465295e5629efd7959a7147a3b.1600.jpg'
     },
 
     /* Storage (SSD/HDD) */
@@ -406,7 +406,7 @@ export class ProductService {
         '5-year warranty',
         'M.2 2280 form factor'
       ],
-      image: 'https://m.media-amazon.com/images/I/81d7w6ycfbL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/4cdbd04a2d7c19789dd2bdc072b4a506.1600.jpg'
     },
     { 
       id: 21, 
@@ -428,7 +428,7 @@ export class ProductService {
         '5-year warranty',
         'M.2 2280'
       ],
-      image: 'https://m.media-amazon.com/images/I/81x+JsB+jJL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/8e6dbae8a0f3c6572216c8758ce5a0b5.1600.jpg'
     },
     { 
       id: 22, 
@@ -449,7 +449,7 @@ export class ProductService {
         'M.2 2280 form factor',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71hK8fa7taL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/a9c5edf1af947acf48c1c55595977cde.1600.jpg'
     },
     { 
       id: 23, 
@@ -471,7 +471,7 @@ export class ProductService {
         'Single-sided M.2 2280',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71bJnT7BukL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/eebee485fe708ee3b75e8f5492348180.1600.jpg'
     },
     { 
       id: 24, 
@@ -493,7 +493,7 @@ export class ProductService {
         '5-year warranty',
         'M.2 2280'
       ],
-      image: 'https://m.media-amazon.com/images/I/81Q2+VdAY5L._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/5fb19eb02f0baaa9ee8843195292b521.1600.jpg'
     },
 
     /* CPU Coolers */
@@ -513,7 +513,7 @@ export class ProductService {
         'Universal socket support',
         '6 heat pipes'
       ],
-      image: 'https://m.media-amazon.com/images/I/71r0VO2OVGL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/7e2fa610fb149e2e72e22c0142ce20c1.1600.jpg'
     },
     { 
       id: 26, 
@@ -531,7 +531,7 @@ export class ProductService {
         '6-year warranty',
         'Best-in-class cooling'
       ],
-      image: 'https://m.media-amazon.com/images/I/81yVBPejHpL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/ca16d42d3e187f96c728c09183df14a7.med.1600.jpg'
     },
     { 
       id: 100, 
@@ -550,7 +550,7 @@ export class ProductService {
         'Zero RPM mode',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71cVoro1hPL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/eacc91b741eda1f196d910125506d5b4.1600.jpg'
     },
     { 
       id: 101, 
@@ -568,7 +568,7 @@ export class ProductService {
         'NZXT CAM software',
         '6-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71R3wCVGRtL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/b5af5d6ebb1594a90a21922fbdae33ed.1600.jpg'
     },
     { 
       id: 102, 
@@ -586,13 +586,13 @@ export class ProductService {
         'Extremely quiet <24.3 dB(A)',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71W3CtL6LiL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/8ab57dc3c0eb346c72ef7a2405e31227.1600.jpg'
     },
 
     /* Motherboards */
     { 
       id: 103, 
-      name: 'ASUS ROG Strix B650-A', 
+      name: 'ASUS ROG Strix B650-A Gaming WiFi', 
       price: 800, 
       category: 'pc-parts', 
       subCategory: 'Motherboards', 
@@ -606,11 +606,11 @@ export class ProductService {
         'RGB lighting ecosystem',
         'Premium power delivery'
       ],
-      image: 'https://m.media-amazon.com/images/I/81vqF9E8YOL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/127cc163cf3e552499471f1908f99cfe.1600.jpg'
     },
     { 
       id: 104, 
-      name: 'MSI MAG B660 TOMAHAWK WIFI', 
+      name: 'MSI MAG B660 TOMAHAWK WIFI DDR4', 
       price: 750, 
       category: 'pc-parts', 
       subCategory: 'Motherboards', 
@@ -624,11 +624,11 @@ export class ProductService {
         'Premium audio codec',
         'USB 3.2 Gen 2x2'
       ],
-      image: 'https://m.media-amazon.com/images/I/81xPGOO7+vL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/42b49b9f2159609f852b3d66df24e1e5.1600.jpg'
     },
     { 
       id: 105, 
-      name: 'Gigabyte X670 AORUS Elite AX', 
+      name: 'Gigabyte X670 AORUS Elite AX ATX AM5', 
       price: 950, 
       category: 'pc-parts', 
       subCategory: 'Motherboards', 
@@ -642,7 +642,7 @@ export class ProductService {
         '18+2 phases power design',
         'Q-Flash Plus'
       ],
-      image: 'https://m.media-amazon.com/images/I/81fW7RVVk2L._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/ac3a77e0e11d610407a9ef39970b00d7.1600.jpg'
     },
     { 
       id: 106, 
@@ -660,7 +660,7 @@ export class ProductService {
         'Polychrome RGB',
         'Steel Legend aesthetics'
       ],
-      image: 'https://m.media-amazon.com/images/I/91qqLB8FoOL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/e45d552e13e60103e6fa9e4c89345e65.1600.jpg'
     },
     { 
       id: 107, 
@@ -678,7 +678,7 @@ export class ProductService {
         'TUF military-grade components',
         '16+1 power stages'
       ],
-      image: 'https://m.media-amazon.com/images/I/81KH3zVi7aL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/aeb8a7dad48da098b42945e9439076fe.1600.jpg'
     },
 
     /* Power Supplies */
@@ -698,7 +698,7 @@ export class ProductService {
         '10-year warranty',
         'Japanese capacitors'
       ],
-      image: 'https://m.media-amazon.com/images/I/71VznRt4zJL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/4f19c6453ce4ebe67091e6d9735f3a19.1600.jpg'
     },
     { 
       id: 109, 
@@ -716,7 +716,7 @@ export class ProductService {
         '10-year warranty',
         '100% Japanese capacitors'
       ],
-      image: 'https://m.media-amazon.com/images/I/61k3yKq8fUL._AC_SL1200_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/a9a07a1471ce85451b73992f117a6343.1600.jpg'
     },
     { 
       id: 110, 
@@ -734,7 +734,7 @@ export class ProductService {
         '10-year warranty',
         'Seasonic quality'
       ],
-      image: 'https://m.media-amazon.com/images/I/71u+-S8EwWL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/abb590d2c82a01a46977b969819326c8.1600.jpg'
     },
     { 
       id: 111, 
@@ -752,7 +752,7 @@ export class ProductService {
         '10-year warranty',
         '140mm hydraulic bearing fan'
       ],
-      image: 'https://m.media-amazon.com/images/I/61VEzr9vkML._AC_SL1000_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/6d48de719caa79176caf445a9f7ecc85.1600.jpg'
     },
     { 
       id: 112, 
@@ -770,7 +770,7 @@ export class ProductService {
         '10-year warranty',
         'Extremely quiet <15 dB(A)'
       ],
-      image: 'https://m.media-amazon.com/images/I/61qJ-bBCekL._AC_SL1280_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/05820c3bf82f0bec9f89b28b6a9fc4b5.1600.jpg'
     },
 
     /* Cases */
@@ -790,7 +790,7 @@ export class ProductService {
         'USB Type-C front panel',
         'Cable management system'
       ],
-      image: 'https://m.media-amazon.com/images/I/71Iu82V1BbL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/580387945cfb3fe6bac9ef5844c2b55f.1600.jpg'
     },
     { 
       id: 114, 
@@ -808,7 +808,7 @@ export class ProductService {
         'USB-C front panel',
         'Tool-free installation'
       ],
-      image: 'https://m.media-amazon.com/images/I/61bH8gvGvwL._AC_SL1200_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/9bf7a94808c71fa455cb146e8e1085eb.1600.jpg'
     },
     { 
       id: 115, 
@@ -826,7 +826,7 @@ export class ProductService {
         'ModuVent top panel',
         'Nexus+ cable system'
       ],
-      image: 'https://m.media-amazon.com/images/I/71i5WTKD5NL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/70ac697e3e6678daf16d38842957b0c0.1600.jpg'
     },
     { 
       id: 116, 
@@ -844,7 +844,7 @@ export class ProductService {
         'RapidRoute cable management',
         'USB 3.1 Type-C'
       ],
-      image: 'https://m.media-amazon.com/images/I/71xzJwzETsL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/bc6e987da3fe22c616898d1d7fa3d227.1600.jpg'
     },
     { 
       id: 117, 
@@ -862,7 +862,7 @@ export class ProductService {
         'Vertical GPU support',
         'Integrated RGB controller'
       ],
-      image: 'https://m.media-amazon.com/images/I/71VXe6KWLQL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c62d93ddd59d252799a01f178b5da199.1600.jpg'
     },
 
 
@@ -871,12 +871,12 @@ export class ProductService {
     /* Gaming Monitors */
     { 
       id: 118, 
-      name: 'MSI 27" 165Hz Gaming', 
+      name: 'MSI Optix MAG274QRF-QD', 
       price: 850, 
       category: 'monitors', 
       subCategory: 'Gaming Monitors', 
       desc: 'QHD 165Hz for esports',
-      description: 'Fast refresh rate gaming monitor for competitive gaming.',
+      description: 'The MSI Optix MAG274QRF-QD is a premium 27-inch gaming monitor designed specifically for competitive esports and fast-paced gaming. Built with MSI\'s renowned gaming expertise, this monitor features a stunning Quantum Dot IPS panel that delivers exceptional color accuracy covering 97% DCI-P3 and 124% sRGB color gamut, ensuring vibrant and lifelike visuals. The 2560x1440 QHD resolution provides the perfect balance between sharp image clarity and high frame rate performance, making it ideal for competitive shooters and esports titles. With a blazing-fast 165Hz refresh rate (overclockable to 170Hz) and rapid 1ms GTG response time, motion blur and ghosting are virtually eliminated, giving you a crucial competitive edge in fast-action scenarios. The monitor supports both AMD FreeSync Premium and NVIDIA G-Sync Compatible technology, ensuring buttery-smooth gameplay free from screen tearing and stuttering across all gaming platforms. MSI\'s exclusive Gaming Intelligence features include Night Vision technology to enhance visibility in dark scenes, and customizable gaming modes optimized for different game genres. The anti-glare matte coating reduces eye strain during extended gaming sessions, while the adjustable stand offers tilt, swivel, and height adjustment for optimal ergonomic comfort. Perfect for serious gamers who demand professional-grade performance without breaking the bank.',
       features: [
         '27-inch QHD display',
         '165Hz refresh rate',
@@ -885,16 +885,16 @@ export class ProductService {
         'HDR ready',
         'Anti-glare coating'
       ],
-      image: 'https://m.media-amazon.com/images/I/71pAr9E+sIL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/30f6ad5628a5425e94939b431bd85d55.1600.jpg'
     },
     { 
       id: 119, 
-      name: 'ASUS ROG 32" 240Hz', 
+      name: 'ASUS ROG Swift OLED PG32UCDM', 
       price: 1500, 
       category: 'monitors', 
       subCategory: 'Gaming Monitors', 
       desc: 'Premium 240Hz G-Sync',
-      description: 'Premium high-refresh gaming monitor for esports enthusiasts.',
+      description: 'The ASUS ROG Swift PG32UCDM represents the pinnacle of gaming monitor technology from ASUS Republic of Gamers. This flagship 32-inch gaming display features a revolutionary 4K UHD (3840x2160) QD-OLED panel that combines the infinite contrast and perfect blacks of OLED technology with the wide color gamut of Quantum Dot enhancement, covering 99% DCI-P3 color space for unprecedented visual fidelity. The monitor delivers an incredible 240Hz refresh rate at full 4K resolution, making it one of the fastest high-resolution gaming displays available, while the near-instantaneous 0.03ms GTG response time ensures zero motion blur even in the most chaotic gaming scenarios. Equipped with NVIDIA G-Sync Ultimate certification, it provides flawless variable refresh rate performance with HDR support, eliminating screen tearing and minimizing input lag for the most responsive gaming experience possible. The QD-OLED panel achieves DisplayHDR True Black 400 certification with peak brightness up to 1000 nits, delivering stunning HDR content with deep blacks and brilliant highlights. ASUS\'s exclusive GameVisual technology offers pre-calibrated display modes optimized for different game genres, while the proprietary cooling system prevents OLED burn-in through pixel shifting and screen savers. The premium design includes customizable RGB lighting, ROG-themed aesthetics, and a fully adjustable ergonomic stand with portrait mode capability. Built-in KVM switch allows seamless control of multiple devices, and the comprehensive connectivity includes DisplayPort 1.4, HDMI 2.1, and USB-C with 90W power delivery for one-cable laptop connectivity. Ideal for professional esports players, content creators, and enthusiast gamers who demand the absolute best in display technology.',
       features: [
         '32-inch QHD panel',
         '240Hz refresh rate',
@@ -903,16 +903,16 @@ export class ProductService {
         'HDR 600',
         'ASUS GameVisual modes'
       ],
-      image: 'https://m.media-amazon.com/images/I/81VjzXzCjkL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/d835718847c1c4cec8da0a0542002b8d.1600.jpg'
     },
     { 
       id: 120, 
-      name: 'LG UltraGear 27" 180Hz', 
+      name: 'LG UltraGear 27GS75Q', 
       price: 980, 
       category: 'monitors', 
       subCategory: 'Gaming Monitors', 
       desc: 'QHD 180Hz with HDR400',
-      description: 'High-performance gaming monitor with 180Hz refresh rate, 1ms response, and HDR400. Nano IPS for vibrant colors.',
+      description: 'The LG UltraGear 27GS75Q delivers exceptional gaming performance with LG\'s advanced Nano IPS technology, offering the perfect combination of speed, color accuracy, and value. This 27-inch QHD (2560x1440) gaming monitor features LG\'s proprietary 1-millisecond GTG Nano IPS panel that provides incredibly vibrant colors with 98% coverage of the DCI-P3 color space, ensuring rich, lifelike visuals that make games pop off the screen. The high 180Hz refresh rate (overclockable to 200Hz) delivers buttery-smooth motion handling for competitive gaming, while maintaining the superior color reproduction and wide viewing angles that IPS technology is known for. Compatible with both AMD FreeSync Premium and NVIDIA G-Sync, the monitor eliminates screen tearing and stuttering across all gaming platforms. VESA DisplayHDR 400 certification brings enhanced contrast and brightness to HDR-enabled games, with peak brightness reaching 400 nits for more realistic lighting effects. LG\'s exclusive gaming features include Dynamic Action Sync (DAS) mode to minimize input lag, Black Stabilizer to enhance visibility in dark scenes, and Crosshair overlay for improved aiming precision in FPS games. The sleek virtually borderless design on three sides provides an immersive viewing experience and makes it perfect for multi-monitor setups. The ergonomic stand offers full tilt, height, and pivot adjustability, while the monitor also includes built-in speakers for basic audio needs. OnScreen Control software allows easy customization of gaming modes and picture settings, and the monitor supports both DisplayPort 1.4 and HDMI 2.0 connectivity. Perfect for gamers who want flagship-level color performance and high refresh rates without the premium OLED price tag.',
       features: [
         '27-inch QHD (2560x1440)',
         '180Hz refresh rate',
@@ -922,7 +922,7 @@ export class ProductService {
         'FreeSync & G-Sync compatible',
         'DCI-P3 98% color gamut'
       ],
-      image: 'https://m.media-amazon.com/images/I/81qZZcCqGEL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/f0a8ee0622e57901d3c0d9037cbc0f11.1600.jpg'
     },
     { 
       id: 121, 
@@ -931,7 +931,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Gaming Monitors', 
       desc: 'Curved 240Hz for competitive gaming',
-      description: 'Budget-friendly curved gaming monitor with 240Hz refresh rate. Perfect for competitive FPS gaming.',
+      description: 'The AOC C27G2Z represents exceptional value in high-refresh gaming displays, offering professional-level performance at an accessible price point. This 27-inch curved gaming monitor features an aggressive 1500R curvature that wraps around your field of view, creating an immersive gaming experience that draws you into the action while reducing eye strain during extended gaming sessions. The Full HD (1920x1080) VA panel delivers a stunning 240Hz refresh rate, placing it in the same performance tier as monitors costing significantly more, making it perfect for competitive esports titles like CS:GO, Valorant, and Apex Legends where every millisecond counts. The ultra-fast 0.5ms MPRT (Moving Picture Response Time) ensures crystal-clear motion with minimal ghosting or blur, giving you the clarity needed to track fast-moving targets. AMD FreeSync Premium technology synchronizes the display\'s refresh rate with your GPU to eliminate screen tearing and stuttering, while also providing Low Framerate Compensation (LFC) for smooth gameplay even when frame rates drop. The VA panel technology provides superior contrast ratios (3000:1 static) compared to TN or IPS panels, delivering deeper blacks and more vibrant colors that make games look stunning. AOC\'s Low Input Lag mode minimizes delay between your actions and on-screen response, crucial for competitive gaming. Additional gaming features include Shadow Control to enhance visibility in dark areas, customizable gaming modes, and a frameless three-sided design that\'s ideal for multi-monitor racing or flight sim setups. The monitor includes built-in speakers, VESA mount compatibility, and a fully adjustable stand with tilt functionality. Connectivity options include DisplayPort 1.2, two HDMI 1.4 ports, and a VGA port for legacy compatibility. FlickerFree technology and Low Blue Light mode reduce eye fatigue during marathon gaming sessions. An outstanding choice for budget-conscious competitive gamers who refuse to compromise on refresh rate performance.',
       features: [
         '27-inch Full HD curved',
         '240Hz refresh rate',
@@ -940,7 +940,7 @@ export class ProductService {
         'FreeSync Premium',
         'Frameless design'
       ],
-      image: 'https://m.media-amazon.com/images/I/81ZYOGqCxOL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/f2d189697dd22bdee32e3f78ac93ecf6.1600.jpg'
     },
     { 
       id: 122, 
@@ -949,7 +949,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Gaming Monitors', 
       desc: 'Esports 360Hz TN panel',
-      description: 'Professional esports monitor with 360Hz refresh rate. Used by pro gamers worldwide for competitive advantage.',
+      description: 'The BenQ ZOWIE XL2566K is the ultimate professional esports monitor, trusted by top-tier competitive gamers and esports teams worldwide including Cloud9, G2 Esports, and Team Liquid. This 24.5-inch Full HD display features BenQ\'s flagship Fast TN panel technology operating at a blistering 360Hz native refresh rate with true 0.5ms GTG response time, delivering the absolute lowest motion blur and fastest pixel transitions available in any gaming monitor. The display is meticulously engineered for competitive FPS gaming where every frame and millisecond matter. BenQ\'s exclusive DyAc+ (Dynamic Accuracy Plus) technology is the monitor\'s secret weapon, reducing motion blur through advanced backlight strobing while maintaining brightness, allowing you to track moving targets with unprecedented clarity during spray transfers and quick flicks. The native 360Hz refresh rate provides 2.78ms frame time (compared to 6.94ms on 144Hz displays), giving you the smoothest possible motion and earliest visual feedback on enemy movements. ZOWIE\'s XL Setting to Share feature allows you to save and share your complete monitor configuration via USB, making it easy to replicate your perfect settings at tournaments or LAN events. The monitor includes a shielding hood to minimize reflections and distractions, focusing your attention on the game. Color Vibrance and Black eQualizer controls are specifically tuned for esports, letting you adjust color saturation and shadow visibility without affecting overall brightness, ensuring maximum enemy spotspotting in dark corners. The innovative S-Switch remote controller provides instant access to all monitor settings without navigating OSD menus mid-game. The sturdy height-adjustable stand offers full ergonomic flexibility with tilt, swivel, pivot, and height adjustments, and features a clever cable management system. Connectivity includes DisplayPort 1.4 (required for 360Hz), HDMI 2.0, and a 3.5mm audio jack. Designed without bells and whistles like RGB lighting or fancy aesthetics, the XL2566K is built purely for competitive performance. The investment choice for serious esports athletes who demand tournament-grade equipment.',
       features: [
         '24.5-inch Full HD',
         '360Hz refresh rate',
@@ -959,18 +959,18 @@ export class ProductService {
         'XL Setting to Share',
         'Esports-grade'
       ],
-      image: 'https://m.media-amazon.com/images/I/61zrrX2PQPL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/1667868670ceb2967edccbdb8314d0fe.1600.jpg'
     },
 
     /* 4K Monitors */
     { 
       id: 123, 
-      name: 'LG 27" 4K UHD', 
+      name: 'LG 27UP850-W', 
       price: 1200, 
       category: 'monitors', 
       subCategory: '4K Monitors', 
       desc: '4K IPS for creators',
-      description: 'Crystal clear 4K monitor for content creation and gaming.',
+      description: 'The LG 27UP850-W is a versatile 4K UHD monitor designed for creative professionals, content creators, and gamers who demand exceptional image quality and connectivity flexibility. This 27-inch display features LG\'s premium IPS panel technology delivering stunning 3840x2160 resolution with pixel-perfect clarity ideal for photo editing, video production, graphic design, and high-resolution gaming. The monitor achieves impressive color accuracy covering 99% of the sRGB color space, making it suitable for color-critical work without requiring extensive calibration. HDR10 support with VESA DisplayHDR 400 certification brings enhanced dynamic range to HDR content, providing more realistic contrast and brighter highlights up to 400 nits peak brightness. The 60Hz refresh rate is perfect for productivity and creative workflows, while also supporting casual 4K gaming on modern consoles and PCs. The standout feature is the comprehensive USB-C connectivity with 96W Power Delivery, allowing you to connect, charge, and transmit video from compatible laptops using a single cable - eliminating desktop clutter and creating a clean, minimalist workspace. The built-in USB hub provides additional USB 3.0 ports for peripherals, essentially turning the monitor into a docking station. LG\'s OnScreen Control software enables easy picture mode switching, screen splitting into multiple workspaces, and customization of picture settings directly from your PC. The monitor includes AMD FreeSync technology for smoother gaming when connected to compatible graphics cards. The sleek 3-side virtually borderless design maximizes screen real estate and looks professional in any workspace. The fully adjustable ergonomic stand provides height, tilt, and pivot adjustment, including portrait mode for coding or document editing. Built-in 5W stereo speakers handle basic audio needs, while Reader Mode reduces blue light for comfortable long-duration viewing. Connectivity is comprehensive with DisplayPort 1.4, two HDMI 2.0 ports, USB-C with DP Alt Mode, USB hub, and headphone out. Perfect for hybrid workers, creative professionals, and anyone seeking a premium all-in-one display solution with laptop docking capabilities.',
       features: [
         '27-inch 4K UHD',
         '60Hz refresh rate',
@@ -979,7 +979,7 @@ export class ProductService {
         'HDR10 support',
         'USB-C connectivity'
       ],
-      image: 'https://m.media-amazon.com/images/I/71MzXMhha7L._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/f64ff7a015b5fa28d02581e939ec8a02.1600.jpg'
     },
     { 
       id: 124, 
@@ -988,7 +988,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: '4K Monitors', 
       desc: '4K 165Hz curved gaming',
-      description: 'Premium 4K curved gaming monitor with Quantum Mini LED, 165Hz, and 1ms response. Ultimate gaming experience.',
+      description: 'The Samsung Odyssey Neo G7 represents Samsung\'s flagship gaming display technology, combining bleeding-edge Quantum Mini LED backlighting with aggressive 1000R curvature for an unparalleled premium gaming experience. This 32-inch behemoth features a stunning 4K UHD (3840x2160) resolution paired with a buttery-smooth 165Hz refresh rate - a rare combination that delivers both incredible detail and competitive-level fluidity that was previously impossible at this resolution. The revolutionary Quantum Mini LED backlight system utilizes thousands of tiny LEDs (40 times smaller than conventional LEDs) arranged in precise local dimming zones, achieving VESA DisplayHDR 600 certification with peak brightness exceeding 1000 nits for stunning HDR content with deep blacks, brilliant highlights, and minimal blooming around bright objects. The Quantum Dot color technology covers 95% of the DCI-P3 color gamut, ensuring vibrant, accurate colors that make games look absolutely breathtaking. The extreme 1000R curvature (matching the curvature of the human eye) wraps the massive 32-inch screen around your field of view, creating unprecedented immersion while reducing eye strain by maintaining consistent viewing distance across the entire panel. Equipped with AMD FreeSync Premium Pro and NVIDIA G-Sync Compatible technology, the Neo G7 delivers tear-free, stutter-free gaming with both major GPU brands. The rapid 1ms GTG response time ensures motion clarity even in fast-paced shooters and racing games. Samsung\'s CoreSync+ technology analyzes screen content in real-time and projects ambient lighting from the rear of the monitor to match on-screen action, extending the visual experience beyond the display borders. The monitor includes Samsung\'s full suite of gaming features: Black Equalizer for shadow detail, Ultrawide Game View for aspect ratio adjustment, and game-specific picture modes. The sleek CoreSync Lighting ring on the rear adds customizable RGB ambiance. The height-adjustable stand with tilt and swivel capability ensures ergonomic comfort, while the premium matte screen coating reduces glare. Comprehensive connectivity includes DisplayPort 1.4 (required for full 4K 165Hz), dual HDMI 2.1 ports (perfect for PS5/Xbox Series X at 4K 120Hz), USB hub, and headphone jack. The built-in KVM switch allows seamless control of two connected devices with one set of peripherals. This monitor is the ultimate choice for enthusiast gamers with high-end PCs who want the absolute best visual experience money can buy.',
       features: [
         '32-inch 4K UHD curved',
         '165Hz refresh rate',
@@ -998,16 +998,16 @@ export class ProductService {
         '1ms response time',
         'FreeSync Premium Pro'
       ],
-      image: 'https://m.media-amazon.com/images/I/71nG2vpC9UL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/ae5d39519b173bac2b7c22761a56d411.1600.jpg'
     },
     { 
       id: 125, 
-      name: 'ASUS TUF Gaming 28" 4K 144Hz', 
+      name: 'ASUS TUF Gaming VG28UQL1A', 
       price: 1450, 
       category: 'monitors', 
       subCategory: '4K Monitors', 
       desc: '4K 144Hz for gaming',
-      description: '4K gaming monitor with 144Hz refresh rate, HDMI 2.1, and G-Sync compatibility. Perfect for next-gen consoles.',
+      description: 'The ASUS TUF Gaming VG28UQL1A is the perfect bridge between competitive high-refresh gaming and stunning 4K visual fidelity, engineered for next-generation console and PC gaming. This 28-inch 4K UHD (3840x2160) display features a premium Fast IPS panel that delivers both exceptional color accuracy and an impressive 144Hz refresh rate - providing four times the pixel density of 1080p gaming while maintaining the smoothness needed for fast-paced competitive titles. The monitor is HDMI 2.1 certified, making it officially optimized for PlayStation 5 and Xbox Series X gaming at full 4K 120Hz, unlocking the true potential of next-gen consoles for an experience that was previously limited to PC gaming. The DisplayHDR 400 certification ensures vibrant HDR gaming with peak brightness reaching 400 nits, bringing games to life with improved contrast and color volume. The rapid 1ms MPRT response time minimizes motion blur and ghosting, crucial for tracking enemies in competitive shooters. NVIDIA G-Sync Compatible and AMD FreeSync Premium certification guarantee smooth, tear-free gameplay across all gaming platforms with variable refresh rate technology. ASUS\'s exclusive ELMB-Sync (Extreme Low Motion Blur) technology can be used simultaneously with G-Sync/FreeSync, providing motion blur reduction without sacrificing adaptive sync - a rare feature combination that gives you the best of both worlds. The monitor\'s TUF Gaming pedigree means it\'s built to military-grade reliability standards and rigorously tested for durability. GamePlus hotkey features include on-screen crosshairs, FPS counter, timer, and display alignment tools for competitive advantage. Shadow Boost technology enhances dark area visibility without overexposing bright regions, helping you spot enemies hiding in shadows. The ergonomic stand offers full height, tilt, swivel, and pivot adjustments for all-day comfort. Connectivity is comprehensive with DisplayPort 1.4, dual HDMI 2.1 ports (essential for 4K 120Hz console gaming), USB hub, and earphone jack. The monitor also includes built-in stereo speakers for basic audio. Flicker-Free and Low Blue Light technologies reduce eye strain during extended gaming marathons. Perfect for serious gamers who want the visual quality of 4K without sacrificing competitive refresh rates, and absolutely essential for anyone gaming on PS5 or Xbox Series X who wants to experience their console\'s full capabilities.',
       features: [
         '28-inch 4K UHD',
         '144Hz refresh rate',
@@ -1017,7 +1017,7 @@ export class ProductService {
         '1ms MPRT',
         'Shadow Boost'
       ],
-      image: 'https://m.media-amazon.com/images/I/81VLEkwsCHL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/7eaff54dcffe847768a0086730e30777.1600.jpg'
     },
     { 
       id: 126, 
@@ -1026,7 +1026,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: '4K Monitors', 
       desc: '4K IPS with USB-C 65W',
-      description: '4K monitor with USB-C connectivity and 65W power delivery. Perfect for laptops and productivity.',
+      description: 'The Dell S2722DC is the ultimate productivity powerhouse designed specifically for modern hybrid workers, creative professionals, and laptop users who demand seamless connectivity and exceptional image quality. This sleek 27-inch 4K UHD (3840x2160) monitor features Dell\'s premium IPS Black technology - an advanced panel that delivers 35% deeper blacks and improved contrast compared to standard IPS displays, resulting in more vibrant images and better readability. The monitor achieves 99% sRGB color coverage right out of the box, making it suitable for photo editing and content creation without extensive calibration. The standout feature is comprehensive USB-C connectivity with 65W Power Delivery, allowing you to connect your laptop with a single cable that simultaneously charges your device, transmits video, and provides data connectivity - transforming this display into a complete docking station that declutters your workspace. The built-in USB hub provides additional USB-A and USB-C ports for connecting peripherals, external drives, and accessories directly to the monitor. Dell\'s ComfortView Plus technology is a game-changer for eye health, featuring a built-in low blue light solution that reduces harmful blue light emission by up to 60% while maintaining excellent color accuracy - unlike software solutions that tint your screen orange. This makes it perfect for users who spend long hours in front of the screen. The monitor is TÜV Rheinland certified for flicker-free operation and low blue light, meeting strict eye comfort standards. The ultra-thin bezels on three sides maximize screen real estate and create a premium, minimalist aesthetic perfect for modern offices. The fully adjustable stand provides height, tilt, swivel, and pivot (portrait mode) adjustments, ensuring ergonomic comfort for any workspace setup. Built-in dual 3W speakers provide convenient audio without requiring external speakers. Additional productivity features include Picture-in-Picture and Picture-by-Picture modes for multitasking between multiple input sources. Dell Display Manager software enables easy window management, auto-mode switching, and quick access to preset display modes. Connectivity includes USB-C with DP Alt Mode and 65W PD, DisplayPort 1.4, HDMI 1.4, USB 3.2 hub, and audio out. VESA mount compatibility allows flexible mounting options. The monitor comes backed by Dell\'s Premium Panel Guarantee, which covers even a single bright pixel defect during the limited hardware warranty. Ideal for professionals using MacBooks, Dell XPS, HP Spectre, ThinkPads, and other USB-C enabled laptops who want a premium all-in-one display solution with true single-cable docking.',
       features: [
         '27-inch 4K UHD',
         'IPS panel',
@@ -1036,7 +1036,7 @@ export class ProductService {
         'VESA mount ready',
         'ComfortView Plus'
       ],
-      image: 'https://m.media-amazon.com/images/I/71iSTxqTPBL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/59a7a2b9be42932dda321646bf593d93.1600.jpg'
     },
     { 
       id: 127, 
@@ -1045,7 +1045,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: '4K Monitors', 
       desc: '4K color-accurate for creators',
-      description: 'Professional 4K monitor with 99% Adobe RGB. Hardware calibrated for photographers and designers.',
+      description: 'The BenQ SW270C is a professional-grade color-critical monitor meticulously engineered for photographers, videographers, and design professionals who demand absolute color accuracy and reliability. This 27-inch 4K UHD (3840x2160) display features BenQ\'s advanced IPS panel technology with true 10-bit color depth (1.07 billion colors) to display smooth color gradations without banding - essential for professional photo and video editing workflows. The monitor achieves an exceptional 99% Adobe RGB color gamut coverage, along with 95% DCI-P3 and 100% sRGB/Rec.709, making it one of the most versatile displays available for professional content creation across different color workflows. Each SW270C is factory calibrated to Delta E ≤ 2 accuracy using advanced spectrophotometers, ensuring consistent, accurate color reproduction straight out of the box. The included detailed calibration report documents the exact color performance of your specific unit. The monitor supports hardware calibration via BenQ\'s Palette Master Element software working with X-Rite i1 Display Pro, Klein K10-A, or other professional colorimeters, allowing you to calibrate directly to the monitor\'s internal LUT for more accurate results than software-only calibration. The 16:9 aspect ratio and 2560x1440 resolution provide ample screen space for editing timelines, palettes, and toolbars alongside your content. Built for professional studios, the monitor features BenQ\'s Paper Color Sync technology that simulates how colors will appear when printed on different paper types, and GamutDuo mode which allows you to view your image in two different color spaces simultaneously for comparison. The included shading hood blocks ambient light and reflections, ensuring you\'re seeing true colors without environmental interference. The monitor\'s brightness uniformity technology maintains consistent brightness across the entire screen (≤3% deviation), critical for accurate editing. Hotkey Puck G2 controller provides quick access to frequently used settings without digging through OSD menus. USB-C connectivity with 60W Power Delivery handles video, data, and laptop charging through a single cable, while the built-in USB hub simplifies peripheral connectivity. Additional ports include DisplayPort, HDMI, and SD card reader for direct camera card access. The monitor features a fully adjustable stand with height, tilt, and swivel adjustments, plus VESA mounting. Backed by a 3-year warranty with free advanced replacement service. The investment choice for professional photographers, retouchers, videographers, and color grading professionals who cannot compromise on color accuracy.',
       features: [
         '27-inch 4K UHD',
         '99% Adobe RGB',
@@ -1055,18 +1055,18 @@ export class ProductService {
         'Hardware calibration',
         'Hotkey Puck included'
       ],
-      image: 'https://m.media-amazon.com/images/I/61Ug90vIcuL._AC_SL1080_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/462a6eae529ca38878bf3a96a3e12497.1600.jpg'
     },
 
     /* Ultrawide Monitors */
     { 
       id: 128, 
-      name: 'Samsung 34" Ultrawide', 
+      name: 'Samsung ViewFinity S50GC 34"', 
       price: 1800, 
       category: 'monitors', 
       subCategory: 'Ultrawide Monitors', 
       desc: 'Curved 3440x1440 display',
-      description: 'Immersive ultrawide curved monitor for multitasking and gaming.',
+      description: 'The Samsung ViewFinity S50GC delivers exceptional ultrawide productivity and entertainment in a premium 34-inch curved display designed for professionals and multitaskers who demand expansive screen real estate. Featuring a 21:9 ultrawide aspect ratio with 3440x1440 UWQHD resolution, this monitor provides 33% more horizontal workspace than standard 16:9 displays - equivalent to having two 27-inch monitors side-by-side without the bezels. The elegant 1000R curvature wraps the screen around your field of view, creating an immersive viewing experience while maintaining consistent focal distance across the entire display, reducing eye strain during extended work sessions. Samsung\'s VA panel technology delivers exceptional contrast ratios for deep blacks and vibrant colors, with HDR10 support enhancing multimedia content. The 100Hz refresh rate makes multitasking feel smooth and provides adequate performance for casual gaming. Picture-by-Picture feature allows you to connect and view content from two different sources simultaneously side-by-side - perfect for working on a laptop while monitoring a desktop. The built-in KVM switch is a productivity game-changer, allowing you to control both connected devices using a single keyboard and mouse. Comprehensive connectivity includes USB-C with 90W Power Delivery for single-cable laptop docking, DisplayPort, HDMI, and USB hub. Samsung\'s Eye Saver Mode reduces blue light emission, while Flicker-Free technology eliminates screen flicker for comfortable all-day viewing.',
       features: [
         '34-inch curved display',
         '3440x1440 resolution',
@@ -1075,16 +1075,16 @@ export class ProductService {
         'Picture-by-Picture mode',
         'KVM switch support'
       ],
-      image: 'https://m.media-amazon.com/images/I/71A3þ3kFsL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/db357313f3f2e4d8a794cd2c1dd6e6a1.1600.jpg'
     },
     { 
       id: 129, 
-      name: 'LG 34" UltraWide QHD 160Hz', 
+      name: 'LG 34GP83A-B UltraWide', 
       price: 1650, 
       category: 'monitors', 
       subCategory: 'Ultrawide Monitors', 
       desc: '34" curved 160Hz ultrawide',
-      description: 'Ultrawide gaming monitor with 160Hz, Nano IPS, and HDR400. Perfect for immersive gaming and productivity.',
+      description: 'The LG 34GP83A-B UltraGear represents the sweet spot for ultrawide gaming monitors, combining LG\'s renowned Nano IPS color technology with competitive-level refresh rates in an immersive 34-inch curved format. This 21:9 ultrawide display features a 3440x1440 UWQHD resolution that delivers 33% more horizontal pixels than standard displays, providing expansive workspace for productivity and an incredibly immersive field of view for gaming - especially in racing sims, flight simulators, and open-world RPGs. LG\'s advanced 1-millisecond GTG Nano IPS panel technology offers exceptional color accuracy with 98% coverage of the DCI-P3 wide color gamut alongside fast response times. The high 160Hz native refresh rate (overclockable to 180Hz) ensures buttery-smooth motion handling, while the gentle 1900R curvature enhances immersion. VESA DisplayHDR 400 certification brings improved contrast and brightness to HDR content. Both AMD FreeSync Premium and NVIDIA G-Sync Compatible support eliminate screen tearing and stuttering. LG\'s comprehensive gaming features include Dynamic Action Sync mode to minimize input lag, Black Stabilizer for enhanced shadow detail, and Crosshair overlay. Picture-by-Picture and Picture-in-Picture modes allow viewing content from two sources simultaneously. The virtually borderless design maximizes screen immersion. Fully adjustable ergonomic stand provides height, tilt, and pivot adjustment. Connectivity includes DisplayPort, dual HDMI, USB hub, and headphone out.',
       features: [
         '34-inch ultrawide QHD',
         '160Hz refresh rate',
@@ -1094,7 +1094,7 @@ export class ProductService {
         'FreeSync Premium',
         '1ms response time'
       ],
-      image: 'https://m.media-amazon.com/images/I/71bW+NaHDSL._AC_SL1500_.jpg'
+      image: 'https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/35c1d0be-389f-4a74-8818-9d38650a6b6e/md07515480-zoom-01-jpg?io=transform:fill,width:1200'
     },
     { 
       id: 130, 
@@ -1103,7 +1103,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Ultrawide Monitors', 
       desc: '34" QD-OLED ultrawide 165Hz',
-      description: 'Revolutionary QD-OLED ultrawide with infinite contrast, 165Hz, and 0.1ms response. Ultimate gaming experience.',
+      description: 'The Dell Alienware AW3423DWF represents a revolutionary breakthrough in gaming monitor technology, featuring cutting-edge QD-OLED panel technology that combines the infinite contrast and perfect blacks of OLED with vibrant Quantum Dot color performance. This 34-inch 21:9 ultrawide curved gaming monitor delivers a transformative visual experience. The 3440x1440 UWQHD QD-OLED panel achieves perfect pixel-level lighting control with infinite contrast ratio, meaning pure blacks where each pixel can turn completely off. The Quantum Dot layer enables spectacular color volume covering 99.3% DCI-P3 and 149% sRGB with incredible accuracy. DisplayHDR True Black 400 certification delivers stunning HDR content with contrast ratios LCD cannot match. The near-instantaneous 0.1ms GTG response time eliminates all ghosting and smearing. The 165Hz refresh rate with AMD FreeSync Premium Pro ensures tear-free gaming. The aggressive 1800R curvature wraps the expansive screen around your peripheral vision for maximum immersion. Anti-reflective coating minimizes glare. Includes AlienFX RGB lighting, Game Enhance mode, Creator mode, and built-in KVM switch. OLED Care features include pixel shifting and screen savers to minimize burn-in risk. Premium adjustable stand with full ergonomic flexibility. Connectivity includes DisplayPort, dual HDMI, USB hub, and headphone jack. The ultimate display for enthusiast gamers.',
       features: [
         '34-inch ultrawide QHD',
         'QD-OLED panel',
@@ -1113,7 +1113,7 @@ export class ProductService {
         'HDR True Black 400',
         'FreeSync Premium Pro'
       ],
-      image: 'https://m.media-amazon.com/images/I/71t0u4ppk5L._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/21lOJITD43L.jpg'
     },
     { 
       id: 131, 
@@ -1122,7 +1122,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Ultrawide Monitors', 
       desc: '49" dual QHD 240Hz curved',
-      description: 'Extreme 49" super ultrawide with dual QHD resolution, 240Hz, and 1000R curvature. Like dual monitors in one.',
+      description: 'The Samsung Odyssey G9 is an extreme 49-inch super ultrawide gaming monitor with a jaw-dropping 32:9 aspect ratio and 5120x1440 Dual QHD resolution - equivalent to two 27-inch 1440p monitors fused seamlessly without bezels. The insane 1000R curvature literally wraps around your peripheral vision matching the natural curve of the human eye for maximum immersion. Samsung\'s Quantum Mini LED backlight technology achieves DisplayHDR 1000 certification with peak brightness exceeding 2000 nits and incredibly deep blacks. Quantum Dot technology ensures vibrant colors covering 95% DCI-P3. The wild 240Hz refresh rate at this massive resolution delivers unmatched smoothness for competitive gaming. Rapid 1ms GTG response time ensures motion clarity. Both G-Sync Compatible and FreeSync Premium Pro support eliminate tearing. CoreSync technology projects matching ambient lighting from the rear to extend the visual experience. Picture-by-Picture and Picture-in-Picture modes provide dual-monitor functionality. Premium design features customizable RGB CoreSync Lighting and height-adjustable stand with tilt and swivel. Connectivity includes DisplayPort 1.4, dual HDMI, USB hub, and headphone jack. Requires flagship GPU for full potential. The ultimate expression of gaming display technology for sim racing, flight sims, and maximum immersion.',
       features: [
         '49-inch super ultrawide',
         'Dual QHD 5120x1440',
@@ -1132,7 +1132,7 @@ export class ProductService {
         'HDR1000',
         'G-Sync compatible'
       ],
-      image: 'https://m.media-amazon.com/images/I/81mNw9t86QL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/034e1120405c86551cae15370eb23000.1600.jpg'
     },
     { 
       id: 132, 
@@ -1141,7 +1141,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Ultrawide Monitors', 
       desc: 'Budget ultrawide 144Hz',
-      description: 'Affordable 34" ultrawide with 144Hz and 1500R curvature. Great value for immersive gaming.',
+      description: 'The AOC CU34G2X proves immersive ultrawide gaming doesn\'t have to break the bank, delivering exceptional value with 34-inch curved ultrawide real estate and competitive 144Hz refresh rate. This 21:9 display features 3440x1440 UWQHD resolution providing 33% more horizontal pixels than standard monitors - perfect for multitasking, immersive gaming in racing sims and flight games where peripheral vision creates tremendous advantage. The 1500R curvature gently wraps the screen around your field of view enhancing immersion. VA panel technology delivers superior contrast ratios (3000:1) compared to IPS, providing deeper blacks and vibrant colors. Rapid 144Hz refresh rate provides smooth motion handling for gaming and fluid desktop use. 1ms MPRT minimizes motion blur and ghosting. AMD FreeSync synchronizes display refresh with GPU to eliminate screen tearing. Extensive gaming features include Low Input Lag mode, Shadow Control to enhance dark area visibility, LowBlue Mode, and FlickerFree technology. Picture-in-Picture and Picture-by-Picture modes for viewing multiple sources simultaneously. Frameless three-sided design is ideal for multi-monitor setups. Connectivity includes DisplayPort, dual HDMI, VGA, and headphone jack. Built-in speakers provide basic audio. Outstanding value for gamers wanting ultrawide immersion and high refresh rates on a budget.',
       features: [
         '34-inch ultrawide QHD',
         '144Hz refresh rate',
@@ -1151,18 +1151,18 @@ export class ProductService {
         '1ms MPRT',
         'Flicker-free'
       ],
-      image: 'https://m.media-amazon.com/images/I/71xhzPyIoEL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/cccd4fa5a7d9cc206428edf9dba80cb9.1600.jpg'
     },
 
     /* Professional Monitors */
     { 
       id: 133, 
-      name: 'Dell 27" Professional', 
+      name: 'Dell U2723QE 27" 4K', 
       price: 1100, 
       category: 'monitors', 
       subCategory: 'Professional Monitors', 
       desc: 'Color-accurate for pros',
-      description: 'Color-accurate monitor for professional work.',
+      description: 'The Dell U2723QE is Dell\'s flagship 27-inch professional 4K monitor designed for creative professionals, graphic designers, and productivity enthusiasts who demand exceptional color accuracy and comprehensive connectivity. This premium UltraSharp display features a 4K UHD (3840x2160) IPS Black panel - Dell\'s advanced panel technology delivering 2000:1 contrast ratio (double that of standard IPS), resulting in deeper blacks, improved color depth, and superior image quality. The monitor achieves excellent color coverage with 98% DCI-P3, 100% sRGB, and 100% Rec. 709, making it suitable for photo editing, video production, and graphic design work. Factory calibration ensures Delta E < 2 color accuracy right out of the box, and the monitor supports hardware calibration for even more precise color management. The standout connectivity feature is USB-C with 90W Power Delivery, allowing single-cable connection to laptops for video, data, and charging - transforming the monitor into a complete docking solution. The built-in KVM switch lets you control two connected devices with one keyboard and mouse, seamlessly switching between computers. Extensive USB-C and USB-A hub ports provide convenient peripheral connectivity. The monitor includes ComfortView Plus technology for flicker-free, low blue light emission without color shift, reducing eye strain during extended work sessions. Picture-by-Picture and Picture-in-Picture modes allow simultaneous viewing from multiple sources. The premium 3-side InfinityEdge design features ultra-thin bezels maximizing screen space. Fully adjustable stand offers height, tilt, swivel, and pivot adjustments including portrait mode. Additional features include built-in Ethernet port for stable network connectivity via USB-C, auto-brightness adjustment, and VESA DisplayHDR 400. Comprehensive connectivity includes USB-C with DP Alt Mode, DisplayPort, HDMI, RJ45 Ethernet, USB hub, and audio line-out. Backed by Dell\'s Premium Panel Exchange and 3-year Advanced Exchange Service.',
       features: [
         '27-inch QHD display',
         '99% Adobe RGB',
@@ -1171,7 +1171,7 @@ export class ProductService {
         'Adjustable stand',
         'Anti-glare screen'
       ],
-      image: 'https://m.media-amazon.com/images/I/71V6oz0UoOL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/639c8e5235fdbad4854b5c68ffc311ba.1600.jpg'
     },
     { 
       id: 134, 
@@ -1180,7 +1180,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Professional Monitors', 
       desc: '32" 4K for design professionals',
-      description: 'Professional 32" 4K monitor with Thunderbolt 3, 95% P3, and hardware calibration. Perfect for designers.',
+      description: 'The BenQ PD3220U is a professional-grade 32-inch 4K monitor specifically engineered for graphic designers, CAD professionals, and creative teams requiring both expansive screen space and exceptional color accuracy. The large 32-inch 4K UHD (3840x2160) IPS panel provides ample workspace for complex designs, video timelines, and detailed technical drawings. Exceptional color coverage includes 95% DCI-P3, 99% Adobe RGB, and 100% sRGB/Rec.709, making this monitor versatile for different color workflows from print to web to video. Factory calibration with included calibration report ensures Delta E ≤ 3 accuracy out of box, and support for hardware calibration enables even more precise color management. The premium Thunderbolt 3 connectivity delivers 85W Power Delivery, 4K video signal, and high-speed data transfer through a single cable, while also serving as a hub for daisy-chaining additional Thunderbolt displays or devices. The built-in KVM switch with Hotkey Puck G2 controller allows seamless control of two connected computers using one keyboard and mouse, with quick switching between Mac and PC workstations. Advanced features include DualView mode to display content in two different color modes simultaneously for comparison, CAD/CAM mode optimized for technical drawings, Animation mode for animators, and Darkroom mode for photo editing. The AQCOLOR technology ensures consistent, accurate color reproduction. The ergonomic design includes fully adjustable stand with height, tilt, swivel, and pivot. Eye-care technologies include Low Blue Light and Flicker-Free for comfortable extended use. Connectivity includes Thunderbolt 3, DisplayPort, HDMI, USB-C, USB hub, Ethernet, SD card reader, and audio. Perfect for design studios and creative professionals.',
       features: [
         '32-inch 4K UHD',
         'Thunderbolt 3',
@@ -1190,16 +1190,16 @@ export class ProductService {
         'Hotkey Puck G2',
         'IPS panel'
       ],
-      image: 'https://m.media-amazon.com/images/I/71qZQ9VUmHL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/8f20a339ec775fcdb33940281f70676a.1600.jpg'
     },
     { 
-      id: 134, 
+      id: 137, 
       name: 'ASUS ProArt PA279CV 27" 4K', 
       price: 1450, 
       category: 'monitors', 
       subCategory: 'Professional Monitors', 
       desc: '4K ProArt for creators',
-      description: 'ProArt display with 100% sRGB/Rec. 709 coverage. Calman Verified for color accuracy.',
+      description: 'The ASUS ProArt PA279CV delivers professional-grade color accuracy and comprehensive connectivity in ASUS\' acclaimed ProArt series designed specifically for content creators, photographers, and video editors. This 27-inch 4K UHD (3840x2160) IPS display achieves exceptional color coverage with 100% sRGB and 100% Rec. 709, ensuring accurate color reproduction for web, video, and broadcast workflows. Factory calibration guarantees Delta E < 2 color accuracy right out of the box - critical for color-critical work. The monitor is Calman Verified, meaning it meets strict color accuracy standards tested with professional calibration software used by Hollywood studios. USB-C connectivity with 65W Power Delivery provides single-cable docking for compatible laptops, handling video, data, and laptop charging simultaneously while the built-in USB hub expands connectivity options. ProArt Preset modes offer optimized color settings for different workflows including sRGB, Rec. 709, DCI-P3, and user-customizable modes. The monitor supports hardware calibration for precise color management using compatible colorimeters. ASUS Eye Care technology includes flicker-free backlighting, Low Blue Light certification, and adaptive brightness to reduce eye strain. The fully adjustable ergonomic stand provides height, tilt, swivel, and 90-degree pivot for portrait orientation - ideal for coding, document editing, or vertical content. Additional features include Picture-in-Picture and Picture-by-Picture for multitasking, QuickFit virtual grids for previewing actual-size documents, and extensive connectivity including USB-C with DP Alt Mode, DisplayPort, HDMI, USB hub, and audio out. The slim-bezel design looks professional in any workspace. Backed by ASUS\' 3-year warranty with rapid replacement service.',
       features: [
         '27-inch 4K UHD',
         '100% sRGB & Rec. 709',
@@ -1209,7 +1209,7 @@ export class ProductService {
         'ProArt Preset modes',
         'Ergonomic stand'
       ],
-      image: 'https://m.media-amazon.com/images/I/71nSZ+iO1jL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/839820adeaeabcaa741a5b52afb591ee.1600.jpg'
     },
     { 
       id: 135, 
@@ -1218,7 +1218,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Professional Monitors', 
       desc: '4K with USB-C hub',
-      description: '4K UHD monitor with USB-C hub, 99% sRGB, and HDR400. Ideal for professionals and multitasking.',
+      description: 'The LG 27UP850-W is a premium 27-inch 4K professional monitor combining exceptional image quality with comprehensive USB-C docking capabilities, ideal for creative professionals and productivity users. The 4K UHD (3840x2160) IPS panel delivers stunning clarity and achieves 99% sRGB color coverage for accurate color reproduction in professional workflows. DisplayHDR 400 certification provides enhanced dynamic range with peak brightness reaching 400 nits. The comprehensive USB-C port with 96W Power Delivery is a standout feature, allowing you to connect, charge, and transmit video from compatible laptops using a single cable - creating a clean, clutter-free workspace while the built-in USB hub provides additional ports for peripherals. AMD FreeSync technology ensures smooth gaming when connected to compatible graphics cards. LG\'s OnScreen Control software enables easy picture mode switching and screen splitting into multiple workspaces. Reader Mode reduces blue light for comfortable document viewing. The fully adjustable ergonomic stand provides height, tilt, swivel, and pivot adjustment including portrait mode. Built-in 5W stereo speakers handle basic audio. The 3-side virtually borderless design maximizes screen real estate. Connectivity includes DisplayPort, dual HDMI, USB-C with DP Alt Mode, USB hub, and headphone out. Perfect for hybrid workers and creative professionals seeking a premium all-in-one display with laptop docking.',
       features: [
         '27-inch 4K UHD',
         'IPS panel',
@@ -1228,7 +1228,7 @@ export class ProductService {
         'Height adjustable',
         'OnScreen Control'
       ],
-      image: 'https://m.media-amazon.com/images/I/71mEv-KhJ7L._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/f64ff7a015b5fa28d02581e939ec8a02.1600.jpg'
     },
     { 
       id: 136, 
@@ -1237,7 +1237,7 @@ export class ProductService {
       category: 'monitors', 
       subCategory: 'Professional Monitors', 
       desc: 'Enterprise 4K with KVM',
-      description: 'Enterprise-grade 4K monitor with USB-C, KVM switch, and security features. For professionals.',
+      description: 'The HP Z27k G3 is an enterprise-grade 27-inch 4K professional monitor designed for demanding corporate environments, creative professionals, and power users who need exceptional image quality with advanced security and productivity features. The premium 4K UHD (3840x2160) IPS Black panel delivers superior contrast and deeper blacks compared to standard IPS technology. Exceptional color accuracy with 99% sRGB coverage and factory calibration makes it suitable for color-critical work. The comprehensive USB-C port with 100W Power Delivery provides the highest charging capability in its class, easily powering demanding laptops including HP ZBook mobile workstations while transmitting 4K video and data through a single cable. The built-in KVM (Keyboard, Video, Mouse) switch is a productivity powerhouse, allowing seamless control of two connected devices with a single keyboard and mouse - perfect for managing both a desktop workstation and laptop simultaneously. USB-C and USB-A hub ports provide extensive peripheral connectivity. HP Eye Ease with Eyesafe Certified low blue light technology reduces harmful blue light emission by up to 30% while maintaining color accuracy - unlike software solutions that shift colors. Anti-glare coating reduces reflections in bright office environments. The monitor includes enterprise security features like a Kensington lock slot and HP Sure Start for BIOS protection. Fully adjustable stand with height, tilt, swivel, and pivot adjustments. Connectivity includes USB-C with DP Alt Mode and 100W PD, DisplayPort, HDMI, RJ45 Ethernet, USB hub, and audio. Sustainable design includes 85% post-consumer recycled plastic. Backed by HP\'s 3-year limited warranty with advanced exchange.',
       features: [
         '27-inch 4K UHD',
         'IPS Black panel',
@@ -1247,7 +1247,7 @@ export class ProductService {
         'HP Eye Ease',
         'Security lock slot'
       ],
-      image: 'https://m.media-amazon.com/images/I/61YA0qPWpqL._AC_SL1500_.jpg'
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/5cd3c4be70db2c91d8e3d2c97f83c5b0.1600.jpg'
     },
 
 
@@ -1255,7 +1255,7 @@ export class ProductService {
 
     /* Gaming Chairs */
     { 
-      id: 137, 
+      id: 200, 
       name: 'Secretlab Titan Evo', 
       price: 1800, 
       category: 'chairs', 
@@ -1273,7 +1273,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61A8ug4YIPL._AC_SL1500_.jpg'
     },
     { 
-      id: 138, 
+      id: 201, 
       name: 'Razer Enki Pro Gaming Chair', 
       price: 1850, 
       category: 'chairs', 
@@ -1292,7 +1292,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61GGWM8r+kL._AC_SL1500_.jpg'
     },
     { 
-      id: 139, 
+      id: 202, 
       name: 'Secretlab Omega 2020', 
       price: 1600, 
       category: 'chairs', 
@@ -1311,7 +1311,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71cIxGZ4qbL._AC_SL1500_.jpg'
     },
     { 
-      id: 140, 
+      id: 203, 
       name: 'Corsair T3 Rush Gaming Chair', 
       price: 950, 
       category: 'chairs', 
@@ -1330,7 +1330,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71rnvB-FuVL._AC_SL1500_.jpg'
     },
     { 
-      id: 141, 
+      id: 204, 
       name: 'noblechairs EPIC Gaming Chair', 
       price: 1750, 
       category: 'chairs', 
@@ -1351,7 +1351,7 @@ export class ProductService {
 
     /* Office Chairs */
     { 
-      id: 142, 
+      id: 205, 
       name: 'Herman Miller Aeron', 
       price: 3500, 
       category: 'chairs', 
@@ -1369,7 +1369,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61cR-o6NuuL._AC_SL1500_.jpg'
     },
     { 
-      id: 143, 
+      id: 206, 
       name: 'Steelcase Series 1 Office Chair', 
       price: 1650, 
       category: 'chairs', 
@@ -1388,7 +1388,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61gGQmT8bTL._AC_SL1500_.jpg'
     },
     { 
-      id: 144, 
+      id: 207, 
       name: 'Branch Ergonomic Chair', 
       price: 1350, 
       category: 'chairs', 
@@ -1407,7 +1407,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61Q8wZiPAmL._AC_SL1500_.jpg'
     },
     { 
-      id: 145, 
+      id: 208, 
       name: 'IKEA Markus Office Chair', 
       price: 450, 
       category: 'chairs', 
@@ -1426,7 +1426,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/51dWWy5bILL._AC_SL1000_.jpg'
     },
     { 
-      id: 146, 
+      id: 209, 
       name: 'HON Ignition 2.0 Office Chair', 
       price: 1250, 
       category: 'chairs', 
@@ -1447,7 +1447,7 @@ export class ProductService {
 
     /* Ergonomic Chairs */
     { 
-      id: 31, 
+      id: 210, 
       name: 'ErgoChair Pro', 
       price: 1200, 
       category: 'chairs', 
@@ -1465,7 +1465,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61sIdEKTdHL._AC_SL1500_.jpg'
     },
     { 
-      id: 147, 
+      id: 211, 
       name: 'Herman Miller Aeron Chair (Remastered)', 
       price: 5500, 
       category: 'chairs', 
@@ -1484,7 +1484,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61cR-o6NuuL._AC_SL1500_.jpg'
     },
     { 
-      id: 148, 
+      id: 212, 
       name: 'Autonomous ErgoChair Pro', 
       price: 1850, 
       category: 'chairs', 
@@ -1503,7 +1503,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61sIdEKTdHL._AC_SL1500_.jpg'
     },
     { 
-      id: 149, 
+      id: 213, 
       name: 'Sihoo M18 Ergonomic Office Chair', 
       price: 850, 
       category: 'chairs', 
@@ -1522,7 +1522,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61OqBTcFXcL._AC_SL1500_.jpg'
     },
     { 
-      id: 150, 
+      id: 214, 
       name: 'ErgoChair Recline', 
       price: 1450, 
       category: 'chairs', 
@@ -1546,7 +1546,7 @@ export class ProductService {
 
     /* Keyboards */
     { 
-      id: 32, 
+      id: 300, 
       name: 'Logitech G Pro X', 
       price: 450, 
       category: 'accessories', 
@@ -1564,7 +1564,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61xM6-EbmEL._AC_SL1500_.jpg'
     },
     { 
-      id: 151, 
+      id: 301, 
       name: 'Corsair K70 RGB Pro', 
       price: 550, 
       category: 'accessories', 
@@ -1583,7 +1583,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71aFy7YKEHL._AC_SL1500_.jpg'
     },
     { 
-      id: 152, 
+      id: 302, 
       name: 'Razer Huntsman V3 Pro', 
       price: 850, 
       category: 'accessories', 
@@ -1602,7 +1602,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61o2yABOY6L._AC_SL1500_.jpg'
     },
     { 
-      id: 153, 
+      id: 303, 
       name: 'Keychron Q1 Pro QMK/VIA', 
       price: 750, 
       category: 'accessories', 
@@ -1621,7 +1621,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61xQCUZN5bL._AC_SL1500_.jpg'
     },
     { 
-      id: 154, 
+      id: 304, 
       name: 'SteelSeries Apex Pro TKL', 
       price: 650, 
       category: 'accessories', 
@@ -1642,7 +1642,7 @@ export class ProductService {
 
     /* Mice */
     { 
-      id: 33, 
+      id: 305, 
       name: 'Razer Viper V3 Pro', 
       price: 350, 
       category: 'accessories', 
@@ -1660,7 +1660,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/51oHpVuW8OL._AC_SL1500_.jpg'
     },
     { 
-      id: 155, 
+      id: 306, 
       name: 'Logitech G Pro X Superlight 2', 
       price: 450, 
       category: 'accessories', 
@@ -1679,7 +1679,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/51oHpVuW8OL._AC_SL1500_.jpg'
     },
     { 
-      id: 156, 
+      id: 307, 
       name: 'Finalmouse UltralightX', 
       price: 550, 
       category: 'accessories', 
@@ -1698,7 +1698,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/51T6z0z3uBL._AC_SL1000_.jpg'
     },
     { 
-      id: 157, 
+      id: 308, 
       name: 'SteelSeries Aerox 5 Wireless', 
       price: 380, 
       category: 'accessories', 
@@ -1717,7 +1717,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61IfQYOiGIL._AC_SL1500_.jpg'
     },
     { 
-      id: 158, 
+      id: 309, 
       name: 'Corsair Dark Core RGB Pro SE', 
       price: 320, 
       category: 'accessories', 
@@ -1738,7 +1738,7 @@ export class ProductService {
 
     /* Headsets */
     { 
-      id: 159, 
+      id: 310, 
       name: 'SteelSeries Arctis Nova Pro', 
       price: 600, 
       category: 'accessories', 
@@ -1756,7 +1756,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61MR1Laql-L._AC_SL1500_.jpg'
     },
     { 
-      id: 160, 
+      id: 311, 
       name: 'HyperX Cloud Alpha Wireless', 
       price: 650, 
       category: 'accessories', 
@@ -1775,7 +1775,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61FJNLr7kIL._AC_SL1500_.jpg'
     },
     { 
-      id: 161, 
+      id: 312, 
       name: 'Razer BlackShark V2 Pro', 
       price: 550, 
       category: 'accessories', 
@@ -1794,7 +1794,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61mR33iz5AL._AC_SL1500_.jpg'
     },
     { 
-      id: 162, 
+      id: 313, 
       name: 'Logitech G Pro X 2 Lightspeed', 
       price: 750, 
       category: 'accessories', 
@@ -1813,7 +1813,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61pfjTJ92AL._AC_SL1500_.jpg'
     },
     { 
-      id: 163, 
+      id: 314, 
       name: 'Audeze Maxwell Wireless', 
       price: 1200, 
       category: 'accessories', 
@@ -1834,7 +1834,7 @@ export class ProductService {
 
     /* Speakers */
     { 
-      id: 35, 
+      id: 315, 
       name: 'Logitech Z623 Speakers', 
       price: 400, 
       category: 'accessories', 
@@ -1852,7 +1852,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71xW3EYLgfL._AC_SL1500_.jpg'
     },
     { 
-      id: 164, 
+      id: 316, 
       name: 'Audioengine A2+ Wireless', 
       price: 950, 
       category: 'accessories', 
@@ -1871,7 +1871,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71qbIXnKgwL._AC_SL1500_.jpg'
     },
     { 
-      id: 165, 
+      id: 317, 
       name: 'Creative Pebble V3', 
       price: 150, 
       category: 'accessories', 
@@ -1890,7 +1890,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61tIjN5LGML._AC_SL1500_.jpg'
     },
     { 
-      id: 166, 
+      id: 318, 
       name: 'Edifier R1280DB Bookshelf', 
       price: 450, 
       category: 'accessories', 
@@ -1909,7 +1909,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71zJB-GxgbL._AC_SL1500_.jpg'
     },
     { 
-      id: 167, 
+      id: 319, 
       name: 'Razer Nommo V2 Pro', 
       price: 1850, 
       category: 'accessories', 
@@ -1930,7 +1930,7 @@ export class ProductService {
 
     /* Webcams */
     { 
-      id: 36, 
+      id: 320, 
       name: 'Logitech C920 Webcam', 
       price: 250, 
       category: 'accessories', 
@@ -1948,7 +1948,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/71dkPglLS5L._AC_SL1500_.jpg'
     },
     { 
-      id: 168, 
+      id: 321, 
       name: 'Logitech StreamCam', 
       price: 550, 
       category: 'accessories', 
@@ -1967,7 +1967,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/61AxJFL+ydL._AC_SL1500_.jpg'
     },
     { 
-      id: 169, 
+      id: 322, 
       name: 'Razer Kiyo Pro', 
       price: 650, 
       category: 'accessories', 
@@ -1986,7 +1986,7 @@ export class ProductService {
       image: 'https://m.media-amazon.com/images/I/51h6UbKqYAL._AC_SL1500_.jpg'
     },
     { 
-      id: 170, 
+      id: 323, 
       name: 'Elgato Facecam Pro', 
       price: 850, 
       category: 'accessories', 

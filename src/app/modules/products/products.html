@@ -3,6 +3,10 @@
     {{ selectedCategory ? (selectedCategory | titlecase) : 'All Products' }}
   </h1>
 
+  @if (searchTerm) {
+    <p class="search-info">Search results for "{{ searchTerm }}"</p>
+  }
+
   @if (selectedCategory) {
     <div class="filter-bar">
       <div class="product-count">
@@ -28,8 +32,8 @@
       <div class="subcategory-section">
         <h2 class="subcategory-title">{{ subCategory }}</h2>
         
-        <div [class.products-scroll-container]="!selectedCategory" [class.products-grid-container]="selectedCategory">
-          <div [class.products-scroll]="!selectedCategory" [class.products-grid]="selectedCategory">
+        <div [class.products-scroll-container]="!(selectedCategory || searchTerm)" [class.products-grid-container]="(selectedCategory || searchTerm)">
+          <div [class.products-scroll]="!(selectedCategory || searchTerm)" [class.products-grid]="(selectedCategory || searchTerm)">
             @for (p of groupedProducts[subCategory]; track p.id) {
               <div class="products-card">
                 <div class="product-content" [routerLink]="['/product', p.id]">
@@ -51,7 +55,11 @@
   } @else {
     <div class="no-products">
       <i class="bi bi-inbox"></i>
-      <p>No products found in this category</p>
+      @if (searchTerm) {
+        <p>No products found for "{{ searchTerm }}"</p>
+      } @else {
+        <p>No products found in this category</p>
+      }
     </div>
   }
 </div>

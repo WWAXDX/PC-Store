@@ -175,7 +175,7 @@
                 border-radius: 12px;
                 margin-bottom: 15px;
                 transition: 0.3s;
-                background: #f8fafc;
+                background: #ffffff; /* change background to white per request */
                 padding: 10px;
                 
                 &:hover {
@@ -303,14 +303,92 @@
             }
 
             .products-grid-container .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
         }
 
         .products-card {
-            min-width: 220px;
-            max-width: 220px;
+            min-width: unset;
+            max-width: unset;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .products-page {
+        padding: 15px 10px;
+
+        .subcategory-section {
+            .products-grid-container .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+        .products-card {
+            padding: 12px;
+
+            .product-content {
+                .product-image {
+                    height: 140px;
+                }
+
+                h3 {
+                    font-size: 14px;
+                    height: 38px;
+                }
+
+                .desc {
+                    font-size: 12px;
+                    height: 32px;
+                }
+
+                .price {
+                    font-size: 16px;
+                }
+            }
+
+            .add-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+        }
+
+        /* Ensure All Products (horizontal .products-scroll) shows 2 columns on small screens */
+        .products-scroll {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 10px 0 20px;
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+
+        /* Make sure product cards inside the scroll/grid take full column width */
+        .products-scroll .products-card {
+            min-width: unset;
+            max-width: unset;
+            width: 100%;
+        }
+    }
+}
+
+/* Force at least 2 columns on very small screens to avoid single-column layout */
+@media (max-width: 360px) {
+    .products-page {
+        .subcategory-section {
+            .products-grid-container .products-grid,
+            .products-scroll {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+            }
+        }
+
+        .products-card {
+            min-width: unset !important;
+            max-width: unset !important;
+            width: 100% !important;
         }
     }
 }
