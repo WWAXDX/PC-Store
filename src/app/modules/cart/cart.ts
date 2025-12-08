@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,9 @@ import { CartService } from '../../services/cart.service';
 export class Cart implements OnDestroy {
   items: any[] = [];
   private sub: Subscription | null = null;
+  private langService = inject(LanguageService);
+  
+  t = (key: string) => this.langService.t(key);
 
   constructor(private cart: CartService) {}
 

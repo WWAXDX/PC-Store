@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +15,9 @@ import { Product } from '../../models/product.model';
 export class ProductDetails implements OnInit {
 
   product: Product | null = null;
+  
+  private langService = inject(LanguageService);
+  t = (key: string) => this.langService.t(key);
 
   constructor(
     private route: ActivatedRoute,

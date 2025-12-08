@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,47 +19,102 @@ export class Navbar implements OnInit, OnDestroy {
   showMobileSidebar: boolean = false;
   activeDropdown: string | null = null;
   expandedSidebarCategory: string | null = null;
-  currentLanguage: string = 'en';
   isScrolled: boolean = false;
+  cartBounce: boolean = false;
   private hideTimer: any = null;
   private sub: Subscription | null = null;
 
-  categories = [
+  currentLanguage = computed(() => this.langService.currentLanguage());
+  t = (key: string) => this.langService.t(key);
+
+  categories = computed(() => [
     {
       key: 'pc-parts',
-      name: 'PC Parts',
+      name: this.t('nav.pcParts'),
+      icon: 'bi-pc-display',
+      color: '#009ffd',
       route: '/products',
       queryParam: 'pc-parts',
-      items: ['Graphics Cards (GPU)', 'Processors (CPU)', 'Memory (RAM)', 'Storage (SSD/HDD)', 'Motherboards', 'Power Supplies', 'Cases', 'CPU Coolers']
+      items: [
+        this.t('category.graphicsCards'),
+        this.t('category.processors'),
+        this.t('category.memory'),
+        this.t('category.storage'),
+        this.t('category.motherboards'),
+        this.t('category.powerSupplies'),
+        this.t('category.cases'),
+        this.t('category.cpuCoolers')
+      ]
     },
     {
       key: 'monitors',
-      name: 'Monitors',
+      name: this.t('nav.monitors'),
+      icon: 'bi-display',
+      color: '#5f27cd',
       route: '/products',
       queryParam: 'monitors',
-      items: ['Gaming Monitors', '4K Monitors', 'Ultrawide Monitors', 'Professional Monitors']
+      items: [
+        this.t('category.gamingMonitors'),
+        this.t('category.4kMonitors'),
+        this.t('category.ultrawideMonitors'),
+        this.t('category.professionalMonitors')
+      ]
     },
     {
       key: 'chairs',
-      name: 'Chairs',
+      name: this.t('nav.chairs'),
+      icon: 'bi-box',
+      color: '#00d2d3',
       route: '/products',
       queryParam: 'chairs',
-      items: ['Gaming Chairs', 'Office Chairs', 'Ergonomic Chairs']
+      items: [
+        this.t('category.gamingChairs'),
+        this.t('category.officeChairs'),
+        this.t('category.ergonomicChairs')
+      ]
     },
     {
       key: 'accessories',
-      name: 'Accessories',
+      name: this.t('nav.accessories'),
+      icon: 'bi-keyboard',
+      color: '#ff6b6b',
       route: '/products',
       queryParam: 'accessories',
-      items: ['Keyboards', 'Mice', 'Headsets', 'Speakers', 'Webcams', 'Cables', 'Adapters', 'USB Hubs', 'Cleaning Kits', 'Thermal Paste']
+      items: [
+        this.t('category.keyboards'),
+        this.t('category.mice'),
+        this.t('category.headsets'),
+        this.t('category.speakers'),
+        this.t('category.webcams'),
+        this.t('category.cables'),
+        this.t('category.adapters'),
+        this.t('category.usbHubs'),
+        this.t('category.cleaningKits'),
+        this.t('category.thermalPaste')
+      ]
     }
-  ];
+  ]);
 
-  constructor(private cart: CartService, private router: Router) {
+  constructor(
+    private cart: CartService, 
+    private router: Router,
+    private langService: LanguageService
+  ) {
     // subscribe to cart observable (reactive)
     this.sub = this.cart.items$.subscribe(items => {
-      this.cartCount = items.length;
+      const newCount = items.reduce((sum, item) => sum + item.quantity, 0);
+      if (newCount > this.cartCount) {
+        this.triggerCartBounce();
+      }
+      this.cartCount = newCount;
     });
+  }
+
+  triggerCartBounce() {
+    this.cartBounce = true;
+    setTimeout(() => {
+      this.cartBounce = false;
+    }, 600);
   }
 
   ngOnInit() {
@@ -81,9 +137,7 @@ export class Navbar implements OnInit, OnDestroy {
   }
 
   toggleLanguage() {
-    this.currentLanguage = this.currentLanguage === 'en' ? 'ar' : 'en';
-    // Here you would implement actual language switching logic
-    console.log('Language switched to:', this.currentLanguage);
+    this.langService.toggleLanguage();
   }
 
   toggleMobileMenu() {

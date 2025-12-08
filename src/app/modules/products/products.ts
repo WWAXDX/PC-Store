@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,9 @@ export class Products implements OnInit {
   searchTerm: string | null = null;
   groupedProducts: { [key: string]: Product[] } = {};
   sortBy: string = 'default';
+  
+  private langService = inject(LanguageService);
+  t = (key: string) => this.langService.t(key);
 
   constructor(
     private cart: CartService, 
@@ -94,6 +98,42 @@ export class Products implements OnInit {
 
   getTotalProductCount(): number {
     return this.displayedProducts.length;
+  }
+
+  getCategoryName(): string {
+    if (!this.selectedCategory) return '';
+    
+    // Map category names to translation keys
+    const categoryMap: { [key: string]: string } = {
+      'Graphics Cards (GPU)': 'category.graphicsCards',
+      'Processors (CPU)': 'category.processors',
+      'Memory (RAM)': 'category.memory',
+      'Storage (SSD/HDD)': 'category.storage',
+      'Motherboards': 'category.motherboards',
+      'Power Supplies': 'category.powerSupplies',
+      'Cases': 'category.cases',
+      'CPU Coolers': 'category.cpuCoolers',
+      'Gaming Monitors': 'category.gamingMonitors',
+      '4K Monitors': 'category.4kMonitors',
+      'Ultrawide Monitors': 'category.ultrawideMonitors',
+      'Professional Monitors': 'category.professionalMonitors',
+      'Gaming Chairs': 'category.gamingChairs',
+      'Office Chairs': 'category.officeChairs',
+      'Ergonomic Chairs': 'category.ergonomicChairs',
+      'Keyboards': 'category.keyboards',
+      'Mice': 'category.mice',
+      'Headsets': 'category.headsets',
+      'Speakers': 'category.speakers',
+      'Webcams': 'category.webcams',
+      'Cables': 'category.cables',
+      'Adapters': 'category.adapters',
+      'USB Hubs': 'category.usbHubs',
+      'Cleaning Kits': 'category.cleaningKits',
+      'Thermal Paste': 'category.thermalPaste'
+    };
+
+    const key = categoryMap[this.selectedCategory];
+    return key ? this.t(key) : this.selectedCategory;
   }
 
   add(product: Product) {

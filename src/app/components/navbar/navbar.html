@@ -2,22 +2,27 @@
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <div class="logo"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">PC Parts</a></div>
+    <div class="logo">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-lightning-charge-fill"></i>
+        <span>PC Parts</span>
+      </a>
+    </div>
 
     <div class="top-actions">
       <!-- Language Toggle -->
       <button class="language-btn" (click)="toggleLanguage()" title="تغيير اللغة">
-        <i class="bi bi-translate"></i>
-        <span>{{ currentLanguage === 'ar' ? 'EN' : 'ع' }}</span>
+        <i class="bi bi-globe"></i>
+        <span>{{ t('nav.language') }}</span>
       </button>
 
-      <a routerLink="/cart" class="icon-btn cart-btn" title="Cart">
-        <i class="bi bi-cart3"></i>
+      <a routerLink="/cart" class="icon-btn cart-btn" [class.bounce]="cartBounce" [title]="t('nav.cart')">
+        <i class="bi bi-cart-fill"></i>
         <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
       </a>
 
-      <a routerLink="/login" class="icon-btn" title="Login">
-        <i class="bi bi-person-circle"></i>
+      <a routerLink="/login" class="icon-btn login-btn" [title]="t('nav.login')">
+        <i class="bi bi-person-fill"></i>
       </a>
 
       <!-- Mobile Menu Toggle -->
@@ -28,14 +33,15 @@
   </div>
 
   <!-- Second Bar - Categories & Search -->
-  <div class="second-bar">
+  <div class="second-bar" [class.sticky]="isScrolled">
     <div class="categories-nav">
       <div class="category-item" 
-           *ngFor="let category of categories" 
+           *ngFor="let category of categories()" 
            (mouseenter)="showDropdown(category.key)"
            (mouseleave)="startHideTimer()">
+        <i class="category-icon" [ngClass]="category.icon" [style.color]="category.color"></i>
         <span class="category-name" (click)="navigateToCategory(category, $event)">{{ category.name }}</span>
-        <i class="bi bi-chevron-down" 
+        <i class="bi bi-chevron-down dropdown-arrow" 
            (click)="showDropdown(category.key); $event.stopPropagation()"></i>
         
         <!-- Dropdown -->
@@ -57,14 +63,15 @@
     <!-- Search in Second Bar -->
     <div class="search-container-second">
       <div class="search-box-second">
+        <i class="bi bi-search search-icon"></i>
         <input 
           type="text" 
-          placeholder="Search for parts..."
+          [placeholder]="t('nav.search')"
           [(ngModel)]="searchText"
           (keyup.enter)="onSearch()"
         />
-        <button (click)="onSearch()">
-          <i class="bi bi-search"></i>
+        <button (click)="onSearch()" *ngIf="searchText">
+          <i class="bi bi-arrow-right-circle-fill"></i>
         </button>
       </div>
     </div>
@@ -74,28 +81,35 @@
   <div class="mobile-sidebar" [class.active]="showMobileSidebar" (click)="closeMobileMenu()">
     <div class="sidebar-content" (click)="$event.stopPropagation()">
       <div class="sidebar-header">
-        <h3>Menu</h3>
+        <div class="sidebar-logo">
+          <i class="bi bi-lightning-charge-fill"></i>
+          <h3>PC Parts</h3>
+        </div>
         <button class="close-sidebar" (click)="closeMobileMenu()">
-          <i class="bi bi-x"></i>
+          <i class="bi bi-x-lg"></i>
         </button>
       </div>
       
       <div class="sidebar-search">
+        <i class="bi bi-search"></i>
         <input 
           type="text" 
           placeholder="Search for parts..."
           [(ngModel)]="searchText"
           (keyup.enter)="onSearchMobile()"
         />
-        <button (click)="onSearchMobile()">
-          <i class="bi bi-search"></i>
+        <button (click)="onSearchMobile()" *ngIf="searchText">
+          <i class="bi bi-arrow-right-circle-fill"></i>
         </button>
       </div>
 
       <div class="sidebar-categories">
-        <div class="sidebar-category" *ngFor="let category of categories">
+        <div class="sidebar-category" *ngFor="let category of categories()">
           <div class="sidebar-category-title">
-            <span (click)="navigateToCategory(category); closeMobileMenu()">{{ category.name }}</span>
+            <div class="category-info" (click)="navigateToCategory(category); closeMobileMenu()">
+              <i [ngClass]="category.icon" [style.color]="category.color"></i>
+              <span>{{ category.name }}</span>
+            </div>
             <i class="bi" 
                [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
                [class.bi-chevron-up]="expandedSidebarCategory === category.key"
@@ -116,15 +130,16 @@
       <div class="sidebar-actions">
         <a routerLink="/cart" class="sidebar-action" (click)="closeMobileMenu()">
           <i class="bi bi-cart3"></i>
-          <span>Cart ({{ cartCount }})</span>
+          <span>{{ t('nav.cart') }} ({{ cartCount }})</span>
+          <span class="cart-indicator" *ngIf="cartCount > 0">{{ cartCount }}</span>
         </a>
         <a routerLink="/login" class="sidebar-action" (click)="closeMobileMenu()">
           <i class="bi bi-person-circle"></i>
-          <span>Login</span>
+          <span>{{ t('nav.login') }}</span>
         </a>
         <button class="sidebar-action" (click)="toggleLanguage()">
           <i class="bi bi-translate"></i>
-          <span>{{ currentLanguage === 'ar' ? 'English' : 'العربية' }}</span>
+          <span>{{ t('nav.language') === 'E' ? 'English' : 'العربية' }}</span>
         </button>
       </div>
     </div>
