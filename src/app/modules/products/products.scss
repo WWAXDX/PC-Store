@@ -147,7 +147,6 @@
     .products-card {
         background: white;
         padding: 20px;
-        padding-bottom: 70px; // Extra padding for the add button
         border-radius: 14px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         transition: all 0.3s;
@@ -383,7 +382,6 @@
         }
         .products-card {
             padding: 12px;
-            padding-bottom: 60px; // Extra padding for the add button on mobile
             min-width: unset;
             max-width: unset;
 

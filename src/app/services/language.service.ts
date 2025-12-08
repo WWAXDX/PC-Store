@@ -53,8 +53,8 @@ export class LanguageService {
       
       // Home Page
       'home.welcome': 'Build Your Dream PC',
-      'home.title': 'PC Parts Store',
-      'home.subtitle': 'SSD • RAM • GPU • CPU • Monitor and more',
+      'home.title': 'Upgrade Your Gaming Setup',
+      'home.subtitle': 'Premium PC Components & Accessories',
       'home.shopNow': 'Shop Now',
       'home.categories': 'Shop by Category',
       'home.categoryGraphics': 'Graphics Cards',
@@ -207,8 +207,8 @@ export class LanguageService {
       
       // Home Page
       'home.welcome': 'اصنع جهاز أحلامك',
-      'home.title': 'متجر قطع الكمبيوتر',
-      'home.subtitle': 'SSD • RAM • GPU • CPU • شاشات والمزيد',
+      'home.title': 'طور إعدادات الألعاب الخاصة بك',
+      'home.subtitle': 'قطع كمبيوتر وإكسسوارات بجودة عالية',
       'home.shopNow': 'تسوق الآن',
       'home.categories': 'تسوق حسب الفئة',
       'home.categoryGraphics': 'كروت الشاشة',

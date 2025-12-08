@@ -51,10 +51,11 @@
              (mouseleave)="hideDropdownNow()">
           <a *ngFor="let item of category.items" 
              routerLink="/products" 
-             [queryParams]="{category: item}" 
+             [queryParams]="{category: item.key}" 
              class="dropdown-item"
              (click)="hideDropdownNow()">
-            {{ item }}
+            <i [ngClass]="item.icon" class="subcategory-icon"></i>
+            {{ item.label }}
           </a>
         </div>
       </div>
@@ -118,10 +119,11 @@
           <div class="sidebar-category-items" *ngIf="expandedSidebarCategory === category.key">
             <a *ngFor="let item of category.items" 
                routerLink="/products" 
-               [queryParams]="{category: item}" 
+               [queryParams]="{category: item.key}" 
                class="sidebar-item"
                (click)="closeMobileMenu()">
-              {{ item }}
+              <i [ngClass]="item.icon" class="subcategory-icon"></i>
+              {{ item.label }}
             </a>
           </div>
         </div>

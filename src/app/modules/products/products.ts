@@ -96,6 +96,39 @@ export class Products implements OnInit {
     return Object.keys(this.groupedProducts);
   }
 
+  translateSubCategory(subCategory: string): string {
+    const categoryMap: { [key: string]: string } = {
+      'Graphics Cards (GPU)': 'category.graphicsCards',
+      'Processors (CPU)': 'category.processors',
+      'Memory (RAM)': 'category.memory',
+      'Storage (SSD/HDD)': 'category.storage',
+      'Motherboards': 'category.motherboards',
+      'Power Supplies': 'category.powerSupplies',
+      'Cases': 'category.cases',
+      'CPU Coolers': 'category.cpuCoolers',
+      'Gaming Monitors': 'category.gamingMonitors',
+      '4K Monitors': 'category.4kMonitors',
+      'Ultrawide Monitors': 'category.ultrawideMonitors',
+      'Professional Monitors': 'category.professionalMonitors',
+      'Gaming Chairs': 'category.gamingChairs',
+      'Office Chairs': 'category.officeChairs',
+      'Ergonomic Chairs': 'category.ergonomicChairs',
+      'Keyboards': 'category.keyboards',
+      'Mice': 'category.mice',
+      'Headsets': 'category.headsets',
+      'Speakers': 'category.speakers',
+      'Webcams': 'category.webcams',
+      'Cables': 'category.cables',
+      'Adapters': 'category.adapters',
+      'USB Hubs': 'category.usbHubs',
+      'Cleaning Kits': 'category.cleaningKits',
+      'Thermal Paste': 'category.thermalPaste'
+    };
+
+    const key = categoryMap[subCategory];
+    return key ? this.t(key) : subCategory;
+  }
+
   getTotalProductCount(): number {
     return this.displayedProducts.length;
   }

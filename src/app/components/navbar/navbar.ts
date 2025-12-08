@@ -36,14 +36,14 @@ export class Navbar implements OnInit, OnDestroy {
       route: '/products',
       queryParam: 'pc-parts',
       items: [
-        this.t('category.graphicsCards'),
-        this.t('category.processors'),
-        this.t('category.memory'),
-        this.t('category.storage'),
-        this.t('category.motherboards'),
-        this.t('category.powerSupplies'),
-        this.t('category.cases'),
-        this.t('category.cpuCoolers')
+        { key: 'Graphics Cards (GPU)', label: this.t('category.graphicsCards'), icon: 'bi-gpu-card' },
+        { key: 'Processors (CPU)', label: this.t('category.processors'), icon: 'bi-cpu' },
+        { key: 'Memory (RAM)', label: this.t('category.memory'), icon: 'bi-memory' },
+        { key: 'Storage (SSD/HDD)', label: this.t('category.storage'), icon: 'bi-device-hdd' },
+        { key: 'Motherboards', label: this.t('category.motherboards'), icon: 'bi-motherboard' },
+        { key: 'Power Supplies', label: this.t('category.powerSupplies'), icon: 'bi-lightning-charge' },
+        { key: 'Cases', label: this.t('category.cases'), icon: 'bi-box-seam' },
+        { key: 'CPU Coolers', label: this.t('category.cpuCoolers'), icon: 'bi-snow2' }
       ]
     },
     {
@@ -54,10 +54,10 @@ export class Navbar implements OnInit, OnDestroy {
       route: '/products',
       queryParam: 'monitors',
       items: [
-        this.t('category.gamingMonitors'),
-        this.t('category.4kMonitors'),
-        this.t('category.ultrawideMonitors'),
-        this.t('category.professionalMonitors')
+        { key: 'Gaming Monitors', label: this.t('category.gamingMonitors'), icon: 'bi-joystick' },
+        { key: '4K Monitors', label: this.t('category.4kMonitors'), icon: 'bi-badge-4k' },
+        { key: 'Ultrawide Monitors', label: this.t('category.ultrawideMonitors'), icon: 'bi-arrow-left-right' },
+        { key: 'Professional Monitors', label: this.t('category.professionalMonitors'), icon: 'bi-briefcase' }
       ]
     },
     {
@@ -68,9 +68,9 @@ export class Navbar implements OnInit, OnDestroy {
       route: '/products',
       queryParam: 'chairs',
       items: [
-        this.t('category.gamingChairs'),
-        this.t('category.officeChairs'),
-        this.t('category.ergonomicChairs')
+        { key: 'Gaming Chairs', label: this.t('category.gamingChairs'), icon: 'bi-controller' },
+        { key: 'Office Chairs', label: this.t('category.officeChairs'), icon: 'bi-building' },
+        { key: 'Ergonomic Chairs', label: this.t('category.ergonomicChairs'), icon: 'bi-person-check' }
       ]
     },
     {
@@ -81,16 +81,16 @@ export class Navbar implements OnInit, OnDestroy {
       route: '/products',
       queryParam: 'accessories',
       items: [
-        this.t('category.keyboards'),
-        this.t('category.mice'),
-        this.t('category.headsets'),
-        this.t('category.speakers'),
-        this.t('category.webcams'),
-        this.t('category.cables'),
-        this.t('category.adapters'),
-        this.t('category.usbHubs'),
-        this.t('category.cleaningKits'),
-        this.t('category.thermalPaste')
+        { key: 'Keyboards', label: this.t('category.keyboards'), icon: 'bi-keyboard' },
+        { key: 'Mice', label: this.t('category.mice'), icon: 'bi-mouse' },
+        { key: 'Headsets', label: this.t('category.headsets'), icon: 'bi-headphones' },
+        { key: 'Speakers', label: this.t('category.speakers'), icon: 'bi-speaker' },
+        { key: 'Webcams', label: this.t('category.webcams'), icon: 'bi-camera-video' },
+        { key: 'Cables', label: this.t('category.cables'), icon: 'bi-plug' },
+        { key: 'Adapters', label: this.t('category.adapters'), icon: 'bi-usb-symbol' },
+        { key: 'USB Hubs', label: this.t('category.usbHubs'), icon: 'bi-hdd-network' },
+        { key: 'Cleaning Kits', label: this.t('category.cleaningKits'), icon: 'bi-droplet' },
+        { key: 'Thermal Paste', label: this.t('category.thermalPaste'), icon: 'bi-thermometer-half' }
       ]
     }
   ]);

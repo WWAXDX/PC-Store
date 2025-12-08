@@ -1268,8 +1268,8 @@ export class ProductService {
     /* Gaming Chairs */
     { 
       id: 200, 
-      name: 'Secretlab Titan Evo', 
-      price: 1800, 
+      name: 'Secretlab Titan Evo Stealth Gaming Chair', 
+      price: 4000, 
       category: 'chairs', 
       subCategory: 'Gaming Chairs', 
       desc: 'Premium ergonomic design',
@@ -1282,7 +1282,7 @@ export class ProductService {
         'Cold-cure foam padding',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61A8ug4YIPL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/410uYasNqFL._AC_SX679_.jpg'
     },
     { 
       id: 201, 
@@ -1301,7 +1301,7 @@ export class ProductService {
         '4D armrests',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61GGWM8r+kL._AC_SL1500_.jpg'
+      image: 'https://microless.com/cdn/products/44bce7f6cbd75ab30c2c4bfd5e61fabe-hi.jpg'
     },
     { 
       id: 202, 
@@ -1320,7 +1320,7 @@ export class ProductService {
         'Aluminum base',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71cIxGZ4qbL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/41HV1OP+8BL._AC_.jpg'
     },
     { 
       id: 203, 
@@ -1339,7 +1339,7 @@ export class ProductService {
         'Class 4 gas lift',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71rnvB-FuVL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71EF7IZXAlL._AC_SX679_.jpg'
     },
     { 
       id: 204, 
@@ -1358,7 +1358,7 @@ export class ProductService {
         '4D armrests',
         'Made in Germany'
       ],
-      image: 'https://m.media-amazon.com/images/I/61p7b7-M9NL._AC_SL1500_.jpg'
+      image: 'https://sa.sihoo.com/cdn/shop/files/13_9CJPG.jpg?v=1761892661&width=1214'
     },
 
     /* Office Chairs */
@@ -1378,7 +1378,7 @@ export class ProductService {
         'Breathable mesh design',
         '12-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61cR-o6NuuL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51mnVc7aozL._AC_SX679_.jpg'
     },
     { 
       id: 206, 
@@ -1397,7 +1397,7 @@ export class ProductService {
         'Supports up to 300 lbs',
         '12-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61gGQmT8bTL._AC_SL1500_.jpg'
+      image: 'https://www.conceptseating.com/wp-content/uploads/2020/09/3142-Front-CLoop.png'
     },
     { 
       id: 207, 
@@ -1416,7 +1416,7 @@ export class ProductService {
         'Supports up to 275 lbs',
         '7-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61Q8wZiPAmL._AC_SL1500_.jpg'
+      image: 'https://officehub.sa/cdn/shop/files/1731326449849-EDITEDBlackBack.webp?v=1746611682&width=1380'
     },
     { 
       id: 208, 
@@ -1435,7 +1435,7 @@ export class ProductService {
         'Supports up to 242 lbs',
         '10-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51dWWy5bILL._AC_SL1000_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61IZUBGzC4L._AC_SX522_.jpg'
     },
     { 
       id: 209, 
@@ -1454,7 +1454,7 @@ export class ProductService {
         'Supports up to 300 lbs',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71hGk7V2jpL._AC_SL1500_.jpg'
+      image: 'https://sa.sihoo.com/cdn/shop/files/3_7c3b6470-6ef2-4b81-9e44-35ace89128bc.jpg?v=1751963398&width=1214'
     },
 
     /* Ergonomic Chairs */
@@ -1474,7 +1474,7 @@ export class ProductService {
         'Seat depth adjustment',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61sIdEKTdHL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71iGqPHT1FL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 211, 
@@ -1493,7 +1493,7 @@ export class ProductService {
         'Size B (medium)',
         '12-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61cR-o6NuuL._AC_SL1500_.jpg'
+      image: 'https://officehub.sa/cdn/shop/files/1736335150345-Z11-005_KHAKI-The_right_side.webp?v=1750162005&width=1380'
     },
     { 
       id: 212, 
@@ -1512,7 +1512,7 @@ export class ProductService {
         'Roller blade wheels',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61sIdEKTdHL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61h1kRrIwRL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 213, 
@@ -1531,7 +1531,7 @@ export class ProductService {
         'Rocking function',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61OqBTcFXcL._AC_SL1500_.jpg'
+      image: 'https://sa.sihoo.com/cdn/shop/files/12_e1f5ec7d-0ebc-431e-88d9-f0701a136ce6.jpg?v=1761892739&width=1214'
     },
     { 
       id: 214, 
@@ -1550,7 +1550,7 @@ export class ProductService {
         '2D armrests',
         '5-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61iP8OW7B0L._AC_SL1500_.jpg'
+      image: 'https://www.conceptseating.com/wp-content/uploads/2023/02/3122-Front-CLoop.png'
     },
 
 

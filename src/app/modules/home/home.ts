@@ -20,12 +20,12 @@ export class Home implements OnInit {
   t = (key: string) => this.langService.t(key);
   
   categories = computed(() => [
-    { name: this.t('home.categoryGraphics'), icon: '🎮', subCategory: this.t('category.graphicsCards') },
-    { name: this.t('home.categoryProcessors'), icon: '⚡', subCategory: this.t('category.processors') },
-    { name: this.t('home.categoryMemory'), icon: '💾', subCategory: this.t('category.memory') },
-    { name: this.t('home.categoryStorage'), icon: '💿', subCategory: this.t('category.storage') },
-    { name: this.t('home.categoryMotherboards'), icon: '🖥️', subCategory: this.t('category.motherboards') },
-    { name: this.t('home.categoryKeyboards'), icon: '⌨️', subCategory: this.t('category.keyboards') }
+    { name: this.t('home.categoryGraphics'), icon: '🎮', subCategory: 'Graphics Cards (GPU)' },
+    { name: this.t('home.categoryProcessors'), icon: '⚡', subCategory: 'Processors (CPU)' },
+    { name: this.t('home.categoryMemory'), icon: '💾', subCategory: 'Memory (RAM)' },
+    { name: this.t('home.categoryStorage'), icon: '💿', subCategory: 'Storage (SSD/HDD)' },
+    { name: this.t('home.categoryMotherboards'), icon: '🖥️', subCategory: 'Motherboards' },
+    { name: this.t('home.categoryKeyboards'), icon: '⌨️', subCategory: 'Keyboards' }
   ]);
   
   features = computed(() => [

@@ -1,17 +1,20 @@
 .home-page {
   padding: 20px;
-  font-family: sans-serif;
+  font-family: 'Noto Kufi Arabic', sans-serif;
   padding-top: 120px; // Add space for fixed navbar
 
   .banner {
     margin-top: 10px;
-    background: linear-gradient(to right, #2a2a72, #009ffd);
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                url('https://www.newegg.com/insider/wp-content/uploads/2025/09/5090.jpg') center/cover;
     color: white;
     padding: 60px 20px;
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
 
     h1 {
       font-size: 48px;

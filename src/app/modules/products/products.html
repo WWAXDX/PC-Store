@@ -30,7 +30,7 @@
   @if (displayedProducts.length > 0) {
     @for (subCategory of getSubCategories(); track subCategory) {
       <div class="subcategory-section">
-        <h2 class="subcategory-title">{{ subCategory }}</h2>
+        <h2 class="subcategory-title">{{ translateSubCategory(subCategory) }}</h2>
         
         <div [class.products-scroll-container]="!(selectedCategory || searchTerm)" [class.products-grid-container]="(selectedCategory || searchTerm)">
           <div [class.products-scroll]="!(selectedCategory || searchTerm)" [class.products-grid]="(selectedCategory || searchTerm)">
@@ -54,10 +54,6 @@
                     <p class="price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
                   }
                 </div>
-                
-                <button class="add-btn" (click)="add(p)" [title]="t('products.addToCart')">
-                  <i class="bi bi-plus"></i>
-                </button>
               </div>
             }
           </div>
