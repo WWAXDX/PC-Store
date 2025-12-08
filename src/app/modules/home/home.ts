@@ -20,12 +20,12 @@ export class Home implements OnInit {
   t = (key: string) => this.langService.t(key);
   
   categories = computed(() => [
-    { name: this.t('home.categoryGraphics'), icon: '🎮', subCategory: 'Graphics Cards (GPU)' },
-    { name: this.t('home.categoryProcessors'), icon: '⚡', subCategory: 'Processors (CPU)' },
-    { name: this.t('home.categoryMemory'), icon: '💾', subCategory: 'Memory (RAM)' },
-    { name: this.t('home.categoryStorage'), icon: '💿', subCategory: 'Storage (SSD/HDD)' },
-    { name: this.t('home.categoryMotherboards'), icon: '🖥️', subCategory: 'Motherboards' },
-    { name: this.t('home.categoryKeyboards'), icon: '⌨️', subCategory: 'Keyboards' }
+    { name: this.t('home.categoryGraphics'), icon: 'bi-gpu-card', subCategory: 'Graphics Cards (GPU)', image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=1000' },
+    { name: this.t('home.categoryProcessors'), icon: 'bi-cpu', subCategory: 'Processors (CPU)', image: 'https://images.unsplash.com/photo-1555617981-dac3880eac6e?q=80&w=1000' },
+    { name: this.t('home.categoryMemory'), icon: 'bi-memory', subCategory: 'Memory (RAM)', image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=1000' },
+    { name: this.t('home.categoryStorage'), icon: 'bi-device-hdd', subCategory: 'Storage (SSD/HDD)', image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=1000' },
+    { name: this.t('home.categoryMotherboards'), icon: 'bi-motherboard', subCategory: 'Motherboards', image: 'https://images.unsplash.com/photo-1591405351990-4726e331f141?q=80&w=1000' },
+    { name: this.t('home.categoryKeyboards'), icon: 'bi-keyboard', subCategory: 'Keyboards', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=1000' }
   ]);
   
   features = computed(() => [

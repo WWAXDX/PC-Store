@@ -12,8 +12,8 @@
     <h2>{{ t('home.categories') }}</h2>
     <div class="category-grid">
       @for (category of categories(); track category.name) {
-        <a [routerLink]="['/products']" [queryParams]="{category: category.subCategory}" class="category-card">
-          <div class="category-icon">{{ category.icon }}</div>
+        <a [routerLink]="['/products']" [queryParams]="{category: category.subCategory}" class="category-card" [style.background-image]="'url(' + category.image + ')'">
+          <i [ngClass]="category.icon" class="category-icon"></i>
           <h3>{{ category.name }}</h3>
         </a>
       }

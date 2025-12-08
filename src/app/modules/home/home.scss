@@ -68,7 +68,9 @@
       margin: 0 auto;
 
       .category-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        background-size: cover;
+        background-position: center;
         color: white;
         padding: 30px 20px;
         border-radius: 12px;
@@ -77,21 +79,47 @@
         transition: all 0.3s;
         text-decoration: none;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%);
+          z-index: 1;
+        }
 
         &:hover {
           transform: translateY(-5px);
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+          &::before {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+          }
+
+          .category-icon {
+            transform: scale(1.1);
+          }
         }
 
         .category-icon {
           font-size: 48px;
           margin-bottom: 10px;
+          position: relative;
+          z-index: 2;
+          transition: transform 0.3s ease;
         }
 
         h3 {
           font-size: 16px;
           font-weight: 600;
           margin: 0;
+          position: relative;
+          z-index: 2;
         }
       }
     }
@@ -362,12 +390,15 @@
   .cta {
     margin-top: 60px;
     margin-bottom: 40px;
-    background: linear-gradient(to right, #667eea, #764ba2);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=2942&auto=format&fit=crop') center/cover;
     color: white;
     padding: 60px 20px;
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 
     h2 {
       font-size: 32px;
