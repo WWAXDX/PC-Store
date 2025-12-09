@@ -1,0 +1,235 @@
+<div class="checkout-page">
+  <div class="checkout-container">
+    <!-- Header -->
+    <div class="checkout-header">
+      <h1>{{ t('checkout.title') }}</h1>
+      <a routerLink="/cart" class="back-link">
+        <i class="bi bi-arrow-left"></i> {{ t('checkout.backToCart') }}
+      </a>
+    </div>
+
+    <div class="checkout-content">
+      <!-- Left Side - Forms -->
+      <div class="forms-section">
+        <!-- Shipping Information -->
+        <div class="section-card">
+          <h2>
+            <i class="bi bi-truck"></i>
+            {{ t('checkout.shippingInfo') }}
+          </h2>
+          
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>{{ t('checkout.fullName') }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="shippingInfo.fullName"
+                [placeholder]="t('checkout.fullNamePlaceholder')"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.email') }}</label>
+              <input 
+                type="email" 
+                [(ngModel)]="shippingInfo.email"
+                [placeholder]="t('checkout.emailPlaceholder')"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.phone') }}</label>
+              <input 
+                type="tel" 
+                [(ngModel)]="shippingInfo.phone"
+                [placeholder]="t('checkout.phonePlaceholder')"
+                required
+              >
+            </div>
+
+            <div class="form-group full-width">
+              <label>{{ t('checkout.address') }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="shippingInfo.address"
+                [placeholder]="t('checkout.addressPlaceholder')"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.city') }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="shippingInfo.city"
+                [placeholder]="t('checkout.cityPlaceholder')"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.postalCode') }}</label>
+              <input 
+                type="text" 
+                [(ngModel)]="shippingInfo.postalCode"
+                [placeholder]="t('checkout.postalCodePlaceholder')"
+                required
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="section-card">
+          <h2>
+            <i class="bi bi-credit-card"></i>
+            {{ t('checkout.paymentMethod') }}
+          </h2>
+
+          <div class="payment-options">
+            <label class="payment-option" [class.active]="paymentMethod === 'card'">
+              <input 
+                type="radio" 
+                name="payment" 
+                value="card"
+                [(ngModel)]="paymentMethod"
+              >
+              <div class="option-content">
+                <i class="bi bi-credit-card-fill"></i>
+                <span>{{ t('checkout.creditCard') }}</span>
+              </div>
+            </label>
+
+            <label class="payment-option" [class.active]="paymentMethod === 'cod'">
+              <input 
+                type="radio" 
+                name="payment" 
+                value="cod"
+                [(ngModel)]="paymentMethod"
+              >
+              <div class="option-content">
+                <i class="bi bi-cash"></i>
+                <span>{{ t('checkout.cashOnDelivery') }}</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Card Details -->
+          @if (paymentMethod === 'card') {
+            <div class="card-details">
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label>{{ t('checkout.cardNumber') }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="cardInfo.cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    required
+                  >
+                </div>
+
+                <div class="form-group full-width">
+                  <label>{{ t('checkout.cardName') }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="cardInfo.cardName"
+                    [placeholder]="t('checkout.cardNamePlaceholder')"
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>{{ t('checkout.expiryDate') }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="cardInfo.expiryDate"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>{{ t('checkout.cvv') }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="cardInfo.cvv"
+                    placeholder="123"
+                    maxlength="3"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Right Side - Order Summary -->
+      <div class="summary-section">
+        <div class="section-card sticky">
+          <h2>{{ t('checkout.orderSummary') }}</h2>
+
+          <div class="summary-items">
+            @for (item of cartItems(); track item.product.id) {
+              <div class="summary-item">
+                <img [src]="item.product.image" [alt]="item.product.name">
+                <div class="item-details">
+                  <h4>{{ item.product.name }}</h4>
+                  <p>{{ t('cart.quantity') }}: {{ item.quantity }}</p>
+                </div>
+                <div class="item-price">
+                  {{ (item.product.onSale ? item.product.salePrice : item.product.price) * item.quantity }}
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="summary-totals">
+            <div class="total-row">
+              <span>{{ t('cart.subtotal') }}</span>
+              <span>
+                {{ getSubtotal() }}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+              </span>
+            </div>
+
+            <div class="total-row">
+              <span>{{ t('cart.shipping') }}</span>
+              <span [class.free]="getShipping() === 0">
+                @if (getShipping() === 0) {
+                  {{ t('cart.free') }}
+                } @else {
+                  {{ getShipping() }}
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                }
+              </span>
+            </div>
+
+            <div class="total-row grand-total">
+              <span>{{ t('cart.grandTotal') }}</span>
+              <span>
+                {{ getTotal() }}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/768px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+              </span>
+            </div>
+          </div>
+
+          <button class="place-order-btn" (click)="placeOrder()">
+            <i class="bi bi-check-circle"></i>
+            {{ t('checkout.placeOrder') }}
+          </button>
+
+          <div class="secure-notice">
+            <i class="bi bi-shield-check"></i>
+            {{ t('checkout.securePayment') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

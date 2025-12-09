@@ -1573,7 +1573,7 @@ export class ProductService {
         'Durable PBT keycaps',
         'Tournament-ready'
       ],
-      image: 'https://m.media-amazon.com/images/I/61xM6-EbmEL._AC_SL1500_.jpg'
+      image: 'https://wafuu.com/cdn/shop/files/logicool-g-pro-tenkeyless-gaming-keyboard-gx-linear-switches-rgb-japanese-600137_1080x.jpg?v=1725021935'
     },
     { 
       id: 301, 
@@ -1592,7 +1592,7 @@ export class ProductService {
         'Tournament switch',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71aFy7YKEHL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71-VvfeL4uL._AC_SX450_.jpg'
     },
     { 
       id: 302, 
@@ -1611,7 +1611,7 @@ export class ProductService {
         'Tenkeyless design',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61o2yABOY6L._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61pcbal1v1L._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 303, 
@@ -1630,7 +1630,7 @@ export class ProductService {
         'OSA PBT keycaps',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61xQCUZN5bL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61SsnEdS+QL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 304, 
@@ -1649,7 +1649,7 @@ export class ProductService {
         'Tenkeyless design',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71eQeCLP6mL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71C0j7SC31L._AC_SY450_.jpg'
     },
 
     /* Mice */
@@ -1669,7 +1669,7 @@ export class ProductService {
         'Gen-3 optical switches',
         'Esports-grade performance'
       ],
-      image: 'https://m.media-amazon.com/images/I/51oHpVuW8OL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61r9g7VtZaL._AC_SY450_.jpg'
     },
     { 
       id: 306, 
@@ -1688,7 +1688,7 @@ export class ProductService {
         'Hybrid switches',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51oHpVuW8OL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/515Qr+OxOCL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 307, 
@@ -1707,7 +1707,7 @@ export class ProductService {
         'Limited edition',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51T6z0z3uBL._AC_SL1000_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51i+Slt+1UL._AC_SY450_.jpg'
     },
     { 
       id: 308, 
@@ -1726,7 +1726,7 @@ export class ProductService {
         'Quantum 2.0 wireless',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61IfQYOiGIL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61b47smsWoL._AC_SY450_.jpg'
     },
     { 
       id: 309, 
@@ -1745,7 +1745,7 @@ export class ProductService {
         '142g weight',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71BVvQ3ZBYL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51B73M-A2kL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
 
     /* Headsets */
@@ -1765,7 +1765,7 @@ export class ProductService {
         'Multi-platform support',
         'Infinity Power System'
       ],
-      image: 'https://m.media-amazon.com/images/I/61MR1Laql-L._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61TjCqLC9OL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 311, 
@@ -1784,7 +1784,7 @@ export class ProductService {
         'Durable aluminum frame',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61FJNLr7kIL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71mqaEv2KRL._AC_SY450_.jpg'
     },
     { 
       id: 312, 
@@ -1803,7 +1803,7 @@ export class ProductService {
         'Breathable memory foam',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61mR33iz5AL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71Z9KK9-zvL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 313, 
@@ -1822,7 +1822,7 @@ export class ProductService {
         'Memory foam earpads',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61pfjTJ92AL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71mGNXSFX8L._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 314, 
@@ -1841,7 +1841,7 @@ export class ProductService {
         'Premium build quality',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61PNDl7BgbL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51iE7XD13NL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
 
     /* Speakers */
@@ -1861,7 +1861,7 @@ export class ProductService {
         'On-speaker controls',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71xW3EYLgfL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/712NrHlRg2L._AC_SY355_.jpg'
     },
     { 
       id: 316, 
@@ -1880,7 +1880,7 @@ export class ProductService {
         'Remote control',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71qbIXnKgwL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51dqqbw2DhL._AC_SY450_.jpg'
     },
     { 
       id: 317, 
@@ -1899,7 +1899,7 @@ export class ProductService {
         'Compact design',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61tIjN5LGML._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/51mNyUb1GWL._AC_SX300_SY300_QL70_ML2_.jpg'
     },
     { 
       id: 318, 
@@ -1918,7 +1918,7 @@ export class ProductService {
         'Bass/treble control',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71zJB-GxgbL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/812O+P4b9fL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 319, 
@@ -1937,7 +1937,7 @@ export class ProductService {
         'Gaming/Music modes',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71JZrmU0SDL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61U5p+TN33L._AC_SY300_SX300_QL70_ML2_.jpg'
     },
 
     /* Webcams */
@@ -1957,7 +1957,7 @@ export class ProductService {
         'Tripod-ready',
         'Universal clip mount'
       ],
-      image: 'https://m.media-amazon.com/images/I/71dkPglLS5L._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/618OOLVI-dL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 321, 
@@ -1976,7 +1976,7 @@ export class ProductService {
         'Portrait/landscape modes',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61AxJFL+ydL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61mfYK4VJcL._AC_SX450_.jpg'
     },
     { 
       id: 322, 
@@ -1995,7 +1995,7 @@ export class ProductService {
         'Adjustable FOV',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/51h6UbKqYAL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71svP8z5CuL._AC_SY450_.jpg'
     },
     { 
       id: 323, 
@@ -2014,7 +2014,7 @@ export class ProductService {
         'Studio-grade optics',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61wQVz8+EnL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61eXN9erjAL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 171, 
@@ -2033,7 +2033,7 @@ export class ProductService {
         'Multiple FOV options',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61AisuY-mUL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71SAamTGWQL._AC_SX466_.jpg'
     },
 
     /* Cables */
@@ -2053,7 +2053,7 @@ export class ProductService {
         'Durable braided design',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61HN38KfOXL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/41YpHTbxaBL._SY445_SX342_QL70_ML2_.jpg'
     },
     { 
       id: 38, 
@@ -2071,7 +2071,7 @@ export class ProductService {
         'eARC & VRR support',
         'Gold-plated connectors'
       ],
-      image: 'https://m.media-amazon.com/images/I/61hRXF4QIuL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61sOLfhbMhL._AC_SX425_.jpg'
     },
     { 
       id: 172, 
@@ -2090,7 +2090,7 @@ export class ProductService {
         'Gold-plated connectors',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61rnG8YRZIL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71GoG+rR30L._SX342_.jpg'
     },
     { 
       id: 173, 
@@ -2109,7 +2109,7 @@ export class ProductService {
         'Durable braided',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61Z3xQ+SFBL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61ikHfppdjL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 174, 
@@ -2128,7 +2128,7 @@ export class ProductService {
         'Weather-resistant',
         'Lifetime warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71MfzqP6uuL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/41XmQjEfeDL._SY445_SX342_QL70_ML2_.jpg'
     },
 
     /* USB Hubs */
@@ -2148,7 +2148,7 @@ export class ProductService {
         'Compact aluminum design',
         'AC adapter included'
       ],
-      image: 'https://m.media-amazon.com/images/I/61jBR7mYaZL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61mt89Y2+zS._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 175, 
@@ -2167,7 +2167,7 @@ export class ProductService {
         '3x USB 3.0',
         '18-month warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61sXTKMc0UL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61ZrDcJ4nYL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 176, 
@@ -2186,7 +2186,7 @@ export class ProductService {
         'SD/microSD UHS-II',
         '2-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61fpbJyW8iL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61RBOqHLI0L._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 177, 
@@ -2205,7 +2205,7 @@ export class ProductService {
         'Plug and play',
         '18-month warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61M8av3HOZL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61Ldc9zYdgL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 178, 
@@ -2224,7 +2224,104 @@ export class ProductService {
         'LED indicators',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71kj0eAWFzL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71XIdKepI0L._AC_SY300_SX300_QL70_ML2_.jpg'
+    },
+
+    /* Adapters */
+    { 
+      id: 179, 
+      name: 'USB-C to HDMI 4K Adapter', 
+      price: 85, 
+      category: 'accessories', 
+      subCategory: 'Adapters', 
+      desc: '4K@60Hz video output',
+      description: 'Premium USB-C to HDMI adapter supporting 4K resolution at 60Hz. Plug and play design with aluminum housing for durability.',
+      features: [
+        '4K@60Hz support',
+        'USB-C 3.1 input',
+        'HDMI 2.0 output',
+        'Aluminum housing',
+        'Plug and play',
+        'No driver needed',
+        '1-year warranty'
+      ],
+      image: 'https://m.media-amazon.com/images/I/61zmD+otuFL._SX342_.jpg'
+    },
+    { 
+      id: 180, 
+      name: 'DisplayPort to HDMI Adapter', 
+      price: 55, 
+      category: 'accessories', 
+      subCategory: 'Adapters', 
+      desc: 'DP to HDMI converter',
+      description: 'High-quality DisplayPort to HDMI adapter with gold-plated connectors. Supports up to 4K resolution.',
+      features: [
+        '4K@30Hz support',
+        'Gold-plated connectors',
+        'DisplayPort 1.2',
+        'HDMI 1.4',
+        'Compact design',
+        'Durable cable',
+        '2-year warranty'
+      ],
+      image: 'https://m.media-amazon.com/images/I/61Y0VFYVECL._AC_SY300_SX300_QL70_ML2_.jpg'
+    },
+    { 
+      id: 181, 
+      name: 'USB 3.0 to Ethernet Adapter', 
+      price: 95, 
+      category: 'accessories', 
+      subCategory: 'Adapters', 
+      desc: 'Gigabit LAN adapter',
+      description: 'Fast and reliable USB 3.0 to Gigabit Ethernet adapter. Perfect for laptops without built-in Ethernet ports.',
+      features: [
+        'Gigabit Ethernet',
+        'USB 3.0 interface',
+        'Wake-on-LAN support',
+        'Auto-negotiation',
+        'Plug and play',
+        'LED indicators',
+        '3-year warranty'
+      ],
+      image: 'https://m.media-amazon.com/images/I/61sgXDWDjVL._AC_SY606_.jpg'
+    },
+    { 
+      id: 182, 
+      name: 'USB-C to USB 3.0 Hub Adapter', 
+      price: 70, 
+      category: 'accessories', 
+      subCategory: 'Adapters', 
+      desc: '4-port USB hub adapter',
+      description: 'Compact USB-C to 4-port USB 3.0 hub adapter. Expand your connectivity with high-speed data transfer.',
+      features: [
+        '4 USB 3.0 ports',
+        '5Gbps data speed',
+        'USB-C input',
+        'Portable design',
+        'Hot-swappable',
+        'LED indicator',
+        '1-year warranty'
+      ],
+      image: 'https://m.media-amazon.com/images/I/61k4+DrQ08L._AC_SY300_SX300_QL70_ML2_.jpg'
+    },
+    { 
+      id: 183, 
+      name: 'HDMI to VGA Adapter with Audio', 
+      price: 65, 
+      category: 'accessories', 
+      subCategory: 'Adapters', 
+      desc: 'HDMI to VGA converter',
+      description: 'HDMI to VGA adapter with 3.5mm audio output. Compatible with most devices for legacy monitor support.',
+      features: [
+        '1080p support',
+        'Audio output port',
+        'Gold-plated HDMI',
+        'USB powered',
+        'Compact design',
+        'Wide compatibility',
+        '1-year warranty'
+      ],
+      image: 'https://m.media-amazon.com/images/I/615wRtJ5+HL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
 
     /* Cleaning Kits */
@@ -2244,7 +2341,7 @@ export class ProductService {
         'Anti-static gloves',
         'Storage case included'
       ],
-      image: 'https://m.media-amazon.com/images/I/81kFQHCs5wL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71pV-DVMyCL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 179, 
@@ -2263,7 +2360,7 @@ export class ProductService {
         '10-foot power cord',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71Lp1PY9PjL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61f04LlIw2L._AC_SX425_.jpg'
     },
     { 
       id: 180, 
@@ -2282,7 +2379,7 @@ export class ProductService {
         'Lifetime warranty bits',
         'Repair guides access'
       ],
-      image: 'https://m.media-amazon.com/images/I/81WMOiY1t3L._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/910pxflmH4L._AC_SY450_.jpg'
     },
     { 
       id: 181, 
@@ -2301,7 +2398,7 @@ export class ProductService {
         'Ergonomic handles',
         '1-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/71xWN2xoRJL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71J2AR0fhaL._AC_SY450_.jpg'
     },
     { 
       id: 182, 
@@ -2320,7 +2417,7 @@ export class ProductService {
         'Made in USA',
         '100% satisfaction'
       ],
-      image: 'https://m.media-amazon.com/images/I/71Z8xh3QHQL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71DplVF8lAL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
 
     /* Thermal Paste */
@@ -2340,7 +2437,7 @@ export class ProductService {
         '1g syringe',
         'Professional grade'
       ],
-      image: 'https://m.media-amazon.com/images/I/61YGmK+AqyL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71Yn-iAt+cL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 183, 
@@ -2359,7 +2456,7 @@ export class ProductService {
         '4g tube',
         'Made in Germany'
       ],
-      image: 'https://m.media-amazon.com/images/I/61eWBnJ8yUL._AC_SL1500_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61-m6K3G+KL._AC_SY300_SX300_QL70_ML2_.jpg'
     },
     { 
       id: 184, 
@@ -2378,7 +2475,7 @@ export class ProductService {
         'NA-CW1 cleaning wipes',
         '6-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61h8E8rUxzL._AC_SL1200_.jpg'
+      image: 'https://m.media-amazon.com/images/I/71GMxZ3DXzL._AC_SX425_.jpg'
     },
     { 
       id: 185, 
@@ -2397,7 +2494,7 @@ export class ProductService {
         'Temperature: -250°C to +350°C',
         'Professional grade'
       ],
-      image: 'https://m.media-amazon.com/images/I/51TtOQhB8tL._AC_SL1200_.jpg'
+      image: 'https://m.media-amazon.com/images/I/81KzqlmInpL._AC_SX425_.jpg'
     },
     { 
       id: 186, 
@@ -2416,7 +2513,7 @@ export class ProductService {
         'Easy application',
         '3-year warranty'
       ],
-      image: 'https://m.media-amazon.com/images/I/61S2VbfHsNL._AC_SL1280_.jpg'
+      image: 'https://m.media-amazon.com/images/I/61wM+r5DfaL._AC_SY300_SX300_QL70_ML2_.jpg'
     }
   ];
 

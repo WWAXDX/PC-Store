@@ -37,8 +37,8 @@ export class Home implements OnInit {
 
   ngOnInit() {
     const allProducts = this.productService.getAllProducts();
-    // Get 6 random featured products
+    // Get 8 random featured products
     const shuffled = [...allProducts].sort(() => 0.5 - Math.random());
-    this.featuredProducts.set(shuffled.slice(0, 6));
+    this.featuredProducts.set(shuffled.slice(0, 8));
   }
 }
