@@ -1,0 +1,83 @@
+@if (product()) {
+  <div class="details-page">
+    <div class="main-section">
+      <!-- Left Img -->
+      <div class="img-box">
+        @if (product()?.onSale) {
+          <div class="sale-badge">{{ t('home.sale') }} -{{ product()?.discount }}%</div>
+        }
+        <img [src]="product()?.image" [alt]="product()?.name" class="product-image">
+      </div>
+
+      <!-- Right info -->
+      <div class="info-box">
+        <div class="breadcrumb">
+          <a routerLink="/products">{{ t('products.products') }}</a>
+          <i class="bi bi-chevron-right"></i>
+          <span>{{ product()?.name }}</span>
+        </div>
+
+        <h1>{{ product()?.name }}</h1>
+
+        <div class="category-badge">{{ product()?.subCategory }}</div>
+
+        <p class="short-desc">{{ product()?.desc }}</p>
+
+        <div class="price-section">
+          @if (product()?.onSale && product()?.salePrice) {
+            <div class="price-group">
+              <div class="old-price-row">
+                <span class="old-price">{{ product()?.price }}</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon small">
+              </div>
+              <div class="current-price-row">
+                <span class="price">{{ product()?.salePrice }}</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon">
+                <span class="save-badge">{{ t('productDetails.save') }} {{ (product()?.price ?? 0) - (product()?.salePrice ?? 0) }} SAR</span>
+              </div>
+            </div>
+          } @else {
+            <span class="price">{{ product()?.price }}</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="Riyal" class="currency-icon">
+          }
+        </div>
+
+        <div class="action-buttons">
+          <button class="add-btn" (click)="addToCart(product()!)">
+            <i class="bi bi-cart-plus"></i>
+            {{ t('productDetails.addToCart') }}
+          </button>
+          <button class="back-btn" routerLink="/products">
+            <i class="bi bi-arrow-left"></i>
+            {{ t('productDetails.backToProducts') }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comprehensive Description Section -->
+    <div class="description-section">
+      <h3>{{ t('productDetails.description') }}</h3>
+      <p class="full-description">{{ product()?.description }}</p>
+    </div>
+
+    <!-- Features Section Below -->
+    <div class="features-section">
+      <h3>{{ t('productDetails.keyFeatures') }}</h3>
+      <ul class="features">
+        @for (f of product()?.features ?? []; track f) {
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ f }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+} @else {
+  <div class="loading">
+    <i class="bi bi-box-seam"></i>
+    <p>{{ t('productDetails.notFound') }}</p>
+    <button class="back-btn" routerLink="/products">{{ t('productDetails.backToProducts') }}</button>
+  </div>
+}

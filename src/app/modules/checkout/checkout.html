@@ -1,0 +1,262 @@
+<div class="checkout-page">
+  @if (orderPlaced()) {
+    <div class="order-success">
+      <div class="success-content">
+        <i class="bi bi-check-circle-fill"></i>
+        <h2>{{ t('checkout.orderSuccess') }}</h2>
+        <p>{{ t('checkout.redirecting') }}</p>
+      </div>
+    </div>
+  } @else {
+  <div class="checkout-container">
+    <!-- Header -->
+    <div class="checkout-header">
+      <h1>{{ t('checkout.title') }}</h1>
+      <a routerLink="/cart" class="back-link">
+        <i class="bi bi-arrow-left"></i> {{ t('checkout.backToCart') }}
+      </a>
+    </div>
+
+    <div class="checkout-content">
+      <!-- Left Side - Forms -->
+      <div class="forms-section">
+        <!-- Shipping Information -->
+        <div class="section-card">
+          <h2>
+            <i class="bi bi-truck"></i>
+            {{ t('checkout.shippingInfo') }}
+          </h2>
+          
+          <form [formGroup]="shippingForm" class="form-grid">
+            <div class="form-group full-width">
+              <label>{{ t('checkout.fullName') }}</label>
+              <input 
+                type="text" 
+                formControlName="fullName"
+                [placeholder]="t('checkout.fullNamePlaceholder')"
+                [class.invalid]="shippingForm.get('fullName')?.invalid && shippingForm.get('fullName')?.touched"
+              >
+              @if (shippingForm.get('fullName')?.invalid && shippingForm.get('fullName')?.touched) {
+                <span class="error-msg">{{ t('checkout.fullNameError') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.email') }}</label>
+              <input 
+                type="email" 
+                formControlName="email"
+                [placeholder]="t('checkout.emailPlaceholder')"
+                [class.invalid]="shippingForm.get('email')?.invalid && shippingForm.get('email')?.touched"
+              >
+              @if (shippingForm.get('email')?.invalid && shippingForm.get('email')?.touched) {
+                <span class="error-msg">{{ t('checkout.emailError') }}</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.phone') }}</label>
+              <input 
+                type="tel" 
+                formControlName="phone"
+                [placeholder]="t('checkout.phonePlaceholder')"
+                [class.invalid]="shippingForm.get('phone')?.invalid && shippingForm.get('phone')?.touched"
+              >
+              @if (shippingForm.get('phone')?.invalid && shippingForm.get('phone')?.touched) {
+                <span class="error-msg">{{ t('checkout.phoneError') }}</span>
+              }
+            </div>
+
+            <div class="form-group full-width">
+              <label>{{ t('checkout.address') }}</label>
+              <input 
+                type="text" 
+                formControlName="address"
+                [placeholder]="t('checkout.addressPlaceholder')"
+                [class.invalid]="shippingForm.get('address')?.invalid && shippingForm.get('address')?.touched"
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.city') }}</label>
+              <input 
+                type="text" 
+                formControlName="city"
+                [placeholder]="t('checkout.cityPlaceholder')"
+                [class.invalid]="shippingForm.get('city')?.invalid && shippingForm.get('city')?.touched"
+              >
+            </div>
+
+            <div class="form-group">
+              <label>{{ t('checkout.postalCode') }}</label>
+              <input 
+                type="text" 
+                formControlName="postalCode"
+                [placeholder]="t('checkout.postalCodePlaceholder')"
+                [class.invalid]="shippingForm.get('postalCode')?.invalid && shippingForm.get('postalCode')?.touched"
+              >
+              @if (shippingForm.get('postalCode')?.invalid && shippingForm.get('postalCode')?.touched) {
+                <span class="error-msg">{{ t('checkout.postalCodeError') }}</span>
+              }
+            </div>
+          </form>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="section-card">
+          <h2>
+            <i class="bi bi-credit-card"></i>
+            {{ t('checkout.paymentMethod') }}
+          </h2>
+
+          <div class="payment-options">
+            <label class="payment-option" [class.active]="paymentMethod() === 'card'">
+              <input 
+                type="radio" 
+                name="payment" 
+                value="card"
+                [checked]="paymentMethod() === 'card'"
+                (change)="setPaymentMethod('card')"
+              >
+              <div class="option-content">
+                <i class="bi bi-credit-card-fill"></i>
+                <span>{{ t('checkout.creditCard') }}</span>
+              </div>
+            </label>
+
+            <label class="payment-option" [class.active]="paymentMethod() === 'cod'">
+              <input 
+                type="radio" 
+                name="payment" 
+                value="cod"
+                [checked]="paymentMethod() === 'cod'"
+                (change)="setPaymentMethod('cod')"
+              >
+              <div class="option-content">
+                <i class="bi bi-cash"></i>
+                <span>{{ t('checkout.cashOnDelivery') }}</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Card Details -->
+          @if (paymentMethod() === 'card') {
+            <form [formGroup]="cardForm" class="card-details">
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label>{{ t('checkout.cardNumber') }}</label>
+                  <input 
+                    type="text" 
+                    formControlName="cardNumber"
+                    placeholder="1234567890123456"
+                    maxlength="16"
+                    [class.invalid]="cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched"
+                  >
+                  @if (cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched) {
+                    <span class="error-msg">{{ t('checkout.cardNumberError') }}</span>
+                  }
+                </div>
+
+                <div class="form-group full-width">
+                  <label>{{ t('checkout.cardName') }}</label>
+                  <input 
+                    type="text" 
+                    formControlName="cardName"
+                    [placeholder]="t('checkout.cardNamePlaceholder')"
+                    [class.invalid]="cardForm.get('cardName')?.invalid && cardForm.get('cardName')?.touched"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>{{ t('checkout.expiryDate') }}</label>
+                  <input 
+                    type="text" 
+                    formControlName="expiryDate"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    [class.invalid]="cardForm.get('expiryDate')?.invalid && cardForm.get('expiryDate')?.touched"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>{{ t('checkout.cvv') }}</label>
+                  <input 
+                    type="text" 
+                    formControlName="cvv"
+                    placeholder="123"
+                    maxlength="4"
+                    [class.invalid]="cardForm.get('cvv')?.invalid && cardForm.get('cvv')?.touched"
+                  >
+                </div>
+              </div>
+            </form>
+          }
+        </div>
+      </div>
+
+      <!-- Right Side - Order Summary -->
+      <div class="summary-section">
+        <div class="section-card sticky">
+          <h2>{{ t('checkout.orderSummary') }}</h2>
+
+          <div class="summary-items">
+            @for (item of cartItems(); track item.product.id) {
+              <div class="summary-item">
+                <img [src]="item.product.image" [alt]="item.product.name">
+                <div class="item-details">
+                  <h4>{{ item.product.name }}</h4>
+                  <p>{{ t('cart.quantity') }}: {{ item.quantity }}</p>
+                </div>
+                <div class="item-price">
+                  {{ (item.product.onSale ? item.product.salePrice : item.product.price)! * item.quantity }}
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="summary-totals">
+            <div class="total-row">
+              <span>{{ t('cart.subtotal') }}</span>
+              <span>
+                {{ getSubtotal() }}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+              </span>
+            </div>
+
+            <div class="total-row">
+              <span>{{ t('cart.shipping') }}</span>
+              <span [class.free]="getShipping() === 0">
+                @if (getShipping() === 0) {
+                  {{ t('cart.free') }}
+                } @else {
+                  {{ getShipping() }}
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                }
+              </span>
+            </div>
+
+            <div class="total-row grand-total">
+              <span>{{ t('cart.grandTotal') }}</span>
+              <span>
+                {{ getTotal() }}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+              </span>
+            </div>
+          </div>
+
+          <button class="place-order-btn" (click)="placeOrder()">
+            <i class="bi bi-check-circle"></i>
+            {{ t('checkout.placeOrder') }}
+          </button>
+
+          <div class="secure-notice">
+            <i class="bi bi-shield-check"></i>
+            {{ t('checkout.securePayment') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

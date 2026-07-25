@@ -1,0 +1,202 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-lightning-charge-fill"></i>
+        <span>PC Parts</span>
+      </a>
+    </div>
+
+    <div class="top-actions">
+      <!-- Language Toggle -->
+      <button class="language-btn" (click)="toggleLanguage()" title="تغيير اللغة">
+        <i class="bi bi-globe"></i>
+        <span>{{ t('nav.language') }}</span>
+      </button>
+
+      <a routerLink="/cart" class="icon-btn cart-btn" [class.bounce]="cartBounce" [title]="t('nav.cart')">
+        <i class="bi bi-cart-fill"></i>
+        @if (cartCount > 0) {
+          <span class="cart-badge">{{ cartCount }}</span>
+        }
+      </a>
+
+      <a routerLink="/orders" class="icon-btn orders-btn" [title]="t('nav.orders')">
+        <i class="bi bi-bag-check-fill"></i>
+      </a>
+
+      @if (isLoggedIn()) {
+        <div class="icon-btn account-btn user-menu"
+             (mouseenter)="showUserMenuNow()"
+             (mouseleave)="startUserMenuHideTimer()">
+          <i class="bi bi-person-check-fill"></i>
+          @if (showUserMenu) {
+            <div class="user-dropdown" (mouseenter)="cancelUserMenuHideTimer()" (mouseleave)="startUserMenuHideTimer()">
+              <div class="user-dropdown-name">{{ currentUser()?.fullName }}</div>
+              <button type="button" (click)="logout()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>{{ t('nav.logout') }}</span>
+              </button>
+            </div>
+          }
+        </div>
+      } @else {
+        <a routerLink="/login" class="icon-btn login-btn" [title]="t('nav.login')">
+          <i class="bi bi-person-fill"></i>
+        </a>
+      }
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()" title="Menu">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Second Bar - Categories & Search -->
+  <div class="second-bar" [class.sticky]="isScrolled">
+    <div class="categories-nav">
+      @for (category of categories(); track category.key) {
+        <div class="category-item" 
+             (mouseenter)="showDropdown(category.key)"
+             (mouseleave)="startHideTimer()">
+          <i class="category-icon" [class]="category.icon" [style.color]="category.color"></i>
+          <span class="category-name" (click)="navigateToCategory(category, $event)">{{ category.name }}</span>
+          <i class="bi bi-chevron-down dropdown-arrow" 
+             (click)="showDropdown(category.key); $event.stopPropagation()"></i>
+          
+          <!-- Dropdown -->
+          @if (activeDropdown === category.key) {
+            <div class="category-dropdown" 
+                 (mouseenter)="cancelHideTimer()"
+                 (mouseleave)="hideDropdownNow()">
+              @for (item of category.items; track item.key) {
+                <a routerLink="/products" 
+                   [queryParams]="{category: item.key}" 
+                   class="dropdown-item"
+                   (click)="hideDropdownNow()">
+                  <i [class]="item.icon" class="subcategory-icon"></i>
+                  {{ item.label }}
+                </a>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Search in Second Bar -->
+    <div class="search-container-second">
+      <div class="search-box-second">
+        <i class="bi bi-search search-icon"></i>
+        <input 
+          type="text" 
+          [placeholder]="t('nav.search')"
+          [(ngModel)]="searchText"
+          (keyup.enter)="onSearch()"
+        />
+        @if (searchText) {
+          <button (click)="onSearch()">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" [class.active]="showMobileSidebar" (click)="closeMobileMenu()">
+    <div class="sidebar-content" (click)="$event.stopPropagation()">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <i class="bi bi-lightning-charge-fill"></i>
+          <h3>PC Parts</h3>
+        </div>
+        <button class="close-sidebar" (click)="closeMobileMenu()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      
+      <div class="sidebar-search">
+        <i class="bi bi-search"></i>
+        <input 
+          type="text" 
+          [placeholder]="t('nav.search')"
+          [(ngModel)]="searchText"
+          (keyup.enter)="onSearchMobile()"
+        />
+        @if (searchText) {
+          <button (click)="onSearchMobile()">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </button>
+        }
+      </div>
+
+      <div class="sidebar-categories">
+        @for (category of categories(); track category.key) {
+          <div class="sidebar-category">
+            <div class="sidebar-category-title">
+              <div class="category-info" (click)="navigateToCategory(category); closeMobileMenu()">
+                <i [class]="category.icon" [style.color]="category.color"></i>
+                <span>{{ category.name }}</span>
+              </div>
+              <i class="bi" 
+                 [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
+                 [class.bi-chevron-up]="expandedSidebarCategory === category.key"
+                 (click)="toggleSidebarCategory(category.key); $event.stopPropagation()"></i>
+            </div>
+            @if (expandedSidebarCategory === category.key) {
+              <div class="sidebar-category-items">
+                @for (item of category.items; track item.key) {
+                  <a routerLink="/products" 
+                     [queryParams]="{category: item.key}" 
+                     class="sidebar-item"
+                     (click)="closeMobileMenu()">
+                    <i [class]="item.icon" class="subcategory-icon"></i>
+                    {{ item.label }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="sidebar-actions">
+        <a routerLink="/cart" class="sidebar-action" (click)="closeMobileMenu()">
+          <i class="bi bi-cart3"></i>
+          <span>{{ t('nav.cart') }} ({{ cartCount }})</span>
+          @if (cartCount > 0) {
+            <span class="cart-indicator">{{ cartCount }}</span>
+          }
+        </a>
+        <a routerLink="/orders" class="sidebar-action" (click)="closeMobileMenu()">
+          <i class="bi bi-bag-check"></i>
+          <span>{{ t('nav.orders') }}</span>
+        </a>
+        @if (isLoggedIn()) {
+          <div class="sidebar-action sidebar-user-info">
+            <i class="bi bi-person-check-fill"></i>
+            <span>{{ currentUser()?.fullName }}</span>
+          </div>
+          <button class="sidebar-action" (click)="logout(); closeMobileMenu()">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>{{ t('nav.logout') }}</span>
+          </button>
+        } @else {
+          <a routerLink="/login" class="sidebar-action" (click)="closeMobileMenu()">
+            <i class="bi bi-person-circle"></i>
+            <span>{{ t('nav.login') }}</span>
+          </a>
+        }
+        <button class="sidebar-action" (click)="toggleLanguage()">
+          <i class="bi bi-translate"></i>
+          <span>{{ t('nav.language') === 'E' ? 'English' : 'العربية' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</nav>

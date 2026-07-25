@@ -1,0 +1,109 @@
+<div class="cart-page">
+
+  @if (items.length === 0) {
+    <div class="cart-empty">
+      <div class="empty-icon">
+        <i class="bi bi-cart-x"></i>
+      </div>
+      <h2>{{ t('cart.empty') }}</h2>
+      <p>{{ t('cart.emptyDesc') }}</p>
+      <a routerLink="/products" class="continue-shopping">
+        <i class="bi bi-arrow-left"></i> {{ t('cart.continueShopping') }}
+      </a>
+    </div>
+  } @else {
+    <div class="cart-container">
+      
+      <div class="cart-items">
+        <div class="cart-header">
+          <h2>{{ t('cart.items') }} ({{ items.length }})</h2>
+          <button class="clear-btn" (click)="clear()">
+            <i class="bi bi-trash"></i> {{ t('cart.clear') }}
+          </button>
+        </div>
+
+        @for (item of items; track item.product.id; let i = $index) {
+          <div class="cart-item">
+            <div class="item-image">
+              <img [src]="item.product.image" [alt]="item.product.name">
+              @if (item.product.onSale) {
+                <div class="sale-tag">{{ t('home.sale') }} -{{ item.product.discount }}%</div>
+              }
+            </div>
+            
+            <div class="item-details">
+              <h3>{{ item.product.name }}</h3>
+              <p class="category">{{ item.product.subCategory }}</p>
+              <p class="description">{{ item.product.desc }}</p>
+            </div>
+
+            <div class="item-actions">
+              <div class="price-section">
+                @if (item.product.onSale && item.product.salePrice) {
+                  <div class="price-group">
+                    <span class="old-price">{{ item.product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-small"></span>
+                    <span class="current-price">{{ item.product.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+                  </div>
+                } @else {
+                  <div class="price-group">
+                    <span class="current-price">{{ item.product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+                  </div>
+                }
+              </div>
+
+              <div class="quantity-control">
+                <button class="qty-btn" (click)="decreaseQuantity(i)">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <span class="quantity">{{ item.quantity }}</span>
+                <button class="qty-btn" (click)="increaseQuantity(i)">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+              
+              <button class="remove-btn" (click)="remove(i)">
+                <i class="bi bi-trash3"></i> {{ t('cart.remove') }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="order-summary">
+        <h2>{{ t('cart.summary') }}</h2>
+        
+        <div class="summary-row">
+          <span>{{ t('cart.subtotal') }} ({{ getTotalItems() }} {{ t('cart.itemsCount') }})</span>
+          <span class="amount">{{ getSubtotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        </div>
+        
+        <div class="summary-row">
+          <span>{{ t('cart.discount') }}</span>
+          <span class="amount discount">-{{ getDiscount() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        </div>
+        
+        <div class="summary-row">
+          <span>{{ t('cart.shipping') }}</span>
+          <span class="amount free">{{ t('cart.free') }}</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="summary-row total">
+          <span>{{ t('cart.total') }}</span>
+          <span class="amount">{{ getTotal() }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR"></span>
+        </div>
+
+        <button class="checkout-btn" routerLink="/checkout">
+          <i class="bi bi-credit-card"></i> {{ t('cart.checkout') }}
+        </button>
+        
+        <a routerLink="/products" class="continue-shopping">
+          <i class="bi bi-arrow-left"></i> {{ t('cart.continueShopping') }}
+        </a>
+      </div>
+
+    </div>
+  }
+
+</div>

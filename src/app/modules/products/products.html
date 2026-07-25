@@ -1,0 +1,79 @@
+<div class="products-page">
+  <h1 class="title">
+    {{ selectedCategory() ? getCategoryName() : t('products.allProducts') }}
+  </h1>
+
+  @if (searchTerm()) {
+    <p class="search-info">{{ t('products.searchResults') }} "{{ searchTerm() }}"</p>
+  }
+
+  @if (selectedCategory()) {
+    <div class="filter-bar">
+      <div class="product-count">
+        <span class="count-number">{{ getTotalProductCount() }}</span>
+        <span class="count-text">{{ t('products.products') }}</span>
+      </div>
+      
+      <div class="sort-container">
+        <label for="sort-select">{{ t('products.sortBy') }}</label>
+        <select id="sort-select" [ngModel]="sortBy()" (change)="onSortChange($event)">
+          <option value="default">{{ t('products.default') }}</option>
+          <option value="price-asc">{{ t('products.priceLowToHigh') }}</option>
+          <option value="price-desc">{{ t('products.priceHighToLow') }}</option>
+          <option value="name-asc">{{ t('products.nameAZ') }}</option>
+          <option value="name-desc">{{ t('products.nameZA') }}</option>
+        </select>
+      </div>
+    </div>
+  }
+
+  @if (apiError()) {
+    <div class="no-products load-error">
+      <i class="bi bi-exclamation-triangle"></i>
+      <p>{{ t('common.loadError') }}</p>
+      <button type="button" (click)="retry()">{{ t('common.retry') }}</button>
+    </div>
+  } @else if (displayedProducts().length > 0) {
+    @for (subCategory of getSubCategories(); track subCategory) {
+      <div class="subcategory-section">
+        <h2 class="subcategory-title">{{ translateSubCategory(subCategory) }}</h2>
+        
+        <div [class.products-scroll-container]="!(selectedCategory() || searchTerm())" [class.products-grid-container]="(selectedCategory() || searchTerm())">
+          <div [class.products-scroll]="!(selectedCategory() || searchTerm())" [class.products-grid]="(selectedCategory() || searchTerm())">
+            @for (p of groupedProducts()[subCategory]; track p.id) {
+              <div class="products-card">
+                @if (p.onSale) {
+                  <div class="sale-badge">{{ t('home.sale') }} -{{ p.discount }}%</div>
+                }
+                <div class="product-content" [routerLink]="['/product', p.id]">
+                  <div class="product-image-container">
+                    <img [src]="p.image" [alt]="p.name" class="product-image">
+                  </div>
+                  <h3>{{ p.name }}</h3>
+                  <p class="desc">{{ p.desc }}</p>
+                  @if (p.onSale && p.salePrice) {
+                    <div class="price-group">
+                      <p class="old-price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                      <p class="price">{{ p.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                    </div>
+                  } @else {
+                    <p class="price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="no-products">
+      <i class="bi bi-inbox"></i>
+      @if (searchTerm()) {
+        <p>{{ t('products.noProductsSearch') }} "{{ searchTerm() }}"</p>
+      } @else {
+        <p>{{ t('products.noProducts') }}</p>
+      }
+    </div>
+  }
+</div>

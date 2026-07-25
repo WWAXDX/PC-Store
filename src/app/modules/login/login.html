@@ -1,0 +1,196 @@
+<div class="login-page">
+  <div class="login-container">
+    
+    <!-- Back Button -->
+    <a routerLink="/" class="back-button" [title]="t('login.backToHome')">
+      <i class="bi bi-arrow-left"></i>
+    </a>
+
+    <!-- Left Side - Image/Branding -->
+    <div class="login-side">
+      <div class="side-content">
+        <div class="logo-section">
+          <i class="bi bi-lightning-charge-fill"></i>
+          <h1>{{ t('nav.pcParts') }} {{ t('products.products') }}</h1>
+        </div>
+        <div class="welcome-text">
+          <h2>{{ isLoginMode() ? t('login.welcomeBack') : t('login.joinUs') }}</h2>
+          <p>{{ isLoginMode() ? t('login.signInDesc') : t('login.registerDesc') }}</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <i class="bi bi-shield-check"></i>
+            <span>{{ t('login.secureAndSafe') }}</span>
+          </div>
+          <div class="feature">
+            <i class="bi bi-truck"></i>
+            <span>{{ t('login.fastDelivery') }}</span>
+          </div>
+          <div class="feature">
+            <i class="bi bi-award"></i>
+            <span>{{ t('login.bestPrices') }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="form-side">
+      <div class="form-container">
+        
+        <!-- Header -->
+        <div class="form-header">
+          <h2>{{ isLoginMode() ? t('login.signIn') : t('login.createAccount') }}</h2>
+          <p>{{ isLoginMode() ? t('login.enterCredentials') : t('login.fillDetails') }}</p>
+        </div>
+
+        <!-- Error Message -->
+        @if (error()) {
+          <div class="error-message">
+            <i class="bi bi-exclamation-circle"></i>
+            <span>{{ error() }}</span>
+          </div>
+        }
+
+        <!-- Form -->
+        <form (ngSubmit)="onSubmit()" class="login-form">
+          
+          <!-- Full Name (Register only) -->
+          @if (!isLoginMode()) {
+            <div class="form-group">
+              <label for="fullName">{{ t('login.fullName') }}</label>
+              <div class="input-wrapper">
+                <i class="bi bi-person"></i>
+                <input
+                  type="text"
+                  id="fullName"
+                  [value]="fullName()"
+                  (input)="fullName.set($any($event.target).value)"
+                  [placeholder]="t('login.enterFullName')"
+                  [disabled]="loading()"
+                  required
+                />
+              </div>
+            </div>
+          }
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">{{ t('login.email') }}</label>
+            <div class="input-wrapper">
+              <i class="bi bi-envelope"></i>
+              <input
+                type="email"
+                id="email"
+                [value]="email()"
+                (input)="email.set($any($event.target).value)"
+                [placeholder]="t('login.enterEmail')"
+                [disabled]="loading()"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">{{ t('login.password') }}</label>
+            <div class="input-wrapper">
+              <i class="bi bi-lock"></i>
+              <input
+                [type]="showPassword() ? 'text' : 'password'"
+                id="password"
+                [value]="password()"
+                (input)="password.set($any($event.target).value)"
+                [placeholder]="t('login.enterPassword')"
+                [disabled]="loading()"
+                required
+              />
+              <i 
+                class="toggle-password" 
+                [class.bi-eye]="!showPassword()"
+                [class.bi-eye-slash]="showPassword()"
+                (click)="togglePasswordVisibility()"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Confirm Password (Register only) -->
+          @if (!isLoginMode()) {
+            <div class="form-group">
+              <label for="confirmPassword">{{ t('login.confirmPassword') }}</label>
+              <div class="input-wrapper">
+                <i class="bi bi-lock-fill"></i>
+                <input
+                  [type]="showConfirmPassword() ? 'text' : 'password'"
+                  id="confirmPassword"
+                  [value]="confirmPassword()"
+                  (input)="confirmPassword.set($any($event.target).value)"
+                  [placeholder]="t('login.confirmPasswordPlaceholder')"
+                  [disabled]="loading()"
+                  required
+                />
+                <i 
+                  class="toggle-password" 
+                  [class.bi-eye]="!showConfirmPassword()"
+                  [class.bi-eye-slash]="showConfirmPassword()"
+                  (click)="toggleConfirmPasswordVisibility()"
+                ></i>
+              </div>
+            </div>
+          }
+
+          <!-- Remember Me & Forgot Password (Login only) -->
+          @if (isLoginMode()) {
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" />
+                <span>{{ t('login.rememberMe') }}</span>
+              </label>
+              <a href="#" class="forgot-password">{{ t('login.forgotPassword') }}</a>
+            </div>
+          }
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn" [disabled]="loading()">
+            @if (loading()) {
+              <span class="spinner"></span>
+              <span>{{ isLoginMode() ? t('login.signingIn') : t('login.creatingAccount') }}</span>
+            } @else {
+              <span>{{ isLoginMode() ? t('login.signIn') : t('login.createAccount') }}</span>
+              <i class="bi bi-arrow-right"></i>
+            }
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+          <span>{{ t('login.or') }}</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="social-login">
+          <button type="button" class="social-btn google" (click)="socialLogin('google')">
+            <i class="bi bi-google"></i>
+            <span>{{ t('login.googleSignIn') }}</span>
+          </button>
+          <button type="button" class="social-btn facebook" (click)="socialLogin('facebook')">
+            <i class="bi bi-facebook"></i>
+            <span>{{ t('login.facebookSignIn') }}</span>
+          </button>
+        </div>
+
+        <!-- Toggle Mode -->
+        <div class="toggle-mode">
+          <p>
+            {{ isLoginMode() ? t('login.noAccount') : t('login.haveAccount') }}
+            <button type="button" (click)="toggleMode()">
+              {{ isLoginMode() ? t('login.signUp') : t('login.signIn') }}
+            </button>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
