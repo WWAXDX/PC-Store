@@ -1,0 +1,80 @@
+.success-page {
+  padding: 130px 24px 48px;
+  display: flex;
+  justify-content: center;
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+
+    > i {
+      font-size: 52px;
+      color: #10b981;
+    }
+
+    h1 {
+      margin: 12px 0;
+      color: var(--text-primary);
+      font-size: 24px;
+    }
+
+    .order-id, .note, .ship {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .lines, .totals {
+      text-align: start;
+      margin: 20px 0;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+    }
+
+    .line, .totals > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    .discount { color: #10b981 !important; }
+    .grand { font-weight: 800; font-size: 16px; margin-top: 8px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+
+      a {
+        padding: 11px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .primary {
+        background: var(--brand-gradient);
+        color: #fff;
+      }
+
+      .ghost {
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 110px;
+  }
+}

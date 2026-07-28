@@ -1,86 +1,124 @@
 <div class="home-page">
 
-  <!-- Banner -->
-   <section class="banner">
-    <h1>{{ t('home.title') }}</h1>
-    <p>{{ t('home.subtitle') }}</p>
-    <a routerLink="/products" routerLinkActive="active"><button>{{ t('home.shopNow') }}</button></a>
-   </section>
-
-   <!-- Categories -->
-   <section class="categories">
-    <h2>{{ t('home.categories') }}</h2>
-    <div class="category-grid">
-      @for (category of categories(); track category.name) {
-        <a [routerLink]="['/products']" [queryParams]="{category: category.subCategory}" class="category-card" [style.background-image]="'url(' + category.image + ')'">
-          <i [ngClass]="category.icon" class="category-icon"></i>
-          <h3>{{ category.name }}</h3>
-        </a>
-      }
+  <section
+    class="hero"
+    style="background-image: linear-gradient(105deg, rgba(15, 18, 40, 0.82) 0%, rgba(15, 18, 40, 0.45) 55%, rgba(15, 18, 40, 0.55) 100%), url('images/hero.jpg')"
+  >
+    <div class="hero-inner">
+      <p class="hero-brand">PC Parts</p>
+      <h1>{{ t('home.title') }}</h1>
+      <p class="hero-sub">{{ t('home.subtitle') }}</p>
+      <a routerLink="/products" class="hero-cta">{{ t('home.shopNow') }}</a>
     </div>
-   </section>
+  </section>
 
-   <!-- Featured Products -->
-   <section class="featured">
-    <h2>{{ t('home.featuredProducts') }}</h2>
-    @if (apiError()) {
-      <div class="load-error">
-        <i class="bi bi-exclamation-triangle"></i>
-        <p>{{ t('common.loadError') }}</p>
-        <button type="button" (click)="loadFeaturedProducts()">{{ t('common.retry') }}</button>
+  <div class="home-body">
+
+    <section class="categories">
+      <div class="section-head">
+        <h2>{{ t('home.categories') }}</h2>
       </div>
-    }
-    <div class="products-grid">
-      @for (product of featuredProducts(); track product.id) {
-        <div class="product-card">
-          @if (product.onSale) {
-            <div class="sale-badge">{{ t('home.sale') }} -{{ product.discount }}%</div>
+      <div class="category-grid">
+        @for (category of categories(); track category.subCategory) {
+          <a
+            [routerLink]="['/products']"
+            [queryParams]="{ category: category.subCategory }"
+            class="category-card"
+            [style.background-image]="'url(' + category.image + ')'"
+          >
+            <span class="category-label">
+              <i [ngClass]="category.icon"></i>
+              {{ category.name }}
+            </span>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="featured">
+      <div class="section-head">
+        <h2>{{ t('home.featuredProducts') }}</h2>
+        <a routerLink="/products" class="section-link">{{ t('home.viewAll') }}</a>
+      </div>
+
+      @if (apiError()) {
+        <div class="load-error">
+          <i class="bi bi-exclamation-triangle"></i>
+          <p>{{ t('common.loadError') }}</p>
+          <button type="button" (click)="loadFeaturedProducts()">{{ t('common.retry') }}</button>
+        </div>
+      }
+
+      @if (loading() && !apiError()) {
+        <div class="skeleton-grid">
+          @for (i of skeletonItems; track i) {
+            <div class="skeleton-card">
+              <div class="sk sk-image"></div>
+              <div class="sk sk-line medium"></div>
+              <div class="sk sk-line short"></div>
+              <div class="sk sk-footer"></div>
+            </div>
           }
-          <div class="product-image">
-            <img [src]="product.image" [alt]="product.name">
-          </div>
-          <div class="product-info">
-            <h3>{{ product.name }}</h3>
-            <p class="category">{{ product.subCategory }}</p>
-            <p class="description">{{ product.desc }}</p>
-            <div class="product-footer">
-              <div class="price-section">
+        </div>
+      }
+
+      @if (!loading() && !apiError()) {
+        <div class="products-grid">
+          @for (product of featuredProducts(); track product.id) {
+            <article class="product-card">
+              @if (product.onSale) {
+                <span class="sale-badge">-{{ product.discount }}%</span>
+              }
+
+              <a class="product-content" [routerLink]="['/product', product.id]">
+                <div class="product-image">
+                  <img [src]="product.image" [alt]="product.name" loading="lazy">
+                </div>
+                <h3>{{ product.name }}</h3>
                 @if (product.onSale && product.salePrice) {
                   <div class="price-group">
-                    <span class="old-price">{{ product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
-                    <span class="price">{{ product.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
+                    <span class="old-price">{{ product.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+                    <span class="price">{{ product.salePrice }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
                   </div>
                 } @else {
-                  <span class="price">{{ product.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></span>
+                  <span class="price">{{ product.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
                 }
-              </div>
-              <a [routerLink]="['/product', product.id]" class="view-btn">{{ t('home.viewDetails') }}</a>
+              </a>
+
+              <button type="button" class="add-btn" (click)="add(product)" [title]="t('home.addToCart')">
+                <i class="bi bi-cart-plus"></i>
+                <span>{{ t('home.addToCart') }}</span>
+              </button>
+            </article>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="features">
+      <div class="section-head">
+        <h2>{{ t('home.features') }}</h2>
+      </div>
+      <div class="features-grid">
+        @for (feature of features(); track feature.title) {
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i [ngClass]="feature.icon"></i>
             </div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
           </div>
-        </div>
-      }
-    </div>
-   </section>
+        }
+      </div>
+    </section>
 
-   <!-- Why Choose Us -->
-   <section class="features">
-    <h2>{{ t('home.features') }}</h2>
-    <div class="features-grid">
-      @for (feature of features(); track feature.title) {
-        <div class="feature-card">
-          <div class="feature-icon">{{ feature.icon }}</div>
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
-        </div>
-      }
-    </div>
-   </section>
+    <section class="cta">
+      <div class="cta-inner">
+        <h2>{{ t('home.ctaTitle') }}</h2>
+        <p>{{ t('home.ctaSubtitle') }}</p>
+        <a routerLink="/products" class="cta-btn">{{ t('home.browseAll') }}</a>
+      </div>
+    </section>
 
-   <!-- Call to Action -->
-   <section class="cta">
-    <h2>{{ t('home.ctaTitle') }}</h2>
-    <p>{{ t('home.ctaSubtitle') }}</p>
-    <a routerLink="/products"><button>{{ t('home.browseAll') }}</button></a>
-   </section>
-   
+  </div>
 </div>

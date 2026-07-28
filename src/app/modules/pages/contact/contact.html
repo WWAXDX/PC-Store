@@ -1,0 +1,18 @@
+<div class="content-page">
+  <h1>{{ t('pages.contactTitle') }}</h1>
+  <p>{{ t('pages.contactIntro') }}</p>
+
+  @if (sent()) {
+    <div class="ok-box">{{ t('pages.contactSent') }}</div>
+  }
+
+  <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()">
+    <label>{{ t('pages.contactName') }}</label>
+    <input type="text" formControlName="name">
+    <label>{{ t('pages.contactEmail') }}</label>
+    <input type="email" formControlName="email">
+    <label>{{ t('pages.contactMessage') }}</label>
+    <textarea rows="5" formControlName="message"></textarea>
+    <button type="submit">{{ t('pages.contactSend') }}</button>
+  </form>
+</div>

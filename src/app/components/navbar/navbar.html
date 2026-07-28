@@ -1,4 +1,4 @@
-<nav class="navbar" [class.scrolled]="isScrolled">
+<nav class="navbar" [class.scrolled]="isScrolled" [class.is-rtl]="currentLanguage() === 'ar'">
 
   <!-- Top Bar -->
   <div class="top-bar">
@@ -15,6 +15,23 @@
         <i class="bi bi-globe"></i>
         <span>{{ t('nav.language') }}</span>
       </button>
+
+      <button
+        type="button"
+        class="theme-btn"
+        (click)="toggleTheme()"
+        [title]="isDark() ? t('nav.themeLight') : t('nav.themeDark')"
+        [attr.aria-label]="isDark() ? t('nav.themeLight') : t('nav.themeDark')"
+      >
+        <i class="bi" [class.bi-sun-fill]="isDark()" [class.bi-moon-stars-fill]="!isDark()"></i>
+      </button>
+
+      <a routerLink="/wishlist" class="icon-btn wishlist-btn-nav" [title]="t('nav.wishlist')">
+        <i class="bi bi-heart-fill"></i>
+        @if (wishlistCount() > 0) {
+          <span class="cart-badge">{{ wishlistCount() }}</span>
+        }
+      </a>
 
       <a routerLink="/cart" class="icon-btn cart-btn" [class.bounce]="cartBounce" [title]="t('nav.cart')">
         <i class="bi bi-cart-fill"></i>
@@ -35,6 +52,20 @@
           @if (showUserMenu) {
             <div class="user-dropdown" (mouseenter)="cancelUserMenuHideTimer()" (mouseleave)="startUserMenuHideTimer()">
               <div class="user-dropdown-name">{{ currentUser()?.fullName }}</div>
+              @if (isAdmin()) {
+                <a routerLink="/admin/products" (click)="showUserMenu = false">
+                  <i class="bi bi-gear-fill"></i>
+                  <span>{{ t('nav.adminPanel') }}</span>
+                </a>
+                <a routerLink="/admin/orders" (click)="showUserMenu = false">
+                  <i class="bi bi-receipt"></i>
+                  <span>{{ t('nav.adminOrders') }}</span>
+                </a>
+              }
+              <a routerLink="/account" (click)="showUserMenu = false">
+                <i class="bi bi-person-badge"></i>
+                <span>{{ t('nav.account') }}</span>
+              </a>
               <button type="button" (click)="logout()">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>{{ t('nav.logout') }}</span>
@@ -112,86 +143,134 @@
       <div class="sidebar-header">
         <div class="sidebar-logo">
           <i class="bi bi-lightning-charge-fill"></i>
-          <h3>PC Parts</h3>
+          <div class="logo-text">
+            <h3>PC Parts</h3>
+            <span>{{ t('nav.menu') }}</span>
+          </div>
         </div>
-        <button class="close-sidebar" (click)="closeMobileMenu()">
+        <button class="close-sidebar" (click)="closeMobileMenu()" [attr.aria-label]="t('nav.closeMenu')">
           <i class="bi bi-x-lg"></i>
         </button>
       </div>
-      
+
       <div class="sidebar-search">
-        <i class="bi bi-search"></i>
-        <input 
-          type="text" 
-          [placeholder]="t('nav.search')"
-          [(ngModel)]="searchText"
-          (keyup.enter)="onSearchMobile()"
-        />
-        @if (searchText) {
-          <button (click)="onSearchMobile()">
-            <i class="bi bi-arrow-right-circle-fill"></i>
-          </button>
-        }
+        <div class="search-field">
+          <i class="bi bi-search"></i>
+          <input
+            type="text"
+            [placeholder]="t('nav.searchShort')"
+            [(ngModel)]="searchText"
+            (keyup.enter)="onSearchMobile()"
+          />
+          @if (searchText) {
+            <button type="button" (click)="onSearchMobile()" [attr.aria-label]="t('nav.search')">
+              <i class="bi bi-arrow-left-short" [class.bi-arrow-right-short]="currentLanguage() === 'en'"></i>
+            </button>
+          }
+        </div>
       </div>
 
-      <div class="sidebar-categories">
-        @for (category of categories(); track category.key) {
-          <div class="sidebar-category">
-            <div class="sidebar-category-title">
-              <div class="category-info" (click)="navigateToCategory(category); closeMobileMenu()">
-                <i [class]="category.icon" [style.color]="category.color"></i>
-                <span>{{ category.name }}</span>
-              </div>
-              <i class="bi" 
-                 [class.bi-chevron-down]="expandedSidebarCategory !== category.key" 
-                 [class.bi-chevron-up]="expandedSidebarCategory === category.key"
-                 (click)="toggleSidebarCategory(category.key); $event.stopPropagation()"></i>
-            </div>
-            @if (expandedSidebarCategory === category.key) {
-              <div class="sidebar-category-items">
-                @for (item of category.items; track item.key) {
-                  <a routerLink="/products" 
-                     [queryParams]="{category: item.key}" 
-                     class="sidebar-item"
-                     (click)="closeMobileMenu()">
-                    <i [class]="item.icon" class="subcategory-icon"></i>
-                    {{ item.label }}
-                  </a>
-                }
-              </div>
-            }
-          </div>
-        }
-      </div>
-
-      <div class="sidebar-actions">
-        <a routerLink="/cart" class="sidebar-action" (click)="closeMobileMenu()">
+      <div class="sidebar-quick">
+        <a routerLink="/cart" class="quick-link" (click)="closeMobileMenu()">
           <i class="bi bi-cart3"></i>
-          <span>{{ t('nav.cart') }} ({{ cartCount }})</span>
+          <span>{{ t('nav.cart') }}</span>
           @if (cartCount > 0) {
-            <span class="cart-indicator">{{ cartCount }}</span>
+            <em>{{ cartCount }}</em>
           }
         </a>
-        <a routerLink="/orders" class="sidebar-action" (click)="closeMobileMenu()">
+        <a routerLink="/wishlist" class="quick-link" (click)="closeMobileMenu()">
+          <i class="bi bi-heart"></i>
+          <span>{{ t('nav.wishlist') }}</span>
+          @if (wishlistCount() > 0) {
+            <em>{{ wishlistCount() }}</em>
+          }
+        </a>
+        <a routerLink="/orders" class="quick-link" (click)="closeMobileMenu()">
           <i class="bi bi-bag-check"></i>
           <span>{{ t('nav.orders') }}</span>
         </a>
-        @if (isLoggedIn()) {
-          <div class="sidebar-action sidebar-user-info">
-            <i class="bi bi-person-check-fill"></i>
-            <span>{{ currentUser()?.fullName }}</span>
-          </div>
-          <button class="sidebar-action" (click)="logout(); closeMobileMenu()">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>{{ t('nav.logout') }}</span>
-          </button>
-        } @else {
-          <a routerLink="/login" class="sidebar-action" (click)="closeMobileMenu()">
-            <i class="bi bi-person-circle"></i>
-            <span>{{ t('nav.login') }}</span>
-          </a>
-        }
-        <button class="sidebar-action" (click)="toggleLanguage()">
+      </div>
+
+      <div class="sidebar-section">
+        <p class="section-label">{{ t('nav.categories') }}</p>
+        <div class="sidebar-categories">
+          @for (category of categories(); track category.key) {
+            <div class="sidebar-category" [class.open]="expandedSidebarCategory === category.key">
+              <div class="sidebar-category-title">
+                <button type="button" class="category-info" (click)="navigateToCategory(category); closeMobileMenu()">
+                  <span class="cat-icon"><i [class]="category.icon"></i></span>
+                  <span>{{ category.name }}</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-toggle"
+                  (click)="toggleSidebarCategory(category.key); $event.stopPropagation()"
+                  [attr.aria-expanded]="expandedSidebarCategory === category.key"
+                >
+                  <i class="bi" [class.bi-chevron-down]="expandedSidebarCategory !== category.key" [class.bi-chevron-up]="expandedSidebarCategory === category.key"></i>
+                </button>
+              </div>
+              @if (expandedSidebarCategory === category.key) {
+                <div class="sidebar-category-items">
+                  @for (item of category.items; track item.key) {
+                    <a
+                      routerLink="/products"
+                      [queryParams]="{ category: item.key }"
+                      class="sidebar-item"
+                      (click)="closeMobileMenu()"
+                    >
+                      <i [class]="item.icon" class="subcategory-icon"></i>
+                      {{ item.label }}
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="sidebar-section sidebar-account">
+        <p class="section-label">{{ t('nav.accountSection') }}</p>
+        <div class="sidebar-actions">
+          @if (isLoggedIn()) {
+            <div class="sidebar-user-info">
+              <i class="bi bi-person-check-fill"></i>
+              <span>{{ currentUser()?.fullName }}</span>
+            </div>
+            @if (isAdmin()) {
+              <a routerLink="/admin/products" class="sidebar-action" (click)="closeMobileMenu()">
+                <i class="bi bi-gear-fill"></i>
+                <span>{{ t('nav.adminPanel') }}</span>
+              </a>
+              <a routerLink="/admin/orders" class="sidebar-action" (click)="closeMobileMenu()">
+                <i class="bi bi-receipt"></i>
+                <span>{{ t('nav.adminOrders') }}</span>
+              </a>
+            }
+            <a routerLink="/account" class="sidebar-action" (click)="closeMobileMenu()">
+              <i class="bi bi-person-badge"></i>
+              <span>{{ t('nav.account') }}</span>
+            </a>
+            <button type="button" class="sidebar-action danger" (click)="logout(); closeMobileMenu()">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>{{ t('nav.logout') }}</span>
+            </button>
+          } @else {
+            <a routerLink="/login" class="sidebar-action primary" (click)="closeMobileMenu()">
+              <i class="bi bi-person-circle"></i>
+              <span>{{ t('nav.login') }}</span>
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="sidebar-prefs">
+        <button type="button" class="pref-btn" (click)="toggleTheme()">
+          <i class="bi" [class.bi-sun-fill]="isDark()" [class.bi-moon-stars-fill]="!isDark()"></i>
+          <span>{{ isDark() ? t('nav.themeLight') : t('nav.themeDark') }}</span>
+        </button>
+        <button type="button" class="pref-btn" (click)="toggleLanguage()">
           <i class="bi bi-translate"></i>
           <span>{{ t('nav.language') === 'E' ? 'English' : 'العربية' }}</span>
         </button>

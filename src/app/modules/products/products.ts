@@ -1,11 +1,13 @@
-import { Component, inject, ChangeDetectionStrategy, signal, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy, signal, effect, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { LanguageService } from '../../services/language.service';
+import { WishlistService } from '../../services/wishlist.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-products',
@@ -19,23 +21,35 @@ export class Products {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   private langService = inject(LanguageService);
+  private wishlistService = inject(WishlistService);
+  private seo = inject(SeoService);
+  private platformId = inject(PLATFORM_ID);
 
   displayedProducts = signal<Product[]>([]);
+  loading = signal(true);
+  skeletonItems = Array.from({ length: 8 }, (_, i) => i);
   selectedCategory = signal<string | null>(null);
   selectedSubCategory = signal<string | null>(null);
   searchTerm = signal<string | null>(null);
   groupedProducts = signal<{ [key: string]: Product[] }>({});
   sortBy = signal('default');
+  brands = signal<string[]>([]);
+  selectedBrand = signal<string>('');
+  minPrice = signal<number | null>(null);
+  maxPrice = signal<number | null>(null);
+  inStockOnly = signal(false);
 
-  // Exposes ProductService's error state so the template can show a real message
-  // instead of silently rendering an empty product list.
   apiError = this.productService.apiError;
 
   t = (key: string) => this.langService.t(key);
 
   constructor() {
+    this.productService.getBrands().subscribe(b => this.brands.set(b));
+
     effect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       this.route.queryParams.subscribe(params => {
         this.selectedCategory.set(params['category'] || null);
         this.searchTerm.set(params['search'] ? (params['search'] as string).trim() : null);
@@ -48,25 +62,43 @@ export class Products {
     const category = this.selectedCategory();
     const search = this.searchTerm();
 
-    this.productService.filterProducts(category).subscribe((products: Product[]) => {
-      let filtered = products;
+    this.updateSeo(category, search);
 
-      // apply search term filtering (if present)
-      if (search) {
-        const term = search.toLowerCase();
-        filtered = filtered.filter(p => {
-          const inName = p.name?.toLowerCase().includes(term);
-          const inDesc = p.desc?.toLowerCase().includes(term);
-          const inLong = p.description?.toLowerCase().includes(term);
-          const inFeatures = (p.features || []).join(' ').toLowerCase().includes(term);
-          return !!(inName || inDesc || inLong || inFeatures);
-        });
-      }
-
-      this.displayedProducts.set(filtered);
+    this.loading.set(true);
+    this.productService.getProducts(category, search, {
+      brand: this.selectedBrand() || null,
+      minPrice: this.minPrice(),
+      maxPrice: this.maxPrice(),
+      inStock: this.inStockOnly() || null
+    }).subscribe((products: Product[]) => {
+      this.displayedProducts.set(products);
       this.applySorting();
       this.groupBySubCategory();
+      this.loading.set(false);
     });
+  }
+
+  applyFilters() {
+    this.filterProducts();
+  }
+
+  clearFilters() {
+    this.selectedBrand.set('');
+    this.minPrice.set(null);
+    this.maxPrice.set(null);
+    this.inStockOnly.set(false);
+    this.filterProducts();
+  }
+
+  private updateSeo(category: string | null, search: string | null) {
+    if (search) {
+      this.seo.setPage(`Search: ${search}`, `Search results for "${search}" at PC Parts Store.`);
+    } else if (category) {
+      const name = this.getCategoryName();
+      this.seo.setPage(name, `Browse our ${name} selection at PC Parts Store.`);
+    } else {
+      this.seo.setPage('All Products', 'Browse our full catalog of PC parts, monitors, chairs and accessories.');
+    }
   }
 
   retry() {
@@ -187,6 +219,27 @@ export class Products {
   }
 
   add(product: Product) {
+    if ((product.stock ?? 1) <= 0) return;
     this.cart.addToCart(product);
+  }
+
+  stockLabel(product: Product): string {
+    const stock = product.stock ?? 0;
+    if (stock <= 0) return this.t('products.outOfStock');
+    if (stock <= 5) return this.t('products.lowStock').replace('{n}', String(stock));
+    return this.t('products.inStock').replace('{n}', String(stock));
+  }
+
+  isOutOfStock(product: Product): boolean {
+    return (product.stock ?? 0) <= 0;
+  }
+
+  isInWishlist(product: Product): boolean {
+    return this.wishlistService.isInWishlist(product.id);
+  }
+
+  toggleWishlist(product: Product, event: Event) {
+    event.stopPropagation();
+    this.wishlistService.toggle(product);
   }
 }

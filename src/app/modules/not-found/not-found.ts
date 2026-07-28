@@ -26,12 +26,13 @@ import { LanguageService } from '../../services/language.service';
       justify-content: center;
       min-height: 60vh;
       text-align: center;
-      padding: 2rem;
+      /* Extra top padding clears the fixed navbar */
+      padding: 140px 2rem 4rem;
     }
     .error-code {
       font-size: 6rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #009ffd, #2a2a72);
+      background: var(--brand-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1;
@@ -39,10 +40,10 @@ import { LanguageService } from '../../services/language.service';
     h1 {
       font-size: 1.5rem;
       margin: 1rem 0 0.5rem;
-      color: #333;
+      color: var(--text-primary);
     }
     p {
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 2rem;
     }
     .back-home-btn {
@@ -50,7 +51,7 @@ import { LanguageService } from '../../services/language.service';
       align-items: center;
       gap: 0.5rem;
       padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #009ffd, #2a2a72);
+      background: var(--brand-gradient);
       color: white;
       border-radius: 8px;
       text-decoration: none;

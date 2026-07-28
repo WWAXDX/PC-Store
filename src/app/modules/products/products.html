@@ -1,19 +1,36 @@
 <div class="products-page">
-  <h1 class="title">
-    {{ selectedCategory() ? getCategoryName() : t('products.allProducts') }}
-  </h1>
+  <header class="page-header">
+    <div class="header-text">
+      <h1 class="title">
+        {{ selectedCategory() ? getCategoryName() : t('products.allProducts') }}
+      </h1>
+      @if (searchTerm()) {
+        <p class="search-info">{{ t('products.searchResults') }} "{{ searchTerm() }}"</p>
+      }
+    </div>
 
-  @if (searchTerm()) {
-    <p class="search-info">{{ t('products.searchResults') }} "{{ searchTerm() }}"</p>
-  }
-
-  @if (selectedCategory()) {
     <div class="filter-bar">
       <div class="product-count">
         <span class="count-number">{{ getTotalProductCount() }}</span>
         <span class="count-text">{{ t('products.products') }}</span>
       </div>
-      
+
+      <div class="filters-row">
+        <select [ngModel]="selectedBrand()" (ngModelChange)="selectedBrand.set($event); applyFilters()">
+          <option value="">{{ t('products.allBrands') }}</option>
+          @for (b of brands(); track b) {
+            <option [value]="b">{{ b }}</option>
+          }
+        </select>
+        <input type="number" [ngModel]="minPrice()" (ngModelChange)="minPrice.set($event === '' || $event == null ? null : +$event)" [placeholder]="t('products.minPrice')" (change)="applyFilters()">
+        <input type="number" [ngModel]="maxPrice()" (ngModelChange)="maxPrice.set($event === '' || $event == null ? null : +$event)" [placeholder]="t('products.maxPrice')" (change)="applyFilters()">
+        <label class="stock-check">
+          <input type="checkbox" [ngModel]="inStockOnly()" (ngModelChange)="inStockOnly.set($event); applyFilters()">
+          {{ t('products.inStockOnly') }}
+        </label>
+        <button type="button" class="clear-filters" (click)="clearFilters()">{{ t('products.clearFilters') }}</button>
+      </div>
+
       <div class="sort-container">
         <label for="sort-select">{{ t('products.sortBy') }}</label>
         <select id="sort-select" [ngModel]="sortBy()" (change)="onSortChange($event)">
@@ -25,9 +42,20 @@
         </select>
       </div>
     </div>
-  }
+  </header>
 
-  @if (apiError()) {
+  @if (loading() && !apiError()) {
+    <div class="skeleton-grid">
+      @for (i of skeletonItems; track i) {
+        <div class="skeleton-card">
+          <div class="sk sk-image"></div>
+          <div class="sk sk-line medium"></div>
+          <div class="sk sk-line short"></div>
+          <div class="sk sk-footer"></div>
+        </div>
+      }
+    </div>
+  } @else if (apiError()) {
     <div class="no-products load-error">
       <i class="bi bi-exclamation-triangle"></i>
       <p>{{ t('common.loadError') }}</p>
@@ -35,36 +63,49 @@
     </div>
   } @else if (displayedProducts().length > 0) {
     @for (subCategory of getSubCategories(); track subCategory) {
-      <div class="subcategory-section">
+      <section class="subcategory-section">
         <h2 class="subcategory-title">{{ translateSubCategory(subCategory) }}</h2>
-        
-        <div [class.products-scroll-container]="!(selectedCategory() || searchTerm())" [class.products-grid-container]="(selectedCategory() || searchTerm())">
-          <div [class.products-scroll]="!(selectedCategory() || searchTerm())" [class.products-grid]="(selectedCategory() || searchTerm())">
-            @for (p of groupedProducts()[subCategory]; track p.id) {
-              <div class="products-card">
-                @if (p.onSale) {
-                  <div class="sale-badge">{{ t('home.sale') }} -{{ p.discount }}%</div>
-                }
-                <div class="product-content" [routerLink]="['/product', p.id]">
-                  <div class="product-image-container">
-                    <img [src]="p.image" [alt]="p.name" class="product-image">
-                  </div>
-                  <h3>{{ p.name }}</h3>
-                  <p class="desc">{{ p.desc }}</p>
-                  @if (p.onSale && p.salePrice) {
-                    <div class="price-group">
-                      <p class="old-price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
-                      <p class="price">{{ p.salePrice }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
-                    </div>
-                  } @else {
-                    <p class="price">{{ p.price }} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon"></p>
-                  }
+
+        <div class="products-grid">
+          @for (p of groupedProducts()[subCategory]; track p.id) {
+            <article class="products-card">
+              @if (p.onSale) {
+                <span class="sale-badge">-{{ p.discount }}%</span>
+              }
+              <button
+                type="button"
+                class="wishlist-toggle"
+                [class.active]="isInWishlist(p)"
+                (click)="toggleWishlist(p, $event)"
+                [title]="t('wishlist.toggle')"
+              >
+                <i class="bi" [class.bi-heart-fill]="isInWishlist(p)" [class.bi-heart]="!isInWishlist(p)"></i>
+              </button>
+
+              <a class="product-content" [routerLink]="['/product', p.id]">
+                <div class="product-image-container">
+                  <img [src]="p.image" [alt]="p.name" class="product-image" loading="lazy">
                 </div>
-              </div>
-            }
-          </div>
+                <h3>{{ p.name }}</h3>
+                <p class="stock-label" [class.out]="isOutOfStock(p)" [class.low]="!isOutOfStock(p) && (p.stock ?? 0) <= 5">{{ stockLabel(p) }}</p>
+                @if (p.onSale && p.salePrice) {
+                  <div class="price-group">
+                    <span class="old-price">{{ p.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+                    <span class="price">{{ p.salePrice }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+                  </div>
+                } @else {
+                  <span class="price">{{ p.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+                }
+              </a>
+
+              <button type="button" class="add-btn" (click)="add(p)" [disabled]="isOutOfStock(p)" [title]="t('products.addToCart')">
+                <i class="bi bi-cart-plus"></i>
+                <span>{{ isOutOfStock(p) ? t('products.outOfStock') : t('products.addToCart') }}</span>
+              </button>
+            </article>
+          }
         </div>
-      </div>
+      </section>
     }
   } @else {
     <div class="no-products">

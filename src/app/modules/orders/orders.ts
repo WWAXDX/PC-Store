@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-orders',
@@ -14,9 +15,14 @@ import { LanguageService } from '../../services/language.service';
 export class Orders {
   private orderService = inject(OrderService);
   private langService = inject(LanguageService);
+  private seo = inject(SeoService);
 
   orders = this.orderService.orders;
   t = (key: string) => this.langService.t(key);
+
+  constructor() {
+    this.seo.setPage('My Orders', 'Track and review your past orders at PC Parts Store.');
+  }
 
   getStatusIcon(status: string): string {
     switch (status) {

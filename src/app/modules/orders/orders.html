@@ -36,7 +36,7 @@
               <div class="order-item">
                 <div class="item-image">
                   @if (item.product.image) {
-                    <img [src]="item.product.image" [alt]="item.product.name" />
+                    <img [src]="item.product.image" [alt]="item.product.name" loading="lazy" />
                   } @else {
                     <div class="placeholder-image">
                       <i class="bi bi-box-seam"></i>
@@ -47,7 +47,7 @@
                   <h4>{{ item.product.name }}</h4>
                   <div class="item-meta">
                     <span class="item-qty">{{ t('orders.qty') }}: {{ item.quantity }}</span>
-                    <span class="item-price">{{ getItemPrice(item) }} {{ t('common.sar') }}</span>
+                    <span class="item-price">{{ getItemPrice(item) }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="order-total">
               <span class="total-label">{{ t('orders.total') }}</span>
-              <span class="total-amount">{{ order.total }} {{ t('common.sar') }}</span>
+              <span class="total-amount">{{ order.total }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
             </div>
           </div>
         </div>

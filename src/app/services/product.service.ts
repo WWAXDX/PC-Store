@@ -1,5 +1,5 @@
 ﻿import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { Product } from '../models/product.model';
 import { environment } from '../../environments/environment';
@@ -32,31 +32,41 @@ export class ProductService {
     );
   }
 
-  // Get products by category from API
-  getProductsByCategory(category: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}?category=${category}`).pipe(
+  // Get products filtered by category and/or search term - both are applied server-side
+  // by the API, so results are consistent no matter how many products exist.
+  getProducts(
+    category?: string | null,
+    search?: string | null,
+    filters?: {
+      brand?: string | null;
+      minPrice?: number | null;
+      maxPrice?: number | null;
+      inStock?: boolean | null;
+    }
+  ): Observable<Product[]> {
+    let params = new HttpParams();
+    if (category) params = params.set('category', category);
+    if (search) params = params.set('search', search);
+    if (filters?.brand) params = params.set('brand', filters.brand);
+    if (filters?.minPrice != null) params = params.set('minPrice', String(filters.minPrice));
+    if (filters?.maxPrice != null) params = params.set('maxPrice', String(filters.maxPrice));
+    if (filters?.inStock) params = params.set('inStock', 'true');
+
+    return this.http.get<Product[]>(this.apiUrl, { params }).pipe(
       tap(() => this.apiError.set(false)),
-      catchError(this.handleError<Product[]>('getProductsByCategory', []))
+      catchError(this.handleError<Product[]>('getProducts', []))
     );
   }
 
-  // Get products by subcategory from API
-  getProductsBySubCategory(subCategory: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}?category=${subCategory}`).pipe(
-      tap(() => this.apiError.set(false)),
-      catchError(this.handleError<Product[]>('getProductsBySubCategory', []))
+  getBrands(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/brands`).pipe(
+      catchError(this.handleError<string[]>('getBrands', []))
     );
   }
 
   // Filter products by category or subcategory from API
   filterProducts(category: string | null): Observable<Product[]> {
-    if (!category) {
-      return this.getAllProducts();
-    }
-    return this.http.get<Product[]>(`${this.apiUrl}?category=${category}`).pipe(
-      tap(() => this.apiError.set(false)),
-      catchError(this.handleError<Product[]>('filterProducts', []))
-    );
+    return this.getProducts(category, null);
   }
 
   // Group products by subcategory
@@ -70,6 +80,20 @@ export class ProductService {
       grouped[subCat].push(product);
     });
     return grouped;
+  }
+
+  // --- Admin-only (requires an Admin JWT, attached automatically by the auth interceptor) ---
+
+  createProduct(product: Partial<Product>): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product);
+  }
+
+  updateProduct(id: number, product: Product): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, product);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
   // Centralized error handling so the UI doesn't fail silently when the API is down

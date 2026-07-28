@@ -1,0 +1,44 @@
+<div class="success-page">
+  <div class="card">
+    <i class="bi bi-check-circle-fill"></i>
+    <h1>{{ t('checkout.orderSuccess') }}</h1>
+
+    @if (order(); as o) {
+      <p class="order-id">{{ t('checkout.orderId') }}: <strong>{{ o.id }}</strong></p>
+      <p class="note">
+        @if (o.paymentMethod === 'cod') {
+          {{ t('checkout.codNote') }}
+        } @else {
+          {{ t('checkout.cardSimNote') }}
+        }
+      </p>
+
+      <div class="lines">
+        @for (item of o.items; track item.product.id) {
+          <div class="line">
+            <span>{{ item.product.name }} × {{ item.quantity }}</span>
+            <span>{{ item.product.price * item.quantity }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+          </div>
+        }
+      </div>
+
+      <div class="totals">
+        <div><span>{{ t('cart.subtotal') }}</span><span>{{ o.subtotal }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span></div>
+        @if (o.discount > 0) {
+          <div class="discount"><span>{{ t('checkout.promoDiscount') }} @if (o.promoCode) { ({{ o.promoCode }}) }</span><span>-{{ o.discount }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span></div>
+        }
+        <div><span>{{ t('cart.shipping') }}</span><span>@if (o.shipping === 0) { {{ t('cart.free') }} } @else { {{ o.shipping }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"> }</span></div>
+        <div class="grand"><span>{{ t('cart.grandTotal') }}</span><span>{{ o.total }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span></div>
+      </div>
+
+      <p class="ship">{{ t('checkout.shipTo') }}: {{ o.shippingInfo.fullName }} — {{ o.shippingInfo.city }}</p>
+    } @else {
+      <p class="note">{{ t('checkout.successFallback') }}</p>
+    }
+
+    <div class="actions">
+      <a routerLink="/orders" class="primary">{{ t('checkout.viewOrders') }}</a>
+      <a routerLink="/products" class="ghost">{{ t('checkout.continueShopping') }}</a>
+    </div>
+  </div>
+</div>

@@ -7,12 +7,14 @@ import { environment } from '../../environments/environment';
 export interface AuthUser {
   fullName: string;
   email: string;
+  role: string;
 }
 
 interface AuthResponse {
   token: string;
   fullName: string;
   email: string;
+  role: string;
 }
 
 const STORAGE_KEY = 'auth';
@@ -25,10 +27,9 @@ export class AuthService {
 
   private token = signal<string | null>(null);
 
-  // Currently logged-in user, or null when logged out. Components read this signal
-  // (or isLoggedIn below) to reflect auth state in the UI (e.g. navbar).
   currentUser = signal<AuthUser | null>(null);
   isLoggedIn = computed(() => this.currentUser() !== null);
+  isAdmin = computed(() => this.currentUser()?.role === 'Admin');
 
   constructor() {
     this.restoreSession();
@@ -60,16 +61,37 @@ export class AuthService {
 
   register(fullName: string, email: string, password: string): Observable<AuthUser> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, { fullName, email, password }).pipe(
-      tap(res => this.persistSession(res.token, { fullName: res.fullName, email: res.email })),
-      map(res => ({ fullName: res.fullName, email: res.email })),
+      tap(res => this.persistSession(res.token, { fullName: res.fullName, email: res.email, role: res.role })),
+      map(res => ({ fullName: res.fullName, email: res.email, role: res.role })),
       catchError(this.handleAuthError)
     );
   }
 
   login(email: string, password: string): Observable<AuthUser> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap(res => this.persistSession(res.token, { fullName: res.fullName, email: res.email })),
-      map(res => ({ fullName: res.fullName, email: res.email })),
+      tap(res => this.persistSession(res.token, { fullName: res.fullName, email: res.email, role: res.role })),
+      map(res => ({ fullName: res.fullName, email: res.email, role: res.role })),
+      catchError(this.handleAuthError)
+    );
+  }
+
+  updateProfile(fullName: string): Observable<AuthUser> {
+    return this.http.put<AuthResponse>(`${this.apiUrl}/profile`, { fullName }).pipe(
+      tap(res => {
+        const token = this.token() ?? res.token;
+        this.persistSession(token || res.token, {
+          fullName: res.fullName,
+          email: res.email,
+          role: res.role
+        });
+      }),
+      map(res => ({ fullName: res.fullName, email: res.email, role: res.role })),
+      catchError(this.handleAuthError)
+    );
+  }
+
+  changePassword(currentPassword: string, newPassword: string): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/password`, { currentPassword, newPassword }).pipe(
       catchError(this.handleAuthError)
     );
   }

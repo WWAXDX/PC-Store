@@ -8,7 +8,8 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href /PC-Store/ && npx angular-cli-ghpages --dir=dist/pc-parts-store/browser"
+    "postbuild:pages": "node -e \"require('fs').copyFileSync('dist/pc-parts-store/browser/index.csr.html', 'dist/pc-parts-store/browser/index.html')\"",
+    "deploy": "ng build --configuration production --base-href /PC-Store/ && npm run postbuild:pages && npx angular-cli-ghpages --dir=dist/pc-parts-store/browser"
   },
   "prettier": {
     "printWidth": 100,

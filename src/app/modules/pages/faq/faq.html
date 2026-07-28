@@ -1,0 +1,16 @@
+<div class="content-page">
+  <h1>{{ t('pages.faqTitle') }}</h1>
+  <div class="faq-list">
+    @for (i of items; track i) {
+      <div class="faq-item" [class.open]="open() === i">
+        <button type="button" (click)="toggle(i)">
+          <span>{{ t('pages.faqQ' + i) }}</span>
+          <i class="bi" [class.bi-chevron-down]="open() !== i" [class.bi-chevron-up]="open() === i"></i>
+        </button>
+        @if (open() === i) {
+          <p>{{ t('pages.faqA' + i) }}</p>
+        }
+      </div>
+    }
+  </div>
+</div>

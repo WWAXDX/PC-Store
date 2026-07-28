@@ -1,0 +1,80 @@
+<div class="admin-page">
+  <div class="admin-header">
+    <div>
+      <h1>{{ t('admin.productsTitle') }}</h1>
+      <p class="subtitle">{{ t('admin.productsSubtitle') }}</p>
+    </div>
+    <div class="header-actions">
+      <a routerLink="/admin/orders" class="btn-secondary">{{ t('nav.adminOrders') }}</a>
+      <a routerLink="/admin/products/new" class="btn-primary">
+        <i class="bi bi-plus-lg"></i>
+        {{ t('admin.addProduct') }}
+      </a>
+    </div>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="alert-error">{{ errorMessage() }}</div>
+  }
+
+  @if (loading()) {
+    <div class="admin-loading">
+      <span class="spinner"></span>
+      {{ t('common.loading') }}
+    </div>
+  } @else if (products().length === 0) {
+    <div class="admin-empty">{{ t('admin.noProducts') }}</div>
+  } @else {
+    <div class="table-wrapper">
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>{{ t('admin.colName') }}</th>
+            <th>{{ t('admin.colCategory') }}</th>
+            <th>{{ t('admin.colPrice') }}</th>
+            <th>{{ t('admin.colSale') }}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of products(); track product.id) {
+            <tr>
+              <td class="thumb-cell">
+                <img [src]="product.image" [alt]="product.name" loading="lazy">
+              </td>
+              <td class="name-cell">{{ product.name }}</td>
+              <td>{{ product.subCategory }}</td>
+              <td>{{ product.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></td>
+              <td>
+                @if (product.onSale) {
+                  <span class="badge-sale">{{ product.salePrice }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></span>
+                } @else {
+                  <span class="badge-none">—</span>
+                }
+              </td>
+              <td class="actions-cell">
+                <a [routerLink]="['/admin/products', product.id, 'edit']" class="icon-action edit" [title]="t('admin.edit')">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                <button
+                  type="button"
+                  class="icon-action delete"
+                  [disabled]="deletingId() === product.id"
+                  (click)="deleteProduct(product)"
+                  [title]="t('admin.delete')"
+                >
+                  @if (deletingId() === product.id) {
+                    <span class="spinner small"></span>
+                  } @else {
+                    <i class="bi bi-trash3"></i>
+                  }
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

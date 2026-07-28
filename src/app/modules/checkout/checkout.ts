@@ -1,18 +1,21 @@
-import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, inject, signal, computed, ChangeDetectionStrategy, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
+import { PromoService } from '../../services/promo.service';
 
 interface CartItem {
-  product: { id: number; name: string; price: number; image?: string; onSale?: boolean; salePrice?: number };
+  product: { id: number; name: string; price: number; image?: string; onSale?: boolean; salePrice?: number; stock?: number };
   quantity: number;
 }
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormsModule],
   templateUrl: './checkout.html',
   styleUrls: ['./checkout.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,11 +24,18 @@ export class Checkout implements OnInit {
   private cartService = inject(CartService);
   private orderService = inject(OrderService);
   private langService = inject(LanguageService);
+  private promoService = inject(PromoService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
+  private seo = inject(SeoService);
+  private platformId = inject(PLATFORM_ID);
 
   cartItems = signal<CartItem[]>([]);
-  orderPlaced = signal(false);
+  placingOrder = signal(false);
+  orderError = signal('');
+  promoInput = signal('');
+  appliedPromo = signal<string | null>(null);
+  promoError = signal('');
   t = (key: string) => this.langService.t(key);
 
   shippingForm: FormGroup = this.fb.group({
@@ -46,10 +56,20 @@ export class Checkout implements OnInit {
     cvv: ['', [Validators.required, Validators.pattern(/^\d{3,4}$/)]],
   });
 
+  promoDiscount = computed(() => {
+    const promo = this.promoService.apply(this.appliedPromo(), this.getSubtotal());
+    return promo?.discount ?? 0;
+  });
+
   ngOnInit() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.seo.setPage('Checkout', 'Complete your purchase securely at PC Parts Store.');
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const saved = sessionStorage.getItem('promoCode');
+      if (saved) this.appliedPromo.set(saved);
+    }
     this.cartItems.set(this.cartService.getCartItems());
-    
+
     if (this.cartItems().length === 0) {
       this.router.navigate(['/cart']);
     }
@@ -64,11 +84,35 @@ export class Checkout implements OnInit {
   }
 
   getShipping(): number {
-    return this.getSubtotal() >= 500 ? 0 : 50;
+    return this.getSubtotal() >= 500 ? 0 : 25;
   }
 
   getTotal(): number {
-    return this.getSubtotal() + this.getShipping();
+    return Math.max(0, this.getSubtotal() - this.promoDiscount()) + this.getShipping();
+  }
+
+  applyPromo() {
+    const code = this.promoInput().trim();
+    const result = this.promoService.apply(code, this.getSubtotal());
+    if (!result) {
+      this.promoError.set(this.t('checkout.promoInvalid'));
+      this.appliedPromo.set(null);
+      return;
+    }
+    this.promoError.set('');
+    this.appliedPromo.set(result.code);
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem('promoCode', result.code);
+    }
+  }
+
+  clearPromo() {
+    this.appliedPromo.set(null);
+    this.promoInput.set('');
+    this.promoError.set('');
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.removeItem('promoCode');
+    }
   }
 
   placeOrder() {
@@ -81,21 +125,30 @@ export class Checkout implements OnInit {
     }
 
     const shipping = this.shippingForm.value;
-    const subtotal = this.getSubtotal();
-    const shippingCost = this.getShipping();
-    const total = this.getTotal();
+    this.orderError.set('');
+    this.placingOrder.set(true);
 
-    this.orderService.addOrder(
-      this.cartItems(),
-      total,
-      subtotal,
-      shippingCost,
-      { fullName: shipping.fullName, city: shipping.city },
-      this.paymentMethod()
-    );
+    // Simulate brief "payment processing" for card before creating the order
+    const delay = this.paymentMethod() === 'card' ? 900 : 200;
 
-    this.cartService.clearCart();
-    this.orderPlaced.set(true);
-    setTimeout(() => this.router.navigate(['/orders']), 2000);
+    setTimeout(() => {
+      this.orderService.placeOrder(
+        this.cartItems(),
+        { fullName: shipping.fullName, city: shipping.city },
+        this.paymentMethod(),
+        this.appliedPromo()
+      ).subscribe({
+        next: (order) => {
+          this.placingOrder.set(false);
+          this.cartService.clearCart();
+          this.clearPromo();
+          this.router.navigate(['/order-success'], { state: { order } });
+        },
+        error: (err) => {
+          this.placingOrder.set(false);
+          this.orderError.set(err?.error?.message || err?.message || this.t('common.loadError'));
+        }
+      });
+    }, delay);
   }
 }

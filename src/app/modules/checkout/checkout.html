@@ -1,13 +1,4 @@
 <div class="checkout-page">
-  @if (orderPlaced()) {
-    <div class="order-success">
-      <div class="success-content">
-        <i class="bi bi-check-circle-fill"></i>
-        <h2>{{ t('checkout.orderSuccess') }}</h2>
-        <p>{{ t('checkout.redirecting') }}</p>
-      </div>
-    </div>
-  } @else {
   <div class="checkout-container">
     <!-- Header -->
     <div class="checkout-header">
@@ -148,7 +139,7 @@
                   <input 
                     type="text" 
                     formControlName="cardNumber"
-                    placeholder="1234567890123456"
+                    [placeholder]="t('checkout.cardNumberPlaceholder')"
                     maxlength="16"
                     [class.invalid]="cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched"
                   >
@@ -172,7 +163,7 @@
                   <input 
                     type="text" 
                     formControlName="expiryDate"
-                    placeholder="MM/YY"
+                    [placeholder]="t('checkout.expiryPlaceholder')"
                     maxlength="5"
                     [class.invalid]="cardForm.get('expiryDate')?.invalid && cardForm.get('expiryDate')?.touched"
                   >
@@ -183,7 +174,7 @@
                   <input 
                     type="text" 
                     formControlName="cvv"
-                    placeholder="123"
+                    [placeholder]="t('checkout.cvvPlaceholder')"
                     maxlength="4"
                     [class.invalid]="cardForm.get('cvv')?.invalid && cardForm.get('cvv')?.touched"
                   >
@@ -202,27 +193,56 @@
           <div class="summary-items">
             @for (item of cartItems(); track item.product.id) {
               <div class="summary-item">
-                <img [src]="item.product.image" [alt]="item.product.name">
+                <img [src]="item.product.image" [alt]="item.product.name" loading="lazy">
                 <div class="item-details">
                   <h4>{{ item.product.name }}</h4>
                   <p>{{ t('cart.quantity') }}: {{ item.quantity }}</p>
                 </div>
                 <div class="item-price">
                   {{ (item.product.onSale ? item.product.salePrice : item.product.price)! * item.quantity }}
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                  <img src="icons/sar.svg" alt="SAR" class="currency-icon">
                 </div>
               </div>
             }
           </div>
 
           <div class="summary-totals">
+            <div class="promo-box">
+              <label>{{ t('checkout.promoCode') }}</label>
+              @if (appliedPromo()) {
+                <div class="promo-applied">
+                  <span>{{ appliedPromo() }} (−{{ promoDiscount() }} <img src="icons/sar.svg" alt="SAR" class="currency-icon">)</span>
+                  <button type="button" (click)="clearPromo()">{{ t('checkout.removePromo') }}</button>
+                </div>
+              } @else {
+                <div class="promo-row">
+                  <input type="text" [ngModel]="promoInput()" (ngModelChange)="promoInput.set($event)" [placeholder]="t('checkout.promoPlaceholder')">
+                  <button type="button" (click)="applyPromo()">{{ t('checkout.applyPromo') }}</button>
+                </div>
+                @if (promoError()) {
+                  <span class="error-msg">{{ promoError() }}</span>
+                }
+                <p class="promo-hint">{{ t('checkout.promoHint') }}</p>
+              }
+            </div>
+
             <div class="total-row">
               <span>{{ t('cart.subtotal') }}</span>
               <span>
                 {{ getSubtotal() }}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                <img src="icons/sar.svg" alt="SAR" class="currency-icon">
               </span>
             </div>
+
+            @if (promoDiscount() > 0) {
+              <div class="total-row discount-row">
+                <span>{{ t('checkout.promoDiscount') }}</span>
+                <span>
+                  −{{ promoDiscount() }}
+                  <img src="icons/sar.svg" alt="SAR" class="currency-icon">
+                </span>
+              </div>
+            }
 
             <div class="total-row">
               <span>{{ t('cart.shipping') }}</span>
@@ -231,7 +251,7 @@
                   {{ t('cart.free') }}
                 } @else {
                   {{ getShipping() }}
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                  <img src="icons/sar.svg" alt="SAR" class="currency-icon">
                 }
               </span>
             </div>
@@ -240,14 +260,23 @@
               <span>{{ t('cart.grandTotal') }}</span>
               <span>
                 {{ getTotal() }}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1280px-Saudi_Riyal_Symbol.svg.png" alt="SAR" class="currency-icon">
+                <img src="icons/sar.svg" alt="SAR" class="currency-icon">
               </span>
             </div>
           </div>
 
-          <button class="place-order-btn" (click)="placeOrder()">
-            <i class="bi bi-check-circle"></i>
-            {{ t('checkout.placeOrder') }}
+          @if (orderError()) {
+            <div class="error-msg checkout-error">{{ orderError() }}</div>
+          }
+
+          <button class="place-order-btn" (click)="placeOrder()" [disabled]="placingOrder()">
+            @if (placingOrder()) {
+              <span class="spinner"></span>
+              {{ t('checkout.placingOrder') }}
+            } @else {
+              <i class="bi bi-check-circle"></i>
+              {{ t('checkout.placeOrder') }}
+            }
           </button>
 
           <div class="secure-notice">
@@ -258,5 +287,4 @@
       </div>
     </div>
   </div>
-  }
 </div>

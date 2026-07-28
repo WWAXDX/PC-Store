@@ -1,0 +1,52 @@
+<div class="admin-page">
+  <div class="head">
+    <div>
+      <h1>{{ t('admin.ordersTitle') }}</h1>
+      <a routerLink="/admin/products">{{ t('admin.backToProducts') }}</a>
+    </div>
+    <button type="button" (click)="load()">{{ t('common.retry') }}</button>
+  </div>
+
+  @if (loading()) {
+    <p class="muted">{{ t('admin.loading') }}</p>
+  } @else if (error()) {
+    <p class="err">{{ t('common.loadError') }}</p>
+  } @else if (orders().length === 0) {
+    <p class="muted">{{ t('admin.noOrders') }}</p>
+  } @else {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>{{ t('admin.orderId') }}</th>
+            <th>{{ t('admin.customer') }}</th>
+            <th>{{ t('admin.date') }}</th>
+            <th>{{ t('admin.items') }}</th>
+            <th>{{ t('admin.total') }}</th>
+            <th>{{ t('admin.payment') }}</th>
+            <th>{{ t('admin.status') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (o of orders(); track o.id) {
+            <tr>
+              <td>{{ o.id }}</td>
+              <td>{{ o.customerName || o.shippingInfo.fullName }}</td>
+              <td>{{ o.date | date:'mediumDate' }}</td>
+              <td>{{ o.items.length }}</td>
+              <td>{{ o.total }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></td>
+              <td>{{ o.paymentMethod === 'cod' ? t('checkout.cashOnDelivery') : t('checkout.creditCard') }}</td>
+              <td>
+                <select [value]="o.status" (change)="onStatusChange(o, $event)">
+                  @for (s of statuses; track s) {
+                    <option [value]="s">{{ t('orders.status.' + s) }}</option>
+                  }
+                </select>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

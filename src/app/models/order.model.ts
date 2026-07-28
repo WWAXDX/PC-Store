@@ -16,6 +16,7 @@ export interface Order {
   total: number;
   subtotal: number;
   shipping: number;
+  discount: number;
   date: string;
   status: 'pending' | 'processing' | 'shipped' | 'delivered';
   shippingInfo: {
@@ -23,4 +24,7 @@ export interface Order {
     city: string;
   };
   paymentMethod: string;
+  promoCode?: string | null;
+  customerName?: string;
+  customerEmail?: string;
 }

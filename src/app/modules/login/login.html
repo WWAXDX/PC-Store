@@ -39,10 +39,12 @@
       <div class="form-container">
         
         <!-- Header -->
-        <div class="form-header">
-          <h2>{{ isLoginMode() ? t('login.signIn') : t('login.createAccount') }}</h2>
-          <p>{{ isLoginMode() ? t('login.enterCredentials') : t('login.fillDetails') }}</p>
-        </div>
+        @if (!showForgot()) {
+          <div class="form-header">
+            <h2>{{ isLoginMode() ? t('login.signIn') : t('login.createAccount') }}</h2>
+            <p>{{ isLoginMode() ? t('login.enterCredentials') : t('login.fillDetails') }}</p>
+          </div>
+        }
 
         <!-- Error Message -->
         @if (error()) {
@@ -52,6 +54,51 @@
           </div>
         }
 
+        <!-- Info Message (demo notices) -->
+        @if (info()) {
+          <div class="info-message">
+            <i class="bi bi-info-circle"></i>
+            <span>{{ info() }}</span>
+          </div>
+        }
+
+        <!-- Forgot password panel -->
+        @if (showForgot()) {
+          <div class="forgot-panel">
+            <div class="form-header">
+              <h2>{{ t('login.forgotTitle') }}</h2>
+              <p>{{ t('login.forgotDesc') }}</p>
+            </div>
+
+            @if (!forgotSent()) {
+              <form (ngSubmit)="onForgotSubmit()" class="login-form">
+                <div class="form-group">
+                  <label for="forgotEmail">{{ t('login.email') }}</label>
+                  <div class="input-wrapper">
+                    <i class="bi bi-envelope"></i>
+                    <input
+                      type="email"
+                      id="forgotEmail"
+                      [value]="email()"
+                      (input)="email.set($any($event.target).value)"
+                      [placeholder]="t('login.enterEmail')"
+                      required
+                    />
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                  <span>{{ t('login.forgotSubmit') }}</span>
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </form>
+            }
+
+            <button type="button" class="back-to-login" (click)="backToLogin()">
+              <i class="bi bi-arrow-left"></i>
+              {{ t('login.backToSignIn') }}
+            </button>
+          </div>
+        } @else {
         <!-- Form -->
         <form (ngSubmit)="onSubmit()" class="login-form">
           
@@ -146,7 +193,9 @@
                 <input type="checkbox" />
                 <span>{{ t('login.rememberMe') }}</span>
               </label>
-              <a href="#" class="forgot-password">{{ t('login.forgotPassword') }}</a>
+              <button type="button" class="forgot-password" (click)="openForgot()">
+                {{ t('login.forgotPassword') }}
+              </button>
             </div>
           }
 
@@ -188,6 +237,8 @@
             </button>
           </p>
         </div>
+        }
+
 
       </div>
     </div>

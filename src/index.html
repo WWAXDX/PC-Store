@@ -2,10 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PcPartsStore</title>
+  <title>PC Parts Store | Premium PC Components & Accessories</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shop graphics cards, processors, memory, monitors, gaming chairs and accessories at PC Parts Store. Quality components, competitive prices, fast delivery.">
+  <meta name="theme-color" content="#1a2f55">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PC Parts Store | Premium PC Components & Accessories">
+  <meta property="og:description" content="Shop graphics cards, processors, memory, monitors, gaming chairs and accessories at PC Parts Store.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Apply saved / system theme before first paint to avoid a light-mode flash
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafgraph/spa-github-pages
+    // Decodes the redirect produced by public/404.html back into a real URL so
+    // Angular's router picks up the originally-requested path (e.g. /product/5).
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&');
+        }).join('?');
+        window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash);
+      }
+    }(window.location));
+  </script>
 </head>
 <body>
   <app-root></app-root>

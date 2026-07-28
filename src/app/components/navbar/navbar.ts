@@ -1,10 +1,13 @@
-import { Component, OnDestroy, OnInit, computed, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, ChangeDetectionStrategy, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { LanguageService } from '../../services/language.service';
 import { AuthService } from '../../services/auth.service';
+import { WishlistService } from '../../services/wishlist.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +24,9 @@ export class Navbar implements OnInit, OnDestroy {
   private router = inject(Router);
   private langService = inject(LanguageService);
   private authService = inject(AuthService);
+  private wishlistService = inject(WishlistService);
+  private themeService = inject(ThemeService);
+  private platformId = inject(PLATFORM_ID);
 
   cartCount = 0;
   searchText = '';
@@ -37,6 +43,9 @@ export class Navbar implements OnInit, OnDestroy {
   currentLanguage = computed(() => this.langService.currentLanguage());
   isLoggedIn = computed(() => this.authService.isLoggedIn());
   currentUser = computed(() => this.authService.currentUser());
+  isAdmin = computed(() => this.authService.isAdmin());
+  wishlistCount = computed(() => this.wishlistService.productIds().size);
+  isDark = this.themeService.isDark;
   t = (key: string) => this.langService.t(key);
 
   categories = computed(() => [
@@ -44,7 +53,7 @@ export class Navbar implements OnInit, OnDestroy {
       key: 'pc-parts',
       name: this.t('nav.pcParts'),
       icon: 'bi-pc-display',
-      color: '#009ffd',
+      color: '#0b7dd4',
       route: '/products',
       queryParam: 'pc-parts',
       items: [
@@ -139,11 +148,16 @@ export class Navbar implements OnInit, OnDestroy {
   }
 
   private checkScrollPosition() {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.isScrolled = window.pageYOffset > 50;
   }
 
   toggleLanguage() {
     this.langService.toggleLanguage();
+  }
+
+  toggleTheme() {
+    this.themeService.toggle();
   }
 
   toggleMobileMenu() {

@@ -40,17 +40,30 @@ export class CartService {
     }
   }
 
-  addToCart(product: Product) {
+  private maxQty(product: Product): number {
+    const stock = product.stock;
+    if (stock == null) return 99;
+    return Math.max(0, stock);
+  }
+
+  /** Returns false when the product is out of stock or the cart already hit the limit. */
+  addToCart(product: Product): boolean {
+    const max = this.maxQty(product);
+    if (max <= 0) return false;
+
     const existingItem = this.items.find(item => item.product.id === product.id);
-    
     if (existingItem) {
+      if (existingItem.quantity >= max) return false;
       existingItem.quantity++;
+      // Keep latest product snapshot (stock/price) on the cart line
+      existingItem.product = { ...product };
     } else {
-      this.items.push({ product, quantity: 1 });
+      this.items.push({ product: { ...product }, quantity: 1 });
     }
-    
+
     this.itemsSubject.next(this.items.slice());
     this.saveCart();
+    return true;
   }
 
   getCartItems(): CartItem[] {
@@ -66,17 +79,22 @@ export class CartService {
   updateQuantity(index: number, quantity: number) {
     if (quantity <= 0) {
       this.removeItem(index);
-    } else {
-      this.items[index].quantity = quantity;
-      this.itemsSubject.next(this.items.slice());
-      this.saveCart();
+      return;
     }
-  }
-
-  increaseQuantity(index: number) {
-    this.items[index].quantity++;
+    const max = this.maxQty(this.items[index].product);
+    this.items[index].quantity = Math.min(quantity, max || quantity);
     this.itemsSubject.next(this.items.slice());
     this.saveCart();
+  }
+
+  increaseQuantity(index: number): boolean {
+    const item = this.items[index];
+    const max = this.maxQty(item.product);
+    if (item.quantity >= max) return false;
+    item.quantity++;
+    this.itemsSubject.next(this.items.slice());
+    this.saveCart();
+    return true;
   }
 
   decreaseQuantity(index: number) {
@@ -97,8 +115,8 @@ export class CartService {
 
   getTotal() {
     return this.items.reduce((sum, item) => {
-      const price = item.product.onSale && item.product.salePrice 
-        ? item.product.salePrice 
+      const price = item.product.onSale && item.product.salePrice
+        ? item.product.salePrice
         : item.product.price;
       return sum + (price * item.quantity);
     }, 0);

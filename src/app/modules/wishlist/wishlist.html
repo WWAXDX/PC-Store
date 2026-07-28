@@ -1,0 +1,41 @@
+<div class="wishlist-page">
+  <h1 class="title">{{ t('wishlist.title') }}</h1>
+
+  @if (products().length > 0) {
+    <div class="wishlist-grid">
+      @for (p of products(); track p.id) {
+        <div class="wishlist-card">
+          <button type="button" class="remove-btn" (click)="remove(p)" [title]="t('wishlist.remove')">
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="product-content" [routerLink]="['/product', p.id]">
+            <div class="product-image-container">
+              <img [src]="p.image" [alt]="p.name" class="product-image" loading="lazy">
+            </div>
+            <h3>{{ p.name }}</h3>
+            @if (p.onSale && p.salePrice) {
+              <div class="price-group">
+                <p class="old-price">{{ p.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></p>
+                <p class="price">{{ p.salePrice }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></p>
+              </div>
+            } @else {
+              <p class="price">{{ p.price }} <img src="icons/sar.svg" alt="SAR" class="currency-icon"></p>
+            }
+          </div>
+
+          <button type="button" class="add-to-cart-btn" (click)="addToCart(p)">
+            <i class="bi bi-cart-plus"></i>
+            {{ t('products.addToCart') }}
+          </button>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-wishlist">
+      <i class="bi bi-heart"></i>
+      <p>{{ t('wishlist.empty') }}</p>
+      <a routerLink="/products" class="browse-link">{{ t('wishlist.browseProducts') }}</a>
+    </div>
+  }
+</div>

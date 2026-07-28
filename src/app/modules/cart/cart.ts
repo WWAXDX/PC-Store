@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
 
 interface CartItem {
   product: { id: number; name: string; price: number; image?: string; subCategory?: string; desc?: string; onSale?: boolean; salePrice?: number; discount?: number };
@@ -19,9 +20,14 @@ interface CartItem {
 export class Cart implements OnInit, OnDestroy {
   private cart = inject(CartService);
   private langService = inject(LanguageService);
+  private seo = inject(SeoService);
 
   items: CartItem[] = [];
   private sub: Subscription | null = null;
+
+  constructor() {
+    this.seo.setPage('Shopping Cart', 'Review the items in your shopping cart before checkout.');
+  }
   
   t = (key: string) => this.langService.t(key);
 

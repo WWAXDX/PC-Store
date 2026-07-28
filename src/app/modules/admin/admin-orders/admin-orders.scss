@@ -1,0 +1,84 @@
+.admin-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 130px 24px 48px;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    h1 {
+      margin: 0 0 8px;
+      color: var(--text-primary);
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    a {
+      color: var(--brand-primary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: var(--brand-gradient);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+
+  .muted { color: var(--text-secondary); }
+  .err { color: #ef4444; }
+
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    th, td {
+      padding: 12px 14px;
+      text-align: start;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    th {
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    select {
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-input);
+      color: var(--text-primary);
+    }
+
+    .currency-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 110px;
+  }
+}

@@ -1,0 +1,34 @@
+<div class="account-page">
+  <h1>{{ t('account.title') }}</h1>
+  <p class="email">{{ user()?.email }}</p>
+
+  <div class="cards">
+    <section class="card">
+      <h2>{{ t('account.profile') }}</h2>
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <label>{{ t('account.fullName') }}</label>
+        <input type="text" formControlName="fullName">
+        @if (profileMsg()) { <p class="ok">{{ profileMsg() }}</p> }
+        @if (profileErr()) { <p class="err">{{ profileErr() }}</p> }
+        <button type="submit" [disabled]="savingProfile()">{{ t('account.saveProfile') }}</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>{{ t('account.password') }}</h2>
+      <form [formGroup]="passwordForm" (ngSubmit)="savePassword()">
+        <label>{{ t('account.currentPassword') }}</label>
+        <input type="password" formControlName="currentPassword">
+        <label>{{ t('account.newPassword') }}</label>
+        <input type="password" formControlName="newPassword">
+        <label>{{ t('account.confirmPassword') }}</label>
+        <input type="password" formControlName="confirmPassword">
+        @if (passMsg()) { <p class="ok">{{ passMsg() }}</p> }
+        @if (passErr()) { <p class="err">{{ passErr() }}</p> }
+        <button type="submit" [disabled]="savingPass()">{{ t('account.changePassword') }}</button>
+      </form>
+    </section>
+  </div>
+
+  <a routerLink="/orders" class="orders-link">{{ t('account.viewOrders') }}</a>
+</div>

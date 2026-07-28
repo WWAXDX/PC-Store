@@ -1,3 +1,66 @@
 <footer class="footer">
+  <div class="footer-main">
+
+    <div class="footer-col brand-col">
+      <a routerLink="/" class="footer-logo">
+        <i class="bi bi-lightning-charge-fill"></i>
+        <span>PC Parts</span>
+      </a>
+      <p class="tagline">{{ t('footer.tagline') }}</p>
+      <div class="socials">
+        <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>{{ t('footer.shop') }}</h4>
+      <a routerLink="/products">{{ t('footer.allProducts') }}</a>
+      @for (cat of categories; track cat.key) {
+        <a [routerLink]="['/products']" [queryParams]="{ category: cat.key }">{{ t(cat.label) }}</a>
+      }
+    </div>
+
+    <div class="footer-col">
+      <h4>{{ t('footer.quickLinks') }}</h4>
+      <a routerLink="/home">{{ t('footer.home') }}</a>
+      <a routerLink="/cart">{{ t('nav.cart') }}</a>
+      <a routerLink="/orders">{{ t('nav.orders') }}</a>
+      <a routerLink="/wishlist">{{ t('nav.wishlist') }}</a>
+      <a routerLink="/about">{{ t('footer.about') }}</a>
+      <a routerLink="/shipping">{{ t('footer.shipping') }}</a>
+      <a routerLink="/faq">{{ t('footer.faq') }}</a>
+      <a routerLink="/contact">{{ t('footer.contactLink') }}</a>
+      @if (isLoggedIn()) {
+        @if (isAdmin()) {
+          <a routerLink="/admin/products">{{ t('nav.adminPanel') }}</a>
+          <a routerLink="/admin/orders">{{ t('nav.adminOrders') }}</a>
+        }
+        <a routerLink="/account">{{ t('nav.account') }}</a>
+        <button type="button" class="footer-link-btn" (click)="logout()">{{ t('nav.logout') }}</button>
+      } @else {
+        <a routerLink="/login">{{ t('nav.login') }}</a>
+      }
+    </div>
+
+    <div class="footer-col">
+      <h4>{{ t('footer.contact') }}</h4>
+      <p><i class="bi bi-envelope"></i> support&#64;pcparts.store</p>
+      <p><i class="bi bi-telephone"></i> <span dir="ltr">+966 55 555 5555</span></p>
+      <p><i class="bi bi-geo-alt"></i> {{ t('footer.location') }}</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
     <p>{{ t('footer.copyright') }}</p>
+    <div class="payments">
+      <span>Visa</span>
+      <span>Mastercard</span>
+      <span>mada</span>
+      <span>Apple Pay</span>
+    </div>
+  </div>
 </footer>

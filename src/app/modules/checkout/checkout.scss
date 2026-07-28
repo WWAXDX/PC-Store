@@ -1,6 +1,6 @@
 .checkout-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: var(--bg-page);
   padding: 140px 20px 40px;
   font-family: 'Noto Kufi Arabic', sans-serif;
 
@@ -20,11 +20,11 @@
 
       h2 {
         margin: 1rem 0 0.5rem;
-        color: #1e2a5a;
+        color: var(--text-primary);
       }
 
       p {
-        color: #64748b;
+        color: var(--text-secondary);
       }
     }
   }
@@ -44,7 +44,7 @@
       h1 {
         font-size: 32px;
         font-weight: 700;
-        color: #1e2a5a;
+        color: var(--text-primary);
         margin: 0;
       }
 
@@ -52,7 +52,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        color: #64748b;
+        color: var(--text-secondary);
         text-decoration: none;
         font-weight: 600;
         transition: all 0.3s;
@@ -60,8 +60,8 @@
         border-radius: 8px;
 
         &:hover {
-          color: #009ffd;
-          background: rgba(0, 159, 253, 0.1);
+          color: var(--brand-primary);
+          background: rgba(var(--brand-rgb), 0.1);
         }
 
         i {
@@ -83,7 +83,7 @@
       }
 
       .section-card {
-        background: white;
+        background: var(--card-bg);
         border-radius: 16px;
         padding: 30px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -96,14 +96,14 @@
         h2 {
           font-size: 20px;
           font-weight: 700;
-          color: #1e2a5a;
+          color: var(--text-primary);
           margin: 0 0 25px 0;
           display: flex;
           align-items: center;
           gap: 10px;
 
           i {
-            color: #009ffd;
+            color: var(--brand-primary);
             font-size: 22px;
           }
         }
@@ -125,12 +125,12 @@
             label {
               font-size: 14px;
               font-weight: 600;
-              color: #334155;
+              color: var(--text-primary);
             }
 
             input {
               padding: 12px 16px;
-              border: 2px solid #e2e8f0;
+              border: 2px solid var(--border-color);
               border-radius: 8px;
               font-size: 15px;
               font-family: inherit;
@@ -138,12 +138,12 @@
               outline: none;
 
               &:focus {
-                border-color: #009ffd;
-                box-shadow: 0 0 0 3px rgba(0, 159, 253, 0.1);
+                border-color: var(--brand-primary);
+                box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.1);
               }
 
               &::placeholder {
-                color: #94a3b8;
+                color: var(--text-muted);
               }
 
               &.invalid {
@@ -168,23 +168,23 @@
 
           .payment-option {
             cursor: pointer;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
             transition: all 0.3s;
             position: relative;
 
             &:hover {
-              border-color: #009ffd;
-              background: rgba(0, 159, 253, 0.05);
+              border-color: var(--brand-primary);
+              background: rgba(var(--brand-rgb), 0.05);
             }
 
             &.active {
-              border-color: #009ffd;
-              background: rgba(0, 159, 253, 0.1);
+              border-color: var(--brand-primary);
+              background: rgba(var(--brand-rgb), 0.1);
 
               .option-content {
-                color: #009ffd;
+                color: var(--brand-primary);
               }
             }
 
@@ -198,7 +198,7 @@
               flex-direction: column;
               align-items: center;
               gap: 10px;
-              color: #64748b;
+              color: var(--text-secondary);
               font-weight: 600;
               transition: all 0.3s;
 
@@ -215,7 +215,7 @@
 
         .card-details {
           padding-top: 20px;
-          border-top: 1px solid #e2e8f0;
+          border-top: 1px solid var(--border-color);
           animation: fadeIn 0.3s ease;
         }
 
@@ -243,16 +243,16 @@
           }
 
           &::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: var(--bg-muted);
             border-radius: 10px;
           }
 
           &::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: var(--text-muted);
             border-radius: 10px;
 
             &:hover {
-              background: #94a3b8;
+              background: var(--text-secondary);
             }
           }
 
@@ -260,7 +260,7 @@
             display: flex;
             gap: 15px;
             padding: 15px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--border-subtle);
 
             &:last-child {
               border-bottom: none;
@@ -271,7 +271,7 @@
               height: 60px;
               object-fit: cover;
               border-radius: 8px;
-              background: #f8fafc;
+              background: var(--bg-muted);
             }
 
             .item-details {
@@ -280,14 +280,14 @@
               h4 {
                 font-size: 14px;
                 font-weight: 600;
-                color: #1e2a5a;
+                color: var(--text-primary);
                 margin: 0 0 5px 0;
                 line-height: 1.4;
               }
 
               p {
                 font-size: 13px;
-                color: #64748b;
+                color: var(--text-secondary);
                 margin: 0;
               }
             }
@@ -295,7 +295,7 @@
             .item-price {
               font-size: 15px;
               font-weight: 700;
-              color: #1e2a5a;
+              color: var(--text-primary);
               display: flex;
               align-items: center;
               gap: 5px;
@@ -310,9 +310,76 @@
 
         .summary-totals {
           padding: 20px 0;
-          border-top: 1px solid #e2e8f0;
-          border-bottom: 1px solid #e2e8f0;
+          border-top: 1px solid var(--border-color);
+          border-bottom: 1px solid var(--border-color);
           margin-bottom: 20px;
+
+          .promo-box {
+            margin-bottom: 14px;
+
+            label {
+              display: block;
+              font-size: 13px;
+              font-weight: 600;
+              color: var(--text-secondary);
+              margin-bottom: 6px;
+            }
+
+            .promo-row {
+              display: flex;
+              gap: 8px;
+
+              input {
+                flex: 1;
+                padding: 8px 10px;
+                border: 1.5px solid var(--border-color);
+                border-radius: 8px;
+                background: var(--bg-input);
+                color: var(--text-primary);
+              }
+
+              button {
+                padding: 8px 12px;
+                border: none;
+                border-radius: 8px;
+                background: var(--brand-gradient);
+                color: #fff;
+                font-weight: 700;
+                cursor: pointer;
+              }
+            }
+
+            .promo-applied {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 8px;
+              padding: 8px 10px;
+              background: rgba(16, 185, 129, 0.1);
+              border-radius: 8px;
+              color: #059669;
+              font-weight: 700;
+              font-size: 13px;
+
+              button {
+                border: none;
+                background: transparent;
+                color: #ef4444;
+                cursor: pointer;
+                font-weight: 700;
+              }
+            }
+
+            .promo-hint {
+              margin: 6px 0 0;
+              font-size: 12px;
+              color: var(--text-muted);
+            }
+          }
+
+          .discount-row {
+            color: #059669;
+          }
 
           .total-row {
             display: flex;
@@ -320,7 +387,7 @@
             align-items: center;
             padding: 10px 0;
             font-size: 15px;
-            color: #334155;
+            color: var(--text-primary);
 
             span {
               display: flex;
@@ -341,10 +408,10 @@
             &.grand-total {
               padding-top: 15px;
               margin-top: 10px;
-              border-top: 1px solid #e2e8f0;
+              border-top: 1px solid var(--border-color);
               font-size: 18px;
               font-weight: 700;
-              color: #1e2a5a;
+              color: var(--text-primary);
 
               .currency-icon {
                 width: 14px;
@@ -354,10 +421,18 @@
           }
         }
 
+        .checkout-error {
+          margin-bottom: 12px;
+          padding: 10px 14px;
+          background: #fef2f2;
+          border-radius: 8px;
+          text-align: center;
+        }
+
         .place-order-btn {
           width: 100%;
           padding: 16px;
-          background: linear-gradient(135deg, #009ffd 0%, #0285d1 100%);
+          background: var(--brand-gradient);
           color: white;
           border: none;
           border-radius: 12px;
@@ -370,20 +445,38 @@
           align-items: center;
           justify-content: center;
           gap: 10px;
-          box-shadow: 0 4px 15px rgba(0, 159, 253, 0.3);
+          box-shadow: 0 4px 15px rgba(var(--brand-rgb), 0.3);
 
-          &:hover {
+          &:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 159, 253, 0.4);
+            box-shadow: 0 6px 20px rgba(var(--brand-rgb), 0.4);
           }
 
-          &:active {
+          &:active:not(:disabled) {
             transform: translateY(0);
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
           }
 
           i {
             font-size: 20px;
           }
+
+          .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 255, 255, 0.4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: checkout-spin 0.7s linear infinite;
+          }
+        }
+
+        @keyframes checkout-spin {
+          to { transform: rotate(360deg); }
         }
 
         .secure-notice {
